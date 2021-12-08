@@ -43,7 +43,6 @@
     exa
     fd
     bat
-    git
     tree
     gnupg
     picom
