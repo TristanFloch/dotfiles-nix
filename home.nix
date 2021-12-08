@@ -52,6 +52,7 @@
     xfce.thunar
     alacritty
     htop
+    fzf
   ];
 
 
