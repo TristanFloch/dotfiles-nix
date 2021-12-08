@@ -52,6 +52,7 @@
     alacritty
     htop
     fzf
+    unzip
   ];
 
   services.gpg-agent.pinentryFlavor = "gtk2";
