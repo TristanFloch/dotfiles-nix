@@ -32,10 +32,8 @@
   ];
 
   gtk = {
-    # FIXME
     enable = true;
     theme.name = "Dracula";
-    theme.package = pkgs.dracula-theme;
   };
 
   # Let Home Manager install and manage itself.
@@ -58,4 +56,6 @@
     htop
     fzf
   ];
+
+  services.gpg-agent.pinentryFlavor = "gtk2";
 }
