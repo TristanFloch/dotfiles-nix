@@ -23,7 +23,11 @@
   };
 
   imports = [
-    ./fish/config.nix
+    ./starship/main.nix
+    ./bat/main.nix
+    ./fish/main.nix
+    ./git/main.nix
+    ./vim/main.nix
     ./alacritty/main.nix
   ];
 
@@ -55,53 +59,4 @@
     htop
     fzf
   ];
-
-  programs.git = {
-    enable = true;
-    userName = "Tristan FLOCH";
-    userEmail = "tristan.floch@epita.fr";
-  };
-
-  programs.vim = {
-    enable = true;
-    settings = { 
-      ignorecase = true; 
-      background = "dark";
-    };
-    plugins = with pkgs.vimPlugins; [ 
-      lightline-vim
-      dracula-vim
-    ];
-    extraConfig = ''
-      set mouse=a
-      set rnu
-      set scrolloff=10
-      let g:lightline = { 'colorscheme': 'dracula' }
-    '';
-  };
-
-  programs.starship = {
-    enable = true;
-    enableFishIntegration = true;
-    enableBashIntegration = true;
-    settings = {
-      add_newline = true;
-      character = {
-        success_symbol = "[➜](bold purple)";
-      };
-      line_break.disabled = true;
-    };
-  };
-
-  programs.bat = {
-    enable = true;
-    config = { theme = "Dracula"; };
-    themes = { dracula = builtins.readFile (pkgs.fetchFromGitHub {
-        owner = "dracula";
-        repo = "sublime"; # Bat uses sublime syntax for its themes
-        rev = "26c57ec282abcaa76e57e055f38432bd827ac34e";
-        sha256 = "019hfl4zbn4vm4154hh3bwk6hm7bdxbr1hdww83nabxwjn99ndhv";
-      } + "/Dracula.tmTheme");
-    };
-  };
 }
