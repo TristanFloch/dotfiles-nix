@@ -8,6 +8,11 @@
     '';
     shellAbbrs = {
       g = "git";
+      gs = "git stage";
+      gu = "git restore --staged";
+      gc = "git commit";
+      gcf = "git commit --fixup";
+      gcs = "git commit --squash";
       gla = "git log --oneline --graph --all";
       gg = "git status";
       gr = "git rebase";
