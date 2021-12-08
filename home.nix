@@ -29,12 +29,9 @@
     ./git/main.nix
     ./vim/main.nix
     ./alacritty/main.nix
+    ./gtk/main.nix
+    ./rofi/main.nix
   ];
-
-  gtk = {
-    enable = true;
-    theme.name = "Dracula";
-  };
 
   # Let Home Manager install and manage itself.
   programs.home-manager = {
