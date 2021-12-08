@@ -20,14 +20,11 @@
     sessionVariables = {
       EDITOR = "vim";
     };
-
-    file = {
-      ".config/alacritty/alacritty.yml".source = ./alacritty/alacritty.yml;
-    };
   };
 
   imports = [
     ./fish/config.nix
+    ./alacritty/main.nix
   ];
 
   gtk = {
