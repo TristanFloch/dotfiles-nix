@@ -47,7 +47,6 @@
   home.packages = with pkgs; [
     exa
     fd
-    bat
     tree
     gnupg
     picom
