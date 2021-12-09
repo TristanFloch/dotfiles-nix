@@ -31,8 +31,6 @@
     ./alacritty/main.nix
     ./gtk/main.nix
     ./rofi/main.nix
-    ./picom/main.nix
-    ./polybar/main.nix
   ];
 
   # Let Home Manager install and manage itself.
@@ -46,6 +44,7 @@
     fd
     tree
     gnupg
+    picom
     slack
     rofi
     dracula-theme
@@ -54,7 +53,6 @@
     htop
     fzf
     unzip
-    ripgrep
   ];
 
   services.gpg-agent.pinentryFlavor = "gtk2";

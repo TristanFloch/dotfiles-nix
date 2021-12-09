@@ -5,7 +5,7 @@
     plugins = with pkgs.vimPlugins; [
       lightline-vim
       dracula-vim
-      vim-commentaty
+      vim-commentary
       fzf-vim
       auto-pairs
     ];

@@ -6,5 +6,5 @@
     fade = true;
     fadeDelta = 10; #ms
     fadeSteps = [ "0.08" "0.08" ]; #ms
-  }
+  };
 }
