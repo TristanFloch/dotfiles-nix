@@ -45,13 +45,14 @@
     enable = true;
   };
 
+  nixpkgs.config.allowUnfree = true;
   home.packages = with pkgs; [
     exa
     fd
     tree
     gnupg
     picom
-    unstable.slack
+    slack
     rofi
     dracula-theme
     xfce.thunar
