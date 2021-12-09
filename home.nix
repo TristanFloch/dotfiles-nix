@@ -45,14 +45,13 @@
     enable = true;
   };
 
-  nixpkgs.config.allowUnfree = true;
   home.packages = with pkgs; [
     exa
     fd
     tree
     gnupg
     picom
-    slack
+    unstable.slack
     rofi
     dracula-theme
     xfce.thunar
@@ -61,6 +60,7 @@
     fzf
     unzip
     ripgrep
+    evince
 
     noto-fonts
     noto-fonts-emoji
