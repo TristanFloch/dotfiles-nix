@@ -7,7 +7,7 @@
       i3GapsSupport = true;
       alsaSupport = true;
     };
-    config = ./config
-    script = builtins.readFile ./launch.sh
+    config = ./config;
+    script = builtins.readFile ./launch.sh;
   };
 }
