@@ -1,0 +1,50 @@
+filetype on
+set background=dark
+set showmatch
+set mouse=a
+set nu rnu
+set ttymouse=sgr " mouse in alacritty
+set list " end of line $ char
+set scrolloff=10
+set smarttab
+set showmode
+set showcmd
+set wildmenu
+set nowrap
+set linebreak
+set expandtab
+set autoindent
+set smartindent
+filetype indent on
+set smarttab
+set incsearch
+set smartcase
+
+let g:lightline = { 'colorscheme': 'dracula' }
+let g:fzf_colors =
+\ { 'border':  ['fg', 'Comment'],
+\ }
+
+command WQ wq
+command Wq wq
+command W w
+command Q q
+
+" GDB in vim
+let g:termdebug_popup = 0
+let g:termdebug_wide = 163
+
+nnoremap <SPACE> <Nop>
+let mapleader = " "
+
+map <leader><leader> <esc><esc>:GFiles<CR>
+nnoremap <leader>. :Files<CR>
+nnoremap <leader>bb :Buffers<CR>
+nnoremap <leader>bs :update<CR>
+nnoremap <leader>ss :BLines<CR>
+nnoremap <leader>sp :Rg<CR>
+nnoremap <leader>ps :wa<CR>
+nnoremap <leader>w <C-w>
+nnoremap <leader>bk :q<CR>
+nnoremap <leader>` <C-^>
+
