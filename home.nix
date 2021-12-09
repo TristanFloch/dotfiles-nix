@@ -53,6 +53,7 @@
     htop
     fzf
     unzip
+    ripgrep
   ];
 
   services.gpg-agent.pinentryFlavor = "gtk2";
