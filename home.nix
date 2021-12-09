@@ -31,6 +31,9 @@
     ./alacritty/main.nix
     ./gtk/main.nix
     ./rofi/main.nix
+    ./picom/main.nix
+    ./polybar/main.nix
+    ./dunst/main.nix
   ];
 
   # Let Home Manager install and manage itself.
@@ -53,7 +56,16 @@
     htop
     fzf
     unzip
+    ripgrep
+
+    noto-fonts
+    noto-fonts-emoji
+    dejavu_fonts
+    hack-font
+    nerdfonts
   ];
+
+  fonts.fontconfig.enable = true;
 
   services.gpg-agent.pinentryFlavor = "gtk2";
 }
