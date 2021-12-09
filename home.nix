@@ -32,6 +32,7 @@
     ./gtk/main.nix
     ./rofi/main.nix
     ./picom/main.nix
+    ./polybar/main.nix
   ];
 
   # Let Home Manager install and manage itself.
