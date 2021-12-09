@@ -31,6 +31,7 @@
     ./alacritty/main.nix
     ./gtk/main.nix
     ./rofi/main.nix
+    ./picom/main.nix
   ];
 
   # Let Home Manager install and manage itself.
@@ -44,7 +45,6 @@
     fd
     tree
     gnupg
-    picom
     slack
     rofi
     dracula-theme
