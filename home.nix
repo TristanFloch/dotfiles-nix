@@ -63,6 +63,7 @@
     unzip
     ripgrep
     evince
+    killall
 
     noto-fonts
     noto-fonts-emoji

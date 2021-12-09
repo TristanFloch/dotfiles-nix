@@ -10,6 +10,7 @@
       g = "git";
       gs = "git stage";
       gu = "git restore --staged";
+      ga = "git add";
       gc = "git commit";
       gcf = "git commit --fixup";
       gcs = "git commit --squash";

@@ -24,6 +24,7 @@ let g:lightline = { 'colorscheme': 'dracula' }
 let g:fzf_colors =
 \ { 'border':  ['fg', 'Comment'],
 \ }
+colorscheme default
 
 command WQ wq
 command Wq wq
@@ -46,5 +47,6 @@ nnoremap <leader>sp :Rg<CR>
 nnoremap <leader>ps :wa<CR>
 nnoremap <leader>w <C-w>
 nnoremap <leader>bk :q<CR>
+nnoremap <leader>bK :qa<CR>
 nnoremap <leader>` <C-^>
 
