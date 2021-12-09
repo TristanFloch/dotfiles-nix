@@ -38,6 +38,7 @@
     ./picom/main.nix
     ./polybar/main.nix
     ./dunst/main.nix
+    ./emacs/main.nix
   ];
 
   # Let Home Manager install and manage itself.
