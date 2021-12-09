@@ -20,6 +20,10 @@
     sessionVariables = {
       EDITOR = "vim";
     };
+
+    file = {
+      ".Xresources".text = "Xft.dpi: 96";
+    };
   };
 
   imports = [

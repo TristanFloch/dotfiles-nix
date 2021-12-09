@@ -3,11 +3,11 @@
 {
   services.polybar = {
     enable = true;
-    override = {
+    config = ./config;
+    script = builtins.readFile ./launch.sh;
+    package = pkgs.polybar.override {
       i3GapsSupport = true;
       alsaSupport = true;
     };
-    config = ./config;
-    script = builtins.readFile ./launch.sh;
   };
 }
