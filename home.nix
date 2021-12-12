@@ -64,6 +64,9 @@
     ripgrep
     evince
     killall
+    thunderbird
+    pavucontrol
+    llvm
 
     noto-fonts
     noto-fonts-emoji

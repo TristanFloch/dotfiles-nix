@@ -1,6 +1,0 @@
-# -*- mode: snippet -*-
-# name: bold-italic
-# key: bi
-# --
-
-\textbf{\textit{${text}}}

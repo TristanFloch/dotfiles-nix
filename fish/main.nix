@@ -7,6 +7,7 @@
       starship init fish | source;
     '';
     shellAbbrs = {
+      doom = "~/.emacs.d/bin/doom";
       g = "git";
       gs = "git stage";
       gu = "git restore --staged";
