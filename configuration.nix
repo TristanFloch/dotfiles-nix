@@ -45,27 +45,36 @@
   #   keyMap = "us";
   # };
 
-  # Enable the X11 windowing system.
-  services.xserver.enable = true;
+  # services.xserver.windowManager.i3 = {
+  #   enable = true;
+  #   package = pkgs.i3-gaps;
+  #   extraPackages = with pkgs; [
+  #     i3status # gives you the default i3 status bar
+  #     i3lock #default i3 screen locker
+  #   ];
+  # };
 
-
-  # Enable the Plasma 5 Desktop Environment.
-  # services.xserver.displayManager.sddm.enable = true;
-  services.xserver.desktopManager.plasma5.enable = true;
-
-  services.xserver.windowManager.i3 = {
+  services.xserver = {
     enable = true;
-    package = pkgs.i3-gaps;
-    extraPackages = with pkgs; [
-      i3status # gives you the default i3 status bar
-      i3lock #default i3 screen locker
-    ];
+    desktopManager = {
+      xterm.enable = false;
+      xfce = {
+        enable = true;
+        noDesktop = true;
+        enableXfwm = false;
+      };
+    };
+    displayManager = {
+      defaultSession = "xfce+i3";
+      lightdm.enable = true;
+      autoLogin.enable = true;
+      autoLogin.user = "tristan";
+    };
+    windowManager.i3 = {
+      enable = true;
+      package = pkgs.i3-gaps;
+    };
   };
-
-  services.xserver.displayManager.defaultSession = "none+i3";
-  services.xserver.displayManager.lightdm.enable = true;
-  services.xserver.displayManager.autoLogin.enable = true;
-  services.xserver.displayManager.autoLogin.user = "tristan";
 
 
   # Configure keymap in X11

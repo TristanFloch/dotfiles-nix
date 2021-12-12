@@ -39,6 +39,7 @@
     ./polybar/main.nix
     ./dunst/main.nix
     ./emacs/main.nix
+    ./i3/main.nix
   ];
 
   # Let Home Manager install and manage itself.
@@ -66,7 +67,7 @@
     killall
     thunderbird
     pavucontrol
-    llvm
+    clang-tools
 
     noto-fonts
     noto-fonts-emoji
