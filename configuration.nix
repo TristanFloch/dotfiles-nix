@@ -22,7 +22,9 @@
   boot.loader.efi.canTouchEfiVariables = true;
 
   networking.hostName = "nixos-zenbook"; # Define your hostname.
-  networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
+  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
+  networking.networkmanager.enable = true;
+  programs.nm-applet.enable = true;
 
   # Set your time zone.
   time.timeZone = "Europe/Paris";
