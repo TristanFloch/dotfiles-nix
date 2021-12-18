@@ -183,33 +183,12 @@ ws-icon-6 = 7;
 ws-icon-7 = 8;
 ws-icon-8 = 9;9
 
-[module/xbacklight]
-type = internal/xbacklight
-
-; XRandR output to get get values from
-; Default: the monitor defined for the running bar
-output = eDP
-
-format = <label> <bar>
-label = BL
-
-bar-width = 10
-bar-indicator = |
-bar-indicator-foreground = #fff
-bar-indicator-font = 2
-bar-fill = ─
-bar-fill-font = 2
-bar-fill-foreground = ${color.green}
-bar-empty = ─
-bar-empty-font = 2
-bar-empty-foreground = ${colors.foreground-alt}
-
 [module/backlight]
 type = internal/backlight
 
 ; Use the following command to list available cards:
 ; $ ls -1 /sys/class/backlight/
-card = intel_backlight
+card = amdgpu_bl0
 
 ; Enable changing the backlight with the scroll wheel
 ; NOTE: This may require additional configuration on some systems. Polybar will
@@ -221,7 +200,7 @@ card = intel_backlight
 ; See the ArchWiki for more information:
 ; https://wiki.archlinux.org/index.php/Backlight#ACPI
 ; Default: false
-enable-scroll = true
+enable-scroll = false ; FIXME
 
 ; Available tags:
 ;   <label> (default)
