@@ -13,6 +13,10 @@
   boot.kernelModules = [ "kvm-amd" ];
   boot.extraModulePackages = [ ];
 
+  # amdgpu.backlight=0 makes the backlight work
+  # acpi_backlight=none allows the backlight save/load systemd service to work.
+  boot.kernelParams = ["amdgpu.backlight=0" "acpi_backlight=none"];
+
   fileSystems."/" =
     { device = "/dev/disk/by-uuid/24be9bf9-03ad-4210-83fa-47b931103102";
       fsType = "ext4";

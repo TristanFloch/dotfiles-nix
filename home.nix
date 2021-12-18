@@ -67,7 +67,22 @@
     killall
     thunderbird
     pavucontrol
+    spotify
+    feh
+    ping
+    aspell
+    jq
+    pythonFull
+    shellcheck
+    brightnessctl
+
+    binutils
+    gcc
     clang-tools
+    gnumake
+    cmake
+    criterion
+    bear
 
     noto-fonts
     noto-fonts-emoji
@@ -75,6 +90,13 @@
     hack-font
     nerdfonts
   ];
+
+  services = {
+    # Applets, shown in tray
+    network-manager-applet.enable = true;
+    # blueman-applet.enable = true;
+    pasystray.enable = true;
+  };
 
   fonts.fontconfig.enable = true;
 

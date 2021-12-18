@@ -66,8 +66,8 @@ bindsym $mod+d exec "rofi -show drun"
 # Screen brightness controls
 # bindsym XF86MonBrightnessUp exec "xbacklight -inc 10; notify-send 'brightness up'"
 # bindsym XF86MonBrightnessDown exec "xbacklight -dec 10; notify-send 'brightness down'"
-bindsym XF86MonBrightnessUp exec "light -A 10"
-bindsym XF86MonBrightnessDown exec "light -U 10"
+bindsym XF86MonBrightnessUp exec "brightnessctl -c backlight set +10%"
+bindsym XF86MonBrightnessDown exec "brightnessctl -c backlight set 10%-"
 
 # Start Applications
 # bindsym $mod+F1 exec --no-startup-id emacsclient -c
@@ -236,7 +236,8 @@ bindsym $mod+Shift+r restart
 
 # Logout menu
 # bindsym $mod+Shift+e exec --no-startup-id ~/.config/rofi/applets/menu/powermenu.sh
-bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+# bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+bindsym $mod+Shift+e exec xfce4-session-logout
 
 # Lock screen
 bindsym $mod+9 exec --no-startup-id i3exit hibernate, mode "default"
@@ -397,7 +398,7 @@ mode "$mode_gaps_outer" {
 }
 
 # Display wallpaper
-# exec --no-startup-id feh --randomize --bg-fill $HOME/Pictures/wallpapers/my_pics/* &
+exec --no-startup-id feh --bg-fill ~/Pictures/IMG_1043.jpg &
 
 # Keybinding for i3lock
 # bindsym ctrl+$mod+l exec ~/.config/scripts/lock
