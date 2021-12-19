@@ -20,10 +20,6 @@
     sessionVariables = {
       EDITOR = "vim";
     };
-
-    file = {
-      ".Xresources".text = "Xft.dpi: 96";
-    };
   };
 
   imports = [
@@ -40,6 +36,7 @@
     ./dunst/main.nix
     ./emacs/main.nix
     ./i3/main.nix
+    ./xresources/main.nix
   ];
 
   # Let Home Manager install and manage itself.
