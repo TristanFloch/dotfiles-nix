@@ -2,6 +2,6 @@
 
 {
   xresources.properties = {
-    ".Xresources" = "Xft.dpi: 96";
+    "Xft.dpi" = "96";
   };
 }
