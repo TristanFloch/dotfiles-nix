@@ -62,6 +62,10 @@
           commands = [ { command = "move to workspace $ws8"; criteria = { class = "Spotify"; } ; } ];
         };
 
+        floating = {
+          border = 1;
+        };
+
         keybindings = let
           mod = config.modifier;
         in lib.mkOptionDefault {
