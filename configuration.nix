@@ -47,15 +47,6 @@
   #   keyMap = "us";
   # };
 
-  # services.xserver.windowManager.i3 = {
-  #   enable = true;
-  #   package = pkgs.i3-gaps;
-  #   extraPackages = with pkgs; [
-  #     i3status # gives you the default i3 status bar
-  #     i3lock #default i3 screen locker
-  #   ];
-  # };
-
   services.xserver = {
     enable = true;
     desktopManager = {
@@ -72,10 +63,7 @@
       autoLogin.enable = true;
       autoLogin.user = "tristan";
     };
-    windowManager.i3 = {
-      enable = true;
-      package = pkgs.i3-gaps;
-    };
+    windowManager.i3.enable = true;
   };
 
 

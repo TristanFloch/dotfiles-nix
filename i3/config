@@ -288,7 +288,7 @@ mode "resize" {
 # Autostart applications
 
 # Autotiling
-exec_always --no-startup-id autotiling
+# exec_always --no-startup-id autotiling
 
 #Authentication dialog
 # exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &

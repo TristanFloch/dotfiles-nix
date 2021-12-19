@@ -3,15 +3,12 @@
 {
   services.polybar = {
     enable = true;
+    package = pkgs.polybarFull;
     config = ./config;
     script = ''
-      MONITOR=eDP polybar mainbar-i3 &
-      MONITOR=HDMI-A-0 polybar mainbar-i3 &
+      for m in $(polybar --list-monitors | ${pkgs.coreutils}/bin/cut -d":" -f1); do
+        MONITOR=$m polybar mainbar-i3 &
+      done
     '';
-    package = pkgs.polybar.override {
-      i3GapsSupport = true;
-      alsaSupport = true;
-      iwSupport = true;
-    };
   };
 }
