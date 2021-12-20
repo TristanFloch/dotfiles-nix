@@ -65,12 +65,12 @@
     pavucontrol
     spotify
     feh
-    ping
     aspell
     jq
     pythonFull
     shellcheck
     brightnessctl
+    unixtools.ping
 
     binutils
     gcc
