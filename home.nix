@@ -52,7 +52,6 @@
     gnupg
     picom
     slack
-    rofi
     dracula-theme
     xfce.thunar
     alacritty
