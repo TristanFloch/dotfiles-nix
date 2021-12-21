@@ -81,11 +81,7 @@
     criterion
     bear
 
-    noto-fonts
-    noto-fonts-emoji
-    dejavu_fonts
-    hack-font
-    nerdfonts
+    noto-fonts noto-fonts-emoji dejavu_fonts hack-font nerdfonts
   ];
 
   services = {
