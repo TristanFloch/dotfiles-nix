@@ -23,20 +23,20 @@
   };
 
   imports = [
-    ./starship/main.nix
-    ./bat/main.nix
-    ./fish/main.nix
-    ./git/main.nix
-    ./vim/main.nix
-    ./alacritty/main.nix
-    ./gtk/main.nix
-    ./rofi/main.nix
-    ./picom/main.nix
-    ./polybar/main.nix
-    ./dunst/main.nix
-    ./emacs/main.nix
-    ./i3/main.nix
-    ./xresources/main.nix
+    ./starship
+    ./bat
+    ./fish
+    ./git
+    ./vim
+    ./alacritty
+    ./gtk
+    ./rofi
+    ./picom
+    ./polybar
+    ./dunst
+    ./emacs
+    ./i3
+    ./xresources
   ];
 
   # Let Home Manager install and manage itself.
@@ -71,6 +71,7 @@
     shellcheck
     brightnessctl
     unixtools.ping
+    neofetch
 
     binutils
     gcc
