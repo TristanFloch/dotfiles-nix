@@ -8,11 +8,6 @@
 #     doomPrivateDir = ./doom.d;
 #   };
 # in {
-#   nixpkgs.overlays = [
-#     (import (builtins.fetchTarball {
-#       url = https://github.com/nix-community/emacs-overlay/archive/master.tar.gz;
-#     }))
-#   ];
 #   home.packages = [ doom-emacs ];
 #   home.file.".emacs.d/init.el".text = ''
 #     (load "default.el")
@@ -20,12 +15,6 @@
 # }
 
 {
-  nixpkgs.overlays = [
-    (import (builtins.fetchTarball {
-      url = https://github.com/nix-community/emacs-overlay/archive/master.tar.gz;
-    }))
-  ];
-
   programs.emacs = {
     enable = true;
     package = pkgs.emacsGcc;
@@ -37,6 +26,7 @@
     bear
     aspell
     shellcheck
+    rnix-lsp
   ];
 
   services.gpg-agent.pinentryFlavor = "emacs";
