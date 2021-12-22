@@ -10,7 +10,7 @@
         modifier = "Mod4";
         bars = [];
         terminal = "alacritty";
-        defaultWorkspace = "1";
+        defaultWorkspace = "workspace number 1";
         workspaceAutoBackAndForth = true;
 
         gaps = {
