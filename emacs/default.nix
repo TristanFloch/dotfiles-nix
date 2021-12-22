@@ -30,4 +30,14 @@
     enable = true;
     package = pkgs.emacsGcc;
   };
+
+  home.packages = with pkgs; [
+    pinentry-emacs
+    emacs-all-the-icons-fonts
+    bear
+    aspell
+    shellcheck
+  ];
+
+  services.gpg-agent.pinentryFlavor = "emacs";
 }

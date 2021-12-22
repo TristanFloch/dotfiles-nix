@@ -65,21 +65,18 @@
     pavucontrol
     spotify
     feh
-    aspell
     jq
-    pythonFull
-    shellcheck
     brightnessctl
     unixtools.ping
     neofetch
 
+    pythonFull
     binutils
     gcc
     clang-tools
     gnumake
     cmake
     criterion
-    bear
 
     noto-fonts noto-fonts-emoji dejavu_fonts hack-font nerdfonts
   ];
@@ -92,6 +89,4 @@
   };
 
   fonts.fontconfig.enable = true;
-
-  services.gpg-agent.pinentryFlavor = "gtk2";
 }
