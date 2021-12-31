@@ -8,6 +8,11 @@
     '';
     shellAbbrs = {
       doom = "~/.emacs.d/bin/doom";
+
+      intl = "setxkbmap us_intl";
+      us = "setxkbmap us";
+      apply = "~/.config/nixpkgs/apply.sh";
+
       g = "git";
       gs = "git stage";
       gu = "git restore --staged";
