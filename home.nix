@@ -69,6 +69,8 @@
     brightnessctl
     unixtools.ping
     neofetch
+    i3lock
+    escrotum
 
     pythonFull
     binutils

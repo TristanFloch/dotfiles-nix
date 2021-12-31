@@ -52,6 +52,7 @@
         ];
 
         assigns = {
+          # TODO assign slack to ws6
           "6" = [{ class = "discord"; }];
           "7" = [{ class = "Thunderbird"; }];
           # "8" = [{ class = "Spotify"; }]; FIXME
