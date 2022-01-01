@@ -24,28 +24,50 @@ background = #1e2029
 foreground-alt = #728CA0
 foreground = #f8f8f2
 
-comment = #6272a4
-cyan = #8be9fd
-green = #50fa7b
-orange = #ffb86c
-pink = #ff79c6
-purple = #bd93f9
-red = #ff5555
-yellow = #f1fa8c
+; color1 = #6272a4 ; comment (blue)
+; color2 = #8be9fd ; cyan
+; color3 = #50fa7b ; green
+; color4 = #ffb86c ; orange
+; color5 = #ff79c6 ; pink
+; color6 = #bd93f9 ; purple
+; color7 = #ff5555 ; red
+; color8 = #f1fa8c ; yellow
 
-primary = #bd93f9
-secondary = #6272a4
-alert = #ffb86c
+comment = #6272a4
+cyan    = #8be9fd
+green   = #50fa7b
+orange  = #ffb86c
+pink    = #ff79c6
+purple  = #bd93f9
+red     = #ff5555
+yellow  = #f1fa8c
+black   = #000000
+
+primary = ${self.purple}
+secondary = ${self.comment}
+alert = ${self.orange}
+
+[module/base]
+; Define fallback values used by all module formats
+format-foreground = ${colors.black}
+;format-background =
+;format-underline =
+;format-overline =
+;format-spacing =
+format-padding = 3
+;format-margin =
+;format-offset =
+
 
 [bar/mainbar-i3]
 enable-ipc = true
 monitor = ${env:MONITOR}
 width = 100%
-height = 27
+height = 38
 ;offset-x = 1%
 ;offset-y = 1%
 radius = 0
-fixed-center = false
+fixed-center = true
 
 ; Put the bar at the bottom of the screen
 bottom = true
@@ -53,13 +75,13 @@ bottom = true
 background = ${colors.background}
 foreground = ${colors.foreground}
 
-line-size = 2
-line-color = #f00
+; line-size = 2
+; line-color = #f00
 
 border-size = 0
 border-color = #00000000
 
-padding-left = 0
+padding-left = 4
 padding-right = 2
 
 module-margin-left = 1
@@ -73,14 +95,14 @@ font-2 = "Font Awesome 5 Free:style=Solid:pixelsize=9;4"
 font-3 = "mononoki Nerd Font Mono:style=Regular:size=17;5"
 ; font-4 = "Font Awesome 5 Brands:pixelsize=8;3"
 
-modules-left = i3 xwindow
-modules-center = 
-modules-right = backlight pulseaudio memory cpu filesystem battery temperature wlan xkeyboard date
+modules-left = xwindow
+modules-center = i3
+modules-right = memory cpu filesystem battery temperature date
 
 tray-position = right
 tray-padding = 2
 tray-scale = 1
-;tray-background = #0063ff
+; tray-background = ${colors.yellow}
 
 ;wm-restack = bspwm
 ; wm-restack = i3
@@ -98,9 +120,14 @@ cursor-scroll = ns-resize
 
 [module/xwindow]
 type = internal/xwindow
-label = %title:0:30:...%
+
+; label = %title:0:30:...%
+
 format = <label>
 format-foreground = ${colors.purple}
+
+label = %title%
+label-maxlen = 30
 
 [module/xkeyboard]
 type = internal/xkeyboard
@@ -124,12 +151,16 @@ interval = 120
 
 mount-0 = /
 
-format-mounted-prefix = "   "
-format-mounted-prefix-foreground = #008B94
+inherit = module/base
+
+format-mounted-prefix = "  "
+; format-mounted-prefix-foreground = #008B94
 format-mounted = <label-mounted>
-format-mounted-foreground = ${colors.foreground}
-format-mounted-background = ${colors.background}
-format-mounted-overline = #008B94
+format-mounted-foreground = ${colors.black}
+format-mounted-background = ${colors.purple}
+; format-mounted-overline = #008B94
+
+format-mounted-padding = 3
 
 label-mounted =  %free%
 label-unmounted = %mountpoint% not mounted
@@ -144,29 +175,31 @@ wrapping-scroll = false
 ; Only show workspaces on the same output as the bar
 pin-workspaces = true
 
+; useless here
 label-mode-padding = 2
 label-mode-foreground = #000
 label-mode-background = ${colors.primary}
 
 ; focused = Active workspace on focused monitor
-label-focused = %icon%
-label-focused-background = ${colors.background-alt}
+label-focused = ""
+; label-focused-foreground = ${colors.purple}
+; label-focused-background = ${colors.background-alt}
 label-focused-overline= ${colors.primary}
 label-focused-padding = 2
 
 ; unfocused = Inactive workspace on any monitor
-label-unfocused = %icon%
+label-unfocused = ""
 label-unfocused-padding = 2
 
 ; visible = Active workspace on unfocused monitor
-label-visible = %icon%
-label-visible-background = ${self.label-focused-background}
+label-visible = ""
+; label-visible-background = ${self.label-focused-background}
 ; label-visible-overline = ${self.label-focused-overline}
 label-visible-overline = ${colors.secondary}
 label-visible-padding = ${self.label-focused-padding}
 
 ; urgent = Workspace with urgency hint set
-label-urgent = %icon%
+label-urgent = ""
 label-urgent-background = ${colors.alert}
 label-urgent-padding = 2
 
@@ -243,18 +276,20 @@ card = amdgpu_bl0
 [module/cpu]
 ; type = internal/cpu
 ; interval = 2
-; format-overline = #f90000
 ; label = %percentage:2%%
-
 type = internal/cpu
 ; Seconds to sleep between updates
 ; Default: 1
 interval = 1
-format-foreground = ${colors.foreground}
+
+inherit = module/base
+format-foreground = ${colors.black}
+format-background = ${colors.cyan}
+; format-padding = 3
 ; format-background = #8d62ad
 format-prefix = " "
-format-prefix-foreground = #8d62ad
-format-overline = #8d62ad
+; format-prefix-foreground = #8d62ad
+; format-overline = #8d62ad
 
 label-font = 1
 
@@ -344,12 +379,12 @@ interval = 1
 ;   %mb_total%
 label = %gb_used%
 
+inherit = module/base
 format = <label>
-format-prefix = "   "
-format-prefix-foreground = #3384d0
-format-overline = #3384d0
-format-foreground = ${colors.foreground}
-format-background = ${colors.background}
+format-prefix = "  "
+; format-prefix-foreground = #3384d0
+; format-overline = #3384d0
+format-background = ${colors.pink}
 
 
 [module/wlan]
@@ -431,11 +466,10 @@ date-alt = "%d/%m/%Y"
 time = %H:%M
 time-alt = %H:%M:%S
 
-format-prefix = "  "
-format-prefix-foreground = #5EC4FF
-format-overline = #5EC4FF
-; format-suffix = " "
-; format-suffix-foreground = #5EC4FF
+inherit = module/base
+
+format-prefix = "  "
+format-background = ${colors.comment}
 
 label = %date% - %time%
 
@@ -512,39 +546,45 @@ battery = BATT
 adapter = ACAD
 full-at = 98
 
+; FIXME
+; format-background = ${colors.yellow}
+; format-foreground = ${colors.black}
+; format-padding = 3
+
 format-charging = <animation-charging> <label-charging>
 label-charging = %percentage%%
-format-charging-foreground = ${colors.foreground}
-format-charging-background = ${colors.background}
-format-charging-overline = #EBBF83
+format-charging-foreground = ${colors.black}
+format-charging-background = ${colors.green}
+format-charging-padding = 3
+; format-charging-overline = #EBBF83
 
 format-discharging = <ramp-capacity> <label-discharging>
+format-discharging-padding = 3
 label-discharging = " %percentage%%"
-format-discharging-overline = #EBBF83
-format-discharging-foreground = ${colors.foreground}
-format-discharging-background = ${colors.background}
+; format-discharging-overline = #EBBF83
+format-discharging-foreground = ${colors.black}
+format-discharging-background = ${colors.orange}
 
 format-full-prefix = " "
-format-full-prefix-foreground = #EBBF83
-format-full-overline = #EBBF83
-format-full-foreground = ${colors.foreground}
-format-full-background = ${colors.background}
+; format-full-prefix-foreground = #EBBF83
+; format-full-overline = #EBBF83
+format-full-foreground = ${colors.black}
+format-full-background = ${colors.green}
 
 ramp-capacity-0 = " "
 ramp-capacity-1 = " "
 ramp-capacity-2 = " "
 ramp-capacity-3 = " "
 ramp-capacity-4 = " "
-ramp-capacity-foreground = #EBBF83
+; ramp-capacity-foreground = #EBBF83
 
 animation-charging-0 = " "
 animation-charging-1 = " "
 animation-charging-2 = " "
 animation-charging-3 = " "
 animation-charging-4 = " "
-animation-charging-foreground = #EBBF83
-; animation-charging-framerate = 750
-animation-charging-framerate = 550
+; animation-charging-foreground = #EBBF83
+animation-charging-framerate = 750
 
 ; format-charging = <animation-charging> <label-charging>
 ; format-charging-overline = #ffb52a
@@ -578,14 +618,17 @@ type = internal/temperature
 thermal-zone = 0
 warn-temperature = 65
 
-format-prefix = "  "
-format-prefix-foreground = #D95468
+inherit = module/base
+
+format-prefix = " "
+; format-prefix-foreground = #D95468
 format = <label>
-format-overline = #D95468
-format-warn-prefix = "  "
+format-background = ${colors.red}
+; format-overline = #D95468
+format-warn-prefix = " "
 format-warn-prefix-foreground = #D95468
 format-warn = <label-warn>
-format-warn-overline = ${self.format-overline}
+; format-warn-overline = ${self.format-overline}
 
 label = %temperature-c%
 label-warn = %temperature-c%
@@ -629,8 +672,8 @@ screenchange-reload = true
 ;pseudo-transparency = false
 
 [global/wm]
-margin-top = 5
-margin-bottom = 5
+; margin-top = 5
+; margin-bottom = 5
 
 ; vim:ft=dosini
 
