@@ -12,6 +12,18 @@
     '';
   };
 
-  home.file.".config/polybar/colors.ini".source = ./colors.ini;
-  home.file.".config/polybar/modules.ini".source = ./modules.ini;
+
+  home.packages = with pkgs; [
+    playerctl
+  ];
+
+  home.file = {
+    ".config/polybar/colors.ini".source = ./colors.ini;
+    ".config/polybar/modules.ini".source = ./modules.ini;
+    ".config/polybar/fonts.ini".source = ./fonts.ini;
+    ".config/polybar/scripts" = {
+      source = ./scripts;
+      recursive = true;
+    };
+  };
 }
