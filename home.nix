@@ -37,6 +37,7 @@
     ./emacs
     ./i3
     ./xresources
+    ./python
   ];
 
   # Let Home Manager install and manage itself.
@@ -73,7 +74,6 @@
     escrotum
     discord
 
-    pythonFull
     binutils
     gcc
     clang-tools
