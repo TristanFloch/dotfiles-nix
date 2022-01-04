@@ -71,6 +71,7 @@
     neofetch
     i3lock
     escrotum
+    discord
 
     pythonFull
     binutils
