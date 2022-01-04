@@ -88,7 +88,7 @@
     # Applets, shown in tray
     network-manager-applet.enable = true;
     # blueman-applet.enable = true;
-    pasystray.enable = true;
+    # pasystray.enable = true;
   };
 
   fonts.fontconfig.enable = true;
