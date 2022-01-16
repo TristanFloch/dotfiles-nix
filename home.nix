@@ -73,6 +73,8 @@
     i3lock
     escrotum
     discord
+    cmatrix
+    teams
 
     binutils
     gcc
