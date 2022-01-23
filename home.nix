@@ -76,6 +76,8 @@
     cmatrix
     teams
 
+    texlive.combined.scheme-full
+
     binutils
     gcc
     clang-tools
