@@ -17,11 +17,16 @@
         yellow = "#f1fa8c";
         black = "#000000";
       };
-      fonts = [
-        "Ubuntu Nerd Font:size=10.5:style=Book;2"
-        "Ubuntu Nerd Font Mono:style=Regular:size=13;3"
-        "NotoSans Nerd Font:style=ExtraCondensed:size=20;5"
-      ];
+      fonts = {
+        list = [
+          "Ubuntu Nerd Font:size=10.5:style=Book;2"
+          "Ubuntu Nerd Font Mono:style=Regular:size=13;3"
+          "NotoSans Nerd Font:style=ExtraCondensed:size=20;5"
+        ];
+        text = 1;
+        icons = 2;
+        separators = 3;
+      };
     in
     {
       enable = true;
@@ -61,7 +66,7 @@
           modules-left = "xwindow right left date right left my-xkeyboard right left-spotify spotify right-spotify";
           modules-center = "left i3 right";
           modules-right = "left backlight right left pulseaudio right left memory right left cpu right left filesystem right left temperature right left battery right left";
-          font = fonts;
+          font = fonts.list;
           cursor-click = "pointer";
           cursor-scroll = "ns-resize";
           tray-detached = false;
@@ -86,7 +91,7 @@
           content-background = colors.transparent;
           content-foreground = colors.background;
           content = "";
-          content-font = 3;
+          content-font = fonts.separators;
         };
 
         "module/right" = {
@@ -103,7 +108,7 @@
           # format-prefix = " ";
           format-prefix = " ";
           format-prefix-foreground = colors.purple;
-          format-prefix-font = 2;
+          format-prefix-font = fonts.icons;
 
           label = "   %title%";
           label-maxlen = 30;
@@ -117,11 +122,11 @@
 
           format-mounted-prefix = "";
           format-mounted-prefix-foreground = colors.purple;
-          format-mounted-prefix-font = 2;
+          format-mounted-prefix-font = fonts.icons;
           format-mounted = "<label-mounted>";
 
           format-unmounted-prefix = "";
-          format-unmounted-prefix-font = 2;
+          format-unmounted-prefix-font = fonts.icons;
           format-unmounted = "<label-unmounted>";
           format-unmounted-foreground = colors.comment;
 
@@ -138,16 +143,11 @@
           # Only show workspaces on the same output as the bar;
           pin-workspaces = true;
 
-          # useless here;
-          # label-mode-padding = 2;
-          # label-mode-foreground = #000;
-          # label-mode-background = colors.primary;
-
           # focused = Active workspace on focused monitor;
           label-focused = "%icon%";
           label-focused-padding = 3;
           label-focused-foreground = colors.purple;
-          label-focused-font = 2;
+          label-focused-font = fonts.icons;
 
           # unfocused = Inactive workspace on any monitor;
           label-unfocused = "%icon%";
@@ -213,15 +213,15 @@
           # Available tokens:;
           # %percentage% (default);
           label = "  %percentage%%";
-          label-font = 1;
+          label-font = fonts.text;
 
-          ramp-0 = "";
+          ramp = [ "" "" "" ];
+
+          # XXX list does not generate right variable here
           ramp-0-foreground = colors.comment;
-          ramp-1 = "";
           ramp-1-foreground = colors.purple;
-          ramp-2 = "";
           ramp-2-foreground = colors.cyan;
-          ramp-font = 2;
+          ramp-font = fonts.icons;
         };
 
         "module/cpu" = {
@@ -235,7 +235,7 @@
 
           # format-prefix = "";
           format-prefix = "";
-          format-prefix-font = 2;
+          format-prefix-font = fonts.icons;
           format-prefix-foreground = colors.cyan;
 
           # Available tags:;
@@ -272,7 +272,7 @@
 
           format = "<label>";
           format-prefix = "力";
-          format-prefix-font = 2;
+          format-prefix-font = fonts.icons;
           format-prefix-foreground = colors.pink;
         };
 
@@ -288,7 +288,7 @@
           time-alt = "%H:%M:%S";
 
           format-prefix = "";
-          format-prefix-font = 2;
+          format-prefix-font = fonts.icons;
           format-prefix-foreground = colors.comment;
 
           label = "   %date% - %time%";
@@ -320,7 +320,7 @@
           # <ramp-volume>;
           # <bar-volume>;
           format-muted-prefix = "";
-          format-muted-prefix-font = 2;
+          format-muted-prefix-font = fonts.icons;
           format-muted-foreground = colors.comment;
           format-muted = "<label-muted>";
 
@@ -328,7 +328,7 @@
           # %percentage% (default);
           # %decibels%;
           label-volume = "  %percentage%%";
-          label-volume-font = 1;
+          label-volume-font = fonts.text;
 
           # Available tokens:;
           # %percentage% (default);
@@ -337,21 +337,15 @@
           label-muted = "  %percentage%%";
 
           # Only applies if <ramp-volume> is used;
-          # ramp-volume-0 = "🔈 ";
-          # ramp-volume-1 = "🔉 ";
-          # ramp-volume-2 = "🔊 ";
+          ramp-volume = [ "" "" "" "" "" ];
 
-          ramp-volume-0 = "";
+          # XXX list does not generate right variable here
           ramp-volume-0-foreground = colors.green;
-          ramp-volume-1 = "";
           ramp-volume-1-foreground = colors.green;
-          ramp-volume-2 = "";
           ramp-volume-2-foreground = colors.yellow;
-          ramp-volume-3 = "";
           ramp-volume-3-foreground = colors.orange;
-          ramp-volume-4 = "";
           ramp-volume-4-foreground = colors.red;
-          ramp-volume-font = 2;
+          ramp-volume-font = fonts.icons;
 
           # Right and Middle click;
           click-right = "pavucontrol";
@@ -367,38 +361,31 @@
 
           format-charging = "<animation-charging> <label-charging>";
           label-charging = "  %percentage%%";
-          label-charging-font = 1;
+          label-charging-font = fonts.text;
 
           format-discharging = "<ramp-capacity> <label-discharging>";
           label-discharging = "  %percentage%%";
-          label-discharging-font = 1;
+          label-discharging-font = fonts.text;
 
           format-full-prefix = "";
-          format-full-prefix-font = 2;
+          format-full-prefix-font = fonts.icons;
           format-full-prefix-foreground = colors.green;
           format-full = "<label-full>";
           label-full = "  %percentage%%";
-          label-full-font = 1;
+          label-full-font = fonts.text;
 
-          ramp-capacity-0 = "";
+          ramp-capacity = [ "" "" "" "" "" ];
+
+          # XXX list does not generate right variable here
           ramp-capacity-0-foreground = colors.red;
-          ramp-capacity-1 = "";
           ramp-capacity-1-foreground = colors.orange;
-          ramp-capacity-2 = "";
-          ramp-capacity-2-foreground = colors.orange;
-          ramp-capacity-3 = "";
-          ramp-capacity-3-foreground = colors.yellow;
-          ramp-capacity-4 = "";
-          ramp-capacity-4-foreground = colors.green;
-          ramp-capacity-font = 2;
+          ramp-capacity-2-foreground = colors.yellow;
+          ramp-capacity-3-foreground = colors.green;
+          ramp-capacity-font = fonts.icons;
 
-          animation-charging-0 = "";
-          animation-charging-1 = "";
-          animation-charging-2 = "";
-          animation-charging-3 = "";
-          animation-charging-4 = "";
+          animation-charging = [ "" "" "" "" "" ];
           animation-charging-framerate = 750;
-          animation-charging-font = 2;
+          animation-charging-font = fonts.icons;
           animation-charging-foreground = colors.yellow;
         };
 
@@ -408,12 +395,12 @@
           warn-temperature = 65;
 
           format-prefix = "";
-          format-prefix-font = 2;
+          format-prefix-font = fonts.icons;
           format-prefix-foreground = colors.red;
 
           format = "<label>";
           format-warn-prefix = "";
-          format-warn-prefix-font = 2;
+          format-warn-prefix-font = fonts.icons;
           format-warn-prefix-foreground = colors.red;
           format-warn = "<label-warn>";
 
@@ -429,7 +416,7 @@
           exec-if = "pgrep spotify";
 
           format-prefix = "";
-          format-prefix-font = 2;
+          format-prefix-font = fonts.icons;
           format-prefix-foreground = "#1db954";
 
           format = "<label>";
@@ -452,7 +439,7 @@
           exec = "echo ";
 
           format = "<label>";
-          format-font = 3;
+          format-font = fonts.separators;
 
           label = "%output%";
           label-background = colors.transparent;
@@ -469,7 +456,7 @@
 
           format = "<output>";
           format-foreground = colors.orange;
-          format-font = 2;
+          format-font = fonts.icons;
 
           hook-0 = "echo ";
           hook-1 = "~/.config/polybar/scripts/switch_layout.sh";
