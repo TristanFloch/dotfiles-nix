@@ -24,7 +24,7 @@
     pinentry-emacs
     emacs-all-the-icons-fonts
     bear
-    aspell
+    (aspellWithDicts (dicts: with dicts; [ en en-computers en-science ]))
     shellcheck
     rnix-lsp
   ];
