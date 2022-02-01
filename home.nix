@@ -78,12 +78,7 @@
 
     texlive.combined.scheme-full
 
-    binutils
-    gcc
-    clang-tools
-    gnumake
-    cmake
-    criterion
+    binutils gcc clang-tools gnumake cmake criterion
 
     noto-fonts noto-fonts-emoji dejavu_fonts hack-font nerdfonts
   ];

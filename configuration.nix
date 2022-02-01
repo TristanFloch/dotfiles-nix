@@ -18,7 +18,7 @@
     gc = {
       automatic = true;
       options = "--delete-older-than 7d";
-      dates = "weekly";
+      dates = "monthly";
     };
     autoOptimiseStore = true;
    };
