@@ -72,6 +72,7 @@
     windowManager.i3.enable = true;
   };
 
+  programs.dconf.enable = true;
 
   # Configure keymap in X11
   services.xserver.layout = "us, us_intl";
@@ -80,9 +81,9 @@
   # Enable CUPS to print documents.
   # services.printing.enable = true;
 
-  # Enable sound.
   sound.enable = true;
   hardware.pulseaudio.enable = true;
+  hardware.bluetooth.enable = true;
 
   # Enable touchpad support (enabled default in most desktopManager).
   services.xserver.libinput.enable = true;
@@ -112,8 +113,6 @@
     enable = true;
     enableSSHSupport = true;
   };
-
-  programs.dconf.enable = true;
 
   # List services that you want to enable:
 
