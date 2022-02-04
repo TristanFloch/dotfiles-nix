@@ -15,6 +15,7 @@
       apply = "~/.config/nixpkgs/apply.sh";
 
       flow = "nix run .#check-workflow";
+
     } // import ./gitAbbrs.nix;
 
     plugins = import ./plugins.nix pkgs;
@@ -22,8 +23,14 @@
     functions = {
       ls = "exa $argv";
       cat = "bat $argv";
-      ex = builtins.readFile ./functions/ex.fish;
-      monitor = builtins.readFile ./functions/monitor.fish;
+      ex = {
+        body = builtins.readFile ./functions/ex.fish;
+        description = "extracts any archive format";
+      };
+      monitor = {
+        body = builtins.readFile ./functions/monitor.fish;
+        description = "connects/disconnects pluged/unpluged monitors";
+      };
     };
   };
 }
