@@ -32,4 +32,13 @@
       sha256 = "19i59145lsjmidqlgk2dmvs3vg2m3zlz2rcms2kyyk1m3y63q8xi";
     };
   }
+  {
+    name = "fish-bax";
+    src = pkgs.fetchFromGitHub {
+      owner = "hunter-richardson";
+      repo = "fish-bax";
+      rev = "b559b8b18d228f0f98c01aed4b8da6f7c706bbad";
+      sha256 = "0261ml5wwawksgr8mx70hq8cyq9lqv44p69523vng07kaf6nrxr4";
+    };
+  }
 ]
