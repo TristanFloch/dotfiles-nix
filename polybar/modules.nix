@@ -337,7 +337,9 @@ colors: fonts:
 
     label = "   %output:0:30:...%";
 
-    exec = "python3 ~/.config/polybar/scripts/polybar_status.py";
+    exec = "polybar-msg -p %pid% hook left-spotify 2 ;"
+      + "polybar-msg -p %pid% hook right-spotify 2 ;"
+      + "python3 ~/.config/polybar/scripts/polybar_status.py";
 
     scroll-up = "playerctl --player=spotify previous";
     scroll-down = "playerctl --player=spotify next";
@@ -346,11 +348,12 @@ colors: fonts:
   };
 
   "module/left-spotify" = {
-    type = "custom/script";
+    type = "custom/ipc";
 
-    interval = 5;
-    exec-if = "pgrep spotify";
-    exec = "echo ";
+    hook-0 = "";
+    hook-1 = "echo ";
+
+    initial = 1;
 
     format = "<label>";
     format-font = fonts.separators;
@@ -362,7 +365,7 @@ colors: fonts:
 
   "module/right-spotify" = {
     "inherit" = "module/left-spotify";
-    exec = "echo ";
+    hook-1 = "echo ";
   };
 
   "module/my-xkeyboard" = {
