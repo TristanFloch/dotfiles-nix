@@ -27,8 +27,8 @@
         icons = 2;
         separators = 3;
       };
-      config = import ./config.nix { colors = colors; fonts = fonts; };
-      modules = import ./modules.nix { colors = colors; fonts = fonts; };
+      config = import ./config.nix colors fonts;
+      modules = import ./modules.nix colors fonts;
     in
     {
       enable = true;

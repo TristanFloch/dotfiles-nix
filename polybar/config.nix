@@ -1,4 +1,4 @@
-{ colors, fonts }:
+colors: fonts:
 {
   "global/wm" = {
     margin-top = 0;

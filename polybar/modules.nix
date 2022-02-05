@@ -1,4 +1,4 @@
-{ colors, fonts }:
+colors: fonts:
 {
   "module/left" = {
     type = "custom/text";
