@@ -1,0 +1,3 @@
+* Inbox
+** TODO Fix polybar keyboard and spotify scripts
+They stopped working after nixification.

@@ -1,0 +1,5 @@
+#+TITLE: Dotfiles
+
+This repository contains my dotfiles.
+They are managed using [[https://github.com/nix-community/home-manager][Home Manager]], which allows to write config files for any program in Nix.
+It then exports them in their respective language and links them in their right location.
