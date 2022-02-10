@@ -73,7 +73,7 @@
           lib.mkOptionDefault {
             "${mod}+Shift+q" = "kill";
             "${mod}+d" = "exec rofi -show drun";
-            "${mod}+Shift+e" = "exec xfce4-session-logout";
+            "${mod}+Shift+e" = "exec ~/.config/rofi/powermenu.sh";
 
             "XF86MonBrightnessUp" = "exec brightnessctl -c backlight set +10%";
             "XF86MonBrightnessDown" = "exec brightnessctl -c backlight set 10%-";

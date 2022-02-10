@@ -1,3 +1,5 @@
 * Inbox
+** TODO Graphitz and how to open it
+** TODO Pdf default viewer
 ** TODO Fix polybar keyboard and spotify scripts
 They stopped working after nixification.
