@@ -6,7 +6,8 @@
 
 {
   imports =
-    [ # Include the results of the hardware scan.
+    [
+      # Include the results of the hardware scan.
       ./hardware-configuration.nix
     ];
 
@@ -21,7 +22,7 @@
       dates = "monthly";
     };
     autoOptimiseStore = true;
-   };
+  };
 
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
@@ -115,6 +116,12 @@
     enableSSHSupport = true;
   };
 
+  virtualisation.virtualbox.host = {
+    enable = true;
+    # enableExtensionPack = true; # allows port forwarding for usb2 and usb3
+  };
+  users.extraGroups.vboxusers.members = [ "tristan" ];
+
   # List services that you want to enable:
 
   # Enable the OpenSSH daemon.
@@ -134,4 +141,3 @@
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "21.11"; # Did you read the comment?
 }
-
