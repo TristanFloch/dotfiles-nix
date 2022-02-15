@@ -122,6 +122,8 @@
   };
   users.extraGroups.vboxusers.members = [ "tristan" ];
 
+  documentation.dev.enable = true;
+
   # List services that you want to enable:
 
   # Enable the OpenSSH daemon.

@@ -5,6 +5,7 @@
 
     interactiveShellInit = ''
       set fish_greeting
+      set -x MANPAGER "sh -c 'col -bx | bat -l man -p'"
       starship init fish | source;
     '';
 
