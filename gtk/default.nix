@@ -1,6 +1,10 @@
 { config, pkgs, ... }:
 
 {
+  home.packages = with pkgs; [
+    dracula-theme
+  ];
+
   gtk = {
     enable = true;
     theme.name = "Dracula";

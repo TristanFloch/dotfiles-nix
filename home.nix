@@ -53,7 +53,6 @@
     gnupg
     picom
     slack
-    dracula-theme
     xfce.thunar
     alacritty
     htop
@@ -77,10 +76,11 @@
     teams
     pdfarranger
     betterlockscreen
+    gimp
 
     texlive.combined.scheme-full
 
-    man-pages man-pages-posix binutils gcc clang-tools gnumake cmake criterion boost
+    man-pages man-pages-posix binutils gcc clang-tools gnumake cmake criterion boost xlibs.xhost.out
 
     noto-fonts noto-fonts-emoji dejavu_fonts hack-font nerdfonts
   ];
