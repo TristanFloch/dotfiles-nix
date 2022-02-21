@@ -52,9 +52,10 @@
         ];
 
         assigns = {
+          "5" = [{ class = "VirtualBox Machine"; }];
           "6" = [{ class = "discord"; } { class = "Slack"; }];
           "7" = [{ class = "Thunderbird"; }];
-          # "8" = [{ class = "Spotify"; }]; FIXME
+          # "8" = [{ class = "Spotify"; }]; # FIXME
         };
 
         window = {
@@ -64,6 +65,9 @@
 
         floating = {
           border = 1;
+          criteria = [
+            # { class = "VirtualBox Machine"; } # FIXME
+          ];
         };
 
         keybindings =
