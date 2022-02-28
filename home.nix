@@ -18,7 +18,7 @@
     stateVersion = "21.11";
 
     sessionVariables = {
-      EDITOR = "vim";
+      EDITOR = "vim"; # God forgive me
     };
   };
 
@@ -69,7 +69,6 @@
     brightnessctl
     unixtools.ping
     neofetch
-    i3lock
     escrotum
     discord
     cmatrix
@@ -77,12 +76,14 @@
     pdfarranger
     betterlockscreen
     gimp
+    arduino
+    xarchiver
 
     texlive.combined.scheme-full
 
-    man-pages man-pages-posix binutils gcc clang-tools gnumake cmake criterion boost xlibs.xhost.out
+    man-pages man-pages-posix binutils gcc clang-tools gnumake cmake
 
-    noto-fonts noto-fonts-emoji dejavu_fonts hack-font nerdfonts
+    noto-fonts noto-fonts-emoji dejavu_fonts nerdfonts
   ];
 
   services = {

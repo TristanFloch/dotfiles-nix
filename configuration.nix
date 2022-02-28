@@ -21,7 +21,7 @@
       options = "--delete-older-than 7d";
       dates = "monthly";
     };
-    autoOptimiseStore = true;
+    settings.auto-optimise-store = true;
   };
 
   # Use the systemd-boot EFI boot loader.
@@ -62,6 +62,7 @@
         enable = true;
         noDesktop = true;
         enableXfwm = false;
+        thunarPlugins = with pkgs.xfce; [ thunar-archive-plugin ];
       };
     };
     displayManager = {
@@ -94,7 +95,7 @@
   users.users.tristan = {
     isNormalUser = true;
     initialPassword = "1234"; # Change on first login.
-    extraGroups = [ "wheel" "networkmanager" "video" "docker" ];
+    extraGroups = [ "wheel" "networkmanager" "video" "docker" "dialout" ];
     shell = pkgs.fish;
   };
 

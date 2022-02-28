@@ -28,7 +28,7 @@ colors: fonts:
     module-margin-right = 0;
     modules-left = "xwindow right left date right left my-xkeyboard right left-spotify spotify right-spotify";
     modules-center = "left i3 right";
-    modules-right = "left backlight right left pulseaudio right left memory right left cpu right left filesystem right left temperature right left battery right left";
+    modules-right = "left backlight space pulseaudio right left memory space cpu space filesystem right left temperature space battery right left";
     font = fonts.list;
     cursor-click = "pointer";
     cursor-scroll = "ns-resize";

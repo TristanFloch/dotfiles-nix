@@ -14,9 +14,7 @@
       intl = "setxkbmap us_intl";
       us = "setxkbmap us";
       apply = "~/.config/nixpkgs/apply.sh";
-
-      flow = "nix run .#check-workflow";
-
+      nix-shell = "nix-shell --run fish";
     } // import ./gitAbbrs.nix;
 
     plugins = import ./plugins.nix pkgs;

@@ -15,6 +15,7 @@
   gp = "git push";
   gpu = "git push --set-upstream origin";
   gp-f = "git push --force-with-lease";
+  gp-t = "git push --follow-tags";
   gf = "git fetch";
   gF = "git pull";
   gb = "git branch";
@@ -25,4 +26,7 @@
   go = "git reset";
   gOh = "git reset --hard";
   gOs = "git reset --soft";
+  gta = "git tag -a";
+  gtd = "git tag -d";
+  gtx = "git tag -d";
 }

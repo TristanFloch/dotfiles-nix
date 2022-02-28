@@ -1,5 +1,13 @@
 colors: fonts:
 {
+  "module/space" = {
+    type = "custom/text";
+    content-background = colors.background;
+    content-foreground = colors.background;
+    content = "    ";
+    content-font = fonts.separators;
+  };
+
   "module/left" = {
     type = "custom/text";
     content-background = colors.transparent;
