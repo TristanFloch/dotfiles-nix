@@ -5,7 +5,8 @@
 
 {
   imports =
-    [ (modulesPath + "/installer/scan/not-detected.nix")
+    [
+      (modulesPath + "/installer/scan/not-detected.nix")
     ];
 
   boot.initrd.availableKernelModules = [ "nvme" "xhci_pci" "ahci" "usb_storage" "sd_mod" "rtsx_pci_sdmmc" ];
@@ -15,17 +16,19 @@
 
   # amdgpu.backlight=0 makes the backlight work
   # acpi_backlight=none allows the backlight save/load systemd service to work.
-  boot.kernelParams = ["amdgpu.backlight=0" "acpi_backlight=none"];
+  boot.kernelParams = [ "amdgpu.backlight=0" "acpi_backlight=none" ];
 
   fileSystems."/" =
-    { device = "/dev/disk/by-uuid/24be9bf9-03ad-4210-83fa-47b931103102";
+    {
+      device = "/dev/disk/by-uuid/24be9bf9-03ad-4210-83fa-47b931103102";
       fsType = "ext4";
     };
 
   boot.initrd.luks.devices."cryptroot".device = "/dev/disk/by-uuid/6602b450-c038-4d99-b21e-a019bd948fa7";
 
   fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/C21C-6833";
+    {
+      device = "/dev/disk/by-uuid/C21C-6833";
       fsType = "vfat";
     };
 
