@@ -52,7 +52,8 @@
         ];
 
         assigns = {
-          "5" = [{ class = "VirtualBox Machine"; }];
+          "2" = [{ class = "Firefox"; }];
+          "5" = [{ class = "VirtualBox Machine"; }]; # FIXME
           "6" = [{ class = "discord"; } { class = "Slack"; }];
           "7" = [{ class = "Thunderbird"; }];
           # "8" = [{ class = "Spotify"; }]; # FIXME
