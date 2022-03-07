@@ -78,6 +78,7 @@
     gimp
     arduino
     xarchiver
+    asciiquarium
 
     texlive.combined.scheme-full
 
