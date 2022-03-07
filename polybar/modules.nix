@@ -56,7 +56,10 @@ colors: fonts:
     label-unmounted = "   %mountpoint% not mounted";
   };
 
-  "module/i3" = rec {
+  "module/i3" = let
+      label-padding = 3;
+      label-font = fonts.icons;
+  in {
     type = "internal/i3";
     format = "<label-state> <label-mode>";
     index-sort = true;
@@ -67,27 +70,27 @@ colors: fonts:
 
     # focused = Active workspace on focused monitor;
     label-focused = "%icon%";
-    label-focused-padding = 3;
+    label-focused-padding = label-padding;
     label-focused-foreground = colors.purple;
-    label-focused-font = fonts.icons;
+    label-focused-font = label-padding;
 
     # unfocused = Inactive workspace on any monitor;
     label-unfocused = "%icon%";
-    label-unfocused-padding = label-focused-padding;
+    label-unfocused-padding = label-padding;
     label-unfocused-foreground = colors.foreground;
-    label-unfocused-font = label-focused-font;
+    label-unfocused-font = label-font;
 
     # visible = Active workspace on unfocused monitor;
     label-visible = "%icon%";
-    label-visible-padding = label-focused-padding;
+    label-visible-padding = label-padding;
     label-visible-foreground = colors.comment;
-    label-visible-font = label-focused-font;
+    label-visible-font = label-font;
 
     # urgent = Workspace with urgency hint set;
     label-urgent = "%icon%";
-    label-urgent-padding = label-focused-padding;
+    label-urgent-padding = label-padding;
     label-urgent-foreground = colors.orange;
-    label-urgent-font = label-focused-font;
+    label-urgent-font = label-font;
 
     # Separator in between workspaces;
     # label-separator = |;
