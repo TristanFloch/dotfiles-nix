@@ -72,12 +72,12 @@
       autoLogin.user = "tristan";
     };
     windowManager.i3.enable = true;
+    layout = "us, us_intl";
   };
 
   programs.dconf.enable = true;
 
   # Configure keymap in X11
-  services.xserver.layout = "us, us_intl";
   # services.xserver.xkbOptions = "eurosign:e";
 
   # Enable CUPS to print documents.
