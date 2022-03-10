@@ -33,6 +33,7 @@
     {
       enable = true;
       package = pkgs.polybarFull;
+      # FIXME ${polybar}/bin/polybar should be used but it loads before X so some modules fail
       script = ''
         for m in $(polybar --list-monitors | ${pkgs.coreutils}/bin/cut -d":" -f1); do
           MONITOR=$m polybar main &
