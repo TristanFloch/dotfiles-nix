@@ -84,7 +84,7 @@
 
     man-pages man-pages-posix binutils gcc clang-tools gnumake cmake
 
-    noto-fonts noto-fonts-emoji dejavu_fonts nerdfonts
+    noto-fonts noto-fonts-emoji dejavu_fonts nerdfonts roboto roboto-mono victor-mono ubuntu_font_family source-code-pro
   ];
 
   services = {
