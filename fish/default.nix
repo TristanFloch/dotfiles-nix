@@ -10,7 +10,7 @@
     '';
 
     shellAbbrs = {
-      doom = "~/.emacs.d/bin/doom";
+      doom = "~/.emacs.d.doom/bin/doom";
       intl = "setxkbmap us_intl";
       us = "setxkbmap us";
       apply = "~/.config/nixpkgs/apply.sh";
