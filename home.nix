@@ -41,9 +41,7 @@
   ];
 
   # Let Home Manager install and manage itself.
-  programs.home-manager = {
-    enable = true;
-  };
+  programs.home-manager = { enable = true; };
 
   nixpkgs.config.allowUnfree = true;
   home.packages = with pkgs; [
@@ -79,12 +77,27 @@
     arduino
     xarchiver
     asciiquarium
+    inkscape
 
     texlive.combined.scheme-full
 
-    man-pages man-pages-posix binutils gcc clang-tools gnumake cmake
+    man-pages
+    man-pages-posix
+    binutils
+    gcc
+    clang-tools
+    gnumake
+    cmake
 
-    noto-fonts noto-fonts-emoji dejavu_fonts nerdfonts roboto roboto-mono victor-mono ubuntu_font_family source-code-pro
+    noto-fonts
+    noto-fonts-emoji
+    dejavu_fonts
+    nerdfonts
+    roboto
+    roboto-mono
+    victor-mono
+    ubuntu_font_family
+    source-code-pro
   ];
 
   programs.direnv.enable = true;
