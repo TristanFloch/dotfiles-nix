@@ -9,6 +9,10 @@
     enable = true;
     theme.name = "Dracula";
     iconTheme.name = "Dracula";
+    font = {
+      name = "Ubuntu";
+      size = 11;
+    };
   };
 
   xsession.pointerCursor = {
@@ -22,4 +26,3 @@
     ".icons".recursive = true;
   };
 }
-
