@@ -1,5 +1,8 @@
 * Inbox
+** TODO Ubuntu font in i3
+
+[[file:~/.config/nixpkgs/i3/default.nix::bars = \[ \];]]
 ** TODO Graphitz and how to open it
-** TODO Pdf default viewer
+** DONE Pdf default viewer
 ** TODO Fix polybar keyboard and spotify scripts
 They stopped working after nixification.

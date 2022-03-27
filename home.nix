@@ -87,6 +87,9 @@
     noto-fonts noto-fonts-emoji dejavu_fonts nerdfonts roboto roboto-mono victor-mono ubuntu_font_family source-code-pro
   ];
 
+  programs.direnv.enable = true;
+  programs.direnv.nix-direnv.enable = true;
+
   services = {
     # Applets, shown in tray
     network-manager-applet.enable = true;
