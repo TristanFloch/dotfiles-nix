@@ -88,6 +88,7 @@
     clang-tools
     gnumake
     cmake
+    gdb
 
     noto-fonts
     noto-fonts-emoji
