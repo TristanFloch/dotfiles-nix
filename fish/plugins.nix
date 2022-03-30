@@ -23,15 +23,15 @@
       sha256 = "1kjyl4gx26q8175wcizvsm0jwhppd00rixdcr1p7gifw6s308sd5";
     };
   }
-  {
-    name = "fish-async-prompt";
-    src = pkgs.fetchFromGitHub {
-      owner = "acomagu";
-      repo = "fish-async-prompt";
-      rev = "40f30a4048b81f03fa871942dcb1671ea0fe7a53";
-      sha256 = "19i59145lsjmidqlgk2dmvs3vg2m3zlz2rcms2kyyk1m3y63q8xi";
-    };
-  }
+  # {
+  #   name = "fish-async-prompt";
+  #   src = pkgs.fetchFromGitHub {
+  #     owner = "acomagu";
+  #     repo = "fish-async-prompt";
+  #     rev = "40f30a4048b81f03fa871942dcb1671ea0fe7a53";
+  #     sha256 = "19i59145lsjmidqlgk2dmvs3vg2m3zlz2rcms2kyyk1m3y63q8xi";
+  #   };
+  # }
   {
     name = "fish-bax";
     src = pkgs.fetchFromGitHub {
