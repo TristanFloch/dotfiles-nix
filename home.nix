@@ -39,6 +39,7 @@
     ./xresources
     ./python
     ./direnv
+    ./htop
   ];
 
   # Let Home Manager install and manage itself.
@@ -54,7 +55,6 @@
     slack
     xfce.thunar
     alacritty
-    htop
     fzf
     unzip
     ripgrep
