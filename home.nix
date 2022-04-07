@@ -38,6 +38,7 @@
     ./i3
     ./xresources
     ./python
+    ./direnv
   ];
 
   # Let Home Manager install and manage itself.
@@ -100,9 +101,6 @@
     ubuntu_font_family
     source-code-pro
   ];
-
-  programs.direnv.enable = true;
-  programs.direnv.nix-direnv.enable = true;
 
   services = {
     # Applets, shown in tray
