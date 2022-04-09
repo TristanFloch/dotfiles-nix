@@ -32,7 +32,6 @@
     ./gtk
     ./rofi
     ./picom
-    ./polybar
     ./dunst
     ./emacs
     ./i3
@@ -40,6 +39,7 @@
     ./python
     ./direnv
     ./htop
+    ./xmonad
   ];
 
   # Let Home Manager install and manage itself.
@@ -79,6 +79,7 @@
     xarchiver
     asciiquarium
     inkscape
+    viewnior
 
     texlive.combined.scheme-full
 

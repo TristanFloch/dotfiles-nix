@@ -1,4 +1,5 @@
 * Inbox
+** TODO include system font in the proper home manager options
 ** TODO Ubuntu font in i3
 
 [[file:~/.config/nixpkgs/i3/default.nix::bars = \[ \];]]

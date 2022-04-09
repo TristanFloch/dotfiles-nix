@@ -5,11 +5,10 @@
 { config, pkgs, ... }:
 
 {
-  imports =
-    [
-      # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-    ];
+  imports = [
+    # Include the results of the hardware scan.
+    ./hardware-configuration.nix
+  ];
 
   nix = {
     package = pkgs.nixFlakes;
@@ -72,6 +71,16 @@
       autoLogin.user = "tristan";
     };
     windowManager.i3.enable = true;
+    windowManager.xmonad = {
+      enable = true;
+      enableContribAndExtras = true;
+      enableConfiguredRecompile = true;
+      config = ./xmonad/xmonad.hs;
+      extraPackages = haskellPackages: [
+        haskellPackages.dbus
+        haskellPackages.xmobar
+      ];
+    };
     layout = "us, us_intl";
   };
 
@@ -102,12 +111,7 @@
   virtualisation.docker.enable = true;
 
   nixpkgs.config.allowUnfree = true;
-  environment.systemPackages = with pkgs; [
-    vim
-    wget
-    firefox
-    docker
-  ];
+  environment.systemPackages = with pkgs; [ vim wget firefox docker ];
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.

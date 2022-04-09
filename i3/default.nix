@@ -1,6 +1,8 @@
 { config, lib, pkgs, ... }:
 
 {
+  imports = [ ../polybar ];
+
   xsession = {
     enable = true;
     windowManager.i3 = rec {

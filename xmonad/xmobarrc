@@ -1,0 +1,18 @@
+
+Config { overrideRedirect = False
+       , font = "xft:Ubuntu:weight=bold:pixelsize=11:antialias=true:hinting=true"
+       , bgColor = "#1e2029"
+       , fgColor = "#f8f8f2"
+       , position = TopSize L 100 24
+       , commands = [ Run Memory [ "-t" , "<fn=2>\xf233</fn>  mem: <used>M (<usedratio>%)"] 20
+                    , Run Cpu [ "-L", "3" , "-H", "50" , "--high"  , "red" , "--normal", "green"] 10
+                    , Run Alsa "default" "Master"
+                      [ "--template", "<volumestatus>"
+                      , "--suffix"  , "True"
+                      , "--"
+                      , "--on", ""
+                      ]
+                    , Run BatteryP ["BATT"] ["-t" "<acstatus><watts> (<left>%)"] 360
+                    , Run Date "<fn=2>\xf017</fn>  %d %b %Y - (%H:%M) " "date" 50
+                    ]
+       }
