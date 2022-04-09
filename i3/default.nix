@@ -82,6 +82,9 @@
 
             "XF86MonBrightnessUp" = "exec brightnessctl -c backlight set +10%";
             "XF86MonBrightnessDown" = "exec brightnessctl -c backlight set 10%-";
+            "XF86AudioRaiseVolume" = "exec amixer set Master 5%+";
+            "XF86AudioLowerVolume" = "exec amixer set Master 5%-";
+            "XF86AudioMute" = "exec amixer set Master toggle";
 
             "${mod}+n" = "border normal";
 
