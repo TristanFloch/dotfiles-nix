@@ -53,36 +53,36 @@
   #   keyMap = "us";
   # };
 
-  services.xserver = {
-    enable = true;
-    desktopManager = {
-      xterm.enable = false;
-      xfce = {
-        enable = true;
-        noDesktop = true;
-        enableXfwm = false;
-        thunarPlugins = with pkgs.xfce; [ thunar-archive-plugin ];
-      };
-    };
-    displayManager = {
-      defaultSession = "xfce+i3";
-      lightdm.enable = true;
-      autoLogin.enable = true;
-      autoLogin.user = "tristan";
-    };
-    windowManager.i3.enable = true;
-    windowManager.xmonad = {
-      enable = true;
-      enableContribAndExtras = true;
-      enableConfiguredRecompile = true;
-      config = ./xmonad/xmonad.hs;
-      extraPackages = haskellPackages: [
-        haskellPackages.dbus
-        haskellPackages.xmobar
-      ];
-    };
-    layout = "us, us_intl";
-  };
+  # services.xserver = {
+  #   enable = true;
+  #   desktopManager = {
+  #     xterm.enable = false;
+  #     xfce = {
+  #       enable = true;
+  #       noDesktop = true;
+  #       enableXfwm = false;
+  #       thunarPlugins = with pkgs.xfce; [ thunar-archive-plugin ];
+  #     };
+  #   };
+  #   displayManager = {
+  #     defaultSession = "xfce+i3";
+  #     lightdm.enable = true;
+  #     autoLogin.enable = true;
+  #     autoLogin.user = "tristan";
+  #   };
+  #   windowManager.i3.enable = true;
+  #   windowManager.xmonad = {
+  #     enable = true;
+  #     enableContribAndExtras = true;
+  #     enableConfiguredRecompile = true;
+  #     config = ./xmonad/xmonad.hs;
+  #     extraPackages = haskellPackages: [
+  #       haskellPackages.dbus
+  #       haskellPackages.xmobar
+  #     ];
+  #   };
+  #   layout = "us, us_intl";
+  # };
 
   programs.dconf.enable = true;
 
@@ -112,6 +112,11 @@
 
   nixpkgs.config.allowUnfree = true;
   environment.systemPackages = with pkgs; [ vim wget firefox docker ];
+  environment.loginShellInit = ''
+    if [ -z $DISPLAY ] && [ "$(tty)" = "/dev/tty1" ]; then
+      exec sway
+    fi
+  '';
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.

@@ -31,10 +31,11 @@
     ./alacritty
     ./gtk
     ./rofi
-    ./picom
-    ./dunst
+    # ./picom
+    # ./dunst
     ./emacs
-    ./i3
+    # ./i3
+    ./wayland
     ./xresources
     ./python
     ./direnv
