@@ -11,7 +11,7 @@
       config = {
         modifier = "Mod4";
         bars = [ ];
-        terminal = "alacritty";
+        terminal = "${pkgs.alacritty}/bin/alacritty";
         defaultWorkspace = "workspace number 1";
         workspaceAutoBackAndForth = true;
 

@@ -31,6 +31,7 @@
     rnix-lsp
     nixfmt
     rtags
+    xclip
   ];
 
   services.gpg-agent.pinentryFlavor = "emacs";
