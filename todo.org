@@ -1,6 +1,18 @@
 * Inbox
+** TODO move ssh and gnupg options to home manager
+
+[[file:~/.config/nixpkgs/hosts/configuration.nix::enableSSHSupport = true;]]
+** TODO change path: xsession/wms/i3 -> xsession/i3
+
+[[file:~/.config/nixpkgs/hosts/configuration.nix::xmonad = xession.wms.xmonad;]]
+** TODO toplevel modules directory to split hosts/configuration.nix
+
+[[file:~/.config/nixpkgs/hosts][file:~/.config/nixpkgs/hosts]]
+** TODO split packages in hosts/home.nix
+
+[[file:~/.config/nixpkgs/home/desktop/apps/default.nix::xarchiver]]
 ** TODO include system font in the proper home manager options
-** TODO Ubuntu font in i3
+** DONE Ubuntu font in i3
 
 [[file:~/.config/nixpkgs/i3/default.nix::bars = \[ \];]]
 ** TODO Graphitz and how to open it

@@ -3,38 +3,37 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+
     home-manager.url = "github:nix-community/home-manager";
+    home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
     emacs-overlay.url = "github:nix-community/emacs-overlay";
   };
 
-  outputs = { home-manager, nixpkgs, ... }@inputs:
+  outputs = inputs@{ self, nixpkgs, home-manager, ... }:
     let
       system = "x86_64-linux";
-      overlays = [
-        inputs.emacs-overlay.overlay
-      ];
-    in
-    {
+      overlays = [ inputs.emacs-overlay.overlay ];
+      modules = builtins.attrValues self.nixosModules;
+    in {
+      nixosModules = {
+        home.home-manager = {
+          useGlobalPkgs = true;
+          useUserPackages = true;
+          users.tristan = import ./home;
+        };
+      };
+
       nixosConfigurations = {
         nixos-zenbook = nixpkgs.lib.nixosSystem {
           inherit system;
           modules = [
-            ./configuration.nix
+            home-manager.nixosModule
+
+            ./hosts/nixos-zenbook
 
             { nixpkgs.overlays = overlays; }
-
-            home-manager.nixosModules.home-manager
-            {
-              home-manager = {
-                useGlobalPkgs = true;
-                useUserPackages = true;
-                users.tristan = import ./home.nix;
-                # Optionally, use home-manager.extraSpecialArgs to pass
-                # arguments to home.nix
-              };
-            }
-          ];
+          ] ++ modules;
         };
       };
     };
