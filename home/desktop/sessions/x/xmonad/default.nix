@@ -2,15 +2,15 @@
 
 let
   inherit (lib) mkEnableOption mkIf;
-  cfg = config.modules.desktop.sessions.x.wms.xmonad;
+  cfg = config.modules.desktop.sessions.x.xmonad;
 in
 {
-  options.modules.desktop.sessions.x.wms.xmonad.enable =
+  options.modules.desktop.sessions.x.xmonad.enable =
     mkEnableOption "xmonad";
 
   config = mkIf cfg.enable {
     xsession.windowManager.xmonad = {
-      enable = false;
+      enable = true;
       enableContribAndExtras = true;
       config = ./xmonad.hs;
       extraPackages = haskellPackages: [

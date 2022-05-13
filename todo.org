@@ -1,4 +1,10 @@
 * Inbox
+** TODO option to disable xfce with i3
+
+[[file:~/.config/nixpkgs/modules/desktop/sessions/x/i3/default.nix::xfce = {]]
+** TODO system wide theme option
+
+[[file:~/.config/nixpkgs/home/desktop/apps/polybar/default.nix::i3 = config.modules.desktop.sessions.x.i3;]]
 ** TODO move ssh and gnupg options to home manager
 
 [[file:~/.config/nixpkgs/hosts/configuration.nix::enableSSHSupport = true;]]

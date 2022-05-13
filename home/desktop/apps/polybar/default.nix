@@ -1,7 +1,7 @@
 { config, lib, pkgs, ... }:
 
 let
-  i3 = config.modules.desktop.sessions.x.wms.i3;
+  i3 = config.modules.desktop.sessions.x.i3;
 in
 {
   config = lib.mkIf i3.enable {

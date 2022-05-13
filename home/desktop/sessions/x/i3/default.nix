@@ -3,10 +3,10 @@
 let
   inherit (lib) mkEnableOption mkIf;
   xsession = config.modules.desktop.sessions.x;
-  cfg = xsession.wms.i3;
+  cfg = xsession.i3;
 in
 {
-  options.modules.desktop.sessions.x.wms.i3.enable =
+  options.modules.desktop.sessions.x.i3.enable =
     (mkEnableOption "i3 gaps")
     // { default = xsession.enable; };
 
