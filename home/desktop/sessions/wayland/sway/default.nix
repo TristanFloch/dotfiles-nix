@@ -7,10 +7,12 @@ in
 {
   config = mkIf cfg.enable {
     wayland.windowManager.sway = {
+      enable = true;
+      wrapperFeatures.gtk = true;
       config = rec {
         modifier = "Mod4";
-        bars = [ ];
-        terminal = "\${pkgs.alacritty}/bin/alacritty";
+        # bars = [ ]; # TODO waybar config
+        terminal = "${pkgs.alacritty}/bin/alacritty";
         defaultWorkspace = "workspace number 1";
         workspaceAutoBackAndForth = true;
 
@@ -77,16 +79,7 @@ in
           };
         };
 
-        startup = [
-          {
-            command = "systemctl --user restart polybar";
-            always = true;
-          }
-          {
-            command = "feh --bg-fill ~/Pictures/IMG_1043.jpg";
-            always = true;
-          }
-        ];
+        startup = [ ];
 
         assigns = {
           "2" = [{ class = "Firefox"; }];
