@@ -1,5 +1,13 @@
 { config, lib, pkgs, ... }:
 
+let
+  commonOptions = {
+    modules.desktop.sessions = {
+      x.enable = true; # defaults to i3 + polybar
+      wayland.enable = false;
+    };
+  };
+in
 {
   imports = [
     ./hardware-configuration.nix
@@ -9,21 +17,9 @@
 
   networking.hostName = "nixos-zenbook";
 
-  modules = {
-    desktop = {
-      sessions = {
-        x.enable = true; # defaults to i3 + polybar
-        wayland.enable = false;
-      };
-    };
-  };
+  # custom nixos options
+  modules = commonOptions.modules;
 
-  home-manager.users.tristan.modules = {
-    desktop = {
-      sessions = {
-        x.enable = true; # defaults to i3 + polybar
-        wayland.enable = false;
-      };
-    };
-  };
+  # custom home manager options
+  home-manager.users.tristan.modules = commonOptions.modules;
 }
