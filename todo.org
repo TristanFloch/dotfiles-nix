@@ -1,4 +1,5 @@
 * Inbox
+** TODO find a nix way to download the dracula archive for gtk
 ** TODO option to disable xfce with i3
 
 [[file:~/.config/nixpkgs/modules/desktop/sessions/x/i3/default.nix::xfce = {]]

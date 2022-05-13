@@ -1,7 +1,6 @@
 # Edit this configuration file to define what should be installed on
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
-
 { config, pkgs, ... }:
 
 {
@@ -47,36 +46,7 @@
   #   keyMap = "us";
   # };
 
-  services.xserver = {
-    enable = true;
-    desktopManager = {
-      xterm.enable = false;
-      xfce = {
-        enable = true;
-        noDesktop = true;
-        enableXfwm = false;
-        thunarPlugins = with pkgs.xfce; [ thunar-archive-plugin ];
-      };
-    };
-    displayManager = {
-      defaultSession = "xfce+i3";
-      lightdm.enable = true;
-      autoLogin.enable = true;
-      autoLogin.user = "tristan";
-    };
-    windowManager.i3.enable = true;
-    # windowManager.xmonad = {
-    #   enable = cfg.xmonad.enable;
-    #   enableContribAndExtras = cfg.xmonad.enable;
-    #   enableConfiguredRecompile = cfg.xmonad.enable;
-    #   config = ../home/desktop/sessions/x/wms/xmonad/xmonad.hs;
-    #   extraPackages = haskellPackages: [
-    #     haskellPackages.dbus
-    #     haskellPackages.xmobar
-    #   ];
-    # };
-    layout = "us, us_intl";
-  };
+  services.xserver.layout = "us, us_intl";
 
   programs.dconf.enable = true;
 
@@ -105,15 +75,8 @@
   virtualisation.docker.enable = true;
 
   nixpkgs.config.allowUnfree = true;
-  environment.systemPackages = with pkgs; [ vim wget firefox docker ];
 
-  # environment.loginShellInit =
-  #   if cfg.wayland.enable then ''
-  #     if [ -z $DISPLAY ] && [ "$(tty)" = "/dev/tty1" ]; then
-  #       exec sway
-  #     fi
-  #   '' else
-  #     "";
+  environment.systemPackages = with pkgs; [ vim wget firefox docker ];
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
@@ -127,6 +90,7 @@
     enable = true;
     # enableExtensionPack = true; # allows port forwarding for usb2 and usb3
   };
+
   users.extraGroups.vboxusers.members = [ "tristan" ];
 
   documentation.dev.enable = true;

@@ -9,6 +9,15 @@
 
   networking.hostName = "nixos-zenbook";
 
+  modules = {
+    desktop = {
+      sessions = {
+        x.enable = true; # defaults to i3 + polybar
+        wayland.enable = false;
+      };
+    };
+  };
+
   home-manager.users.tristan.modules = {
     desktop = {
       sessions = {

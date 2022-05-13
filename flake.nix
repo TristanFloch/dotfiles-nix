@@ -17,6 +17,8 @@
       modules = builtins.attrValues self.nixosModules;
     in {
       nixosModules = {
+        modules = import ./modules;
+
         home.home-manager = {
           useGlobalPkgs = true;
           useUserPackages = true;
