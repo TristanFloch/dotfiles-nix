@@ -5,6 +5,7 @@
     ./dunst
     ./polybar
     ./rofi
+    ./wofi
     ./picom
   ];
 

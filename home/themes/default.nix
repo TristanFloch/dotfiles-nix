@@ -9,6 +9,7 @@ in
   ];
 
   config = lib.mkIf xsession.enable {
+    # home.pointerCursor = {
     xsession.pointerCursor = {
       package = pkgs.xorg.xcursorthemes;
       name = "Dracula-cursors";

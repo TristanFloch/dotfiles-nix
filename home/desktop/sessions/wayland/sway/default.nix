@@ -12,6 +12,7 @@ in
       config = rec {
         modifier = "Mod4";
         # bars = [ ]; # TODO waybar config
+        # Error: Error creating GL context; Could not create EGL display object
         terminal = "${pkgs.alacritty}/bin/alacritty";
         defaultWorkspace = "workspace number 1";
         workspaceAutoBackAndForth = true;
@@ -111,8 +112,9 @@ in
           in
           lib.mkOptionDefault {
             "${mod}+Shift+q" = "kill";
-            "${mod}+d" = "exec rofi -show drun";
-            "${mod}+Shift+e" = "exec ~/.config/rofi/powermenu.sh";
+            "${mod}+d" = "exec wofi --show drun";
+            # "${mod}+Return" = "exec ${pkgs.alacritty}/bin/alacritty";
+            # "${mod}+Shift+e" = "exec ~/.config/rofi/powermenu.sh"; # FIXME
 
             "XF86MonBrightnessUp" = "exec brightnessctl -c backlight set +10%";
             "XF86MonBrightnessDown" = "exec brightnessctl -c backlight set 10%-";
