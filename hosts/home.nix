@@ -38,16 +38,6 @@
       gnumake
       cmake
       gdb
-
-      noto-fonts
-      noto-fonts-emoji
-      dejavu_fonts
-      nerdfonts
-      roboto
-      roboto-mono
-      victor-mono
-      ubuntu_font_family
-      source-code-pro
     ];
 
     services = {
@@ -56,7 +46,5 @@
       blueman-applet.enable = true;
       # pasystray.enable = true;
     };
-
-    fonts.fontconfig.enable = true;
   };
 }

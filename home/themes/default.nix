@@ -6,6 +6,7 @@ in
 {
   imports = [
     ./gtk
+    ./font
   ];
 
   config = lib.mkIf xsession.enable {
