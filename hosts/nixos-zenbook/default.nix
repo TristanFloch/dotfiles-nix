@@ -7,6 +7,15 @@ let
       wayland.enable = false;
     };
   };
+
+  homeManagerOptions = {
+    modules = {
+      dev = {
+        cc.enable = true;
+        python.enable = true;
+      };
+    };
+  };
 in
 {
   imports = [
@@ -21,5 +30,6 @@ in
   modules = commonOptions.modules;
 
   # custom home manager options
-  home-manager.users.tristan.modules = commonOptions.modules;
+  home-manager.users.tristan.modules = commonOptions.modules
+    // homeManagerOptions.modules;
 }
