@@ -6,6 +6,7 @@
     ./desktop
     ./editors
     ./hardware
+    ./services
     ./shell
     ./themes
   ];

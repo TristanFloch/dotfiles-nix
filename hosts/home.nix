@@ -39,12 +39,5 @@
       cmake
       gdb
     ];
-
-    services = {
-      # Applets, shown in tray
-      network-manager-applet.enable = true;
-      blueman-applet.enable = true;
-      # pasystray.enable = true;
-    };
   };
 }
