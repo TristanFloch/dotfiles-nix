@@ -1,5 +1,8 @@
 { config, lib, pkgs, ... }:
 
+let
+  xsession = config.modules.desktop.sessions.x;
+in
 {
   imports = [
     ./dunst
@@ -25,5 +28,7 @@
     teams
     viewnior
     inkscape
-  ];
+    brightnessctl
+    gnupg
+  ] ++ (if xsession.enable then [ feh ] else [ ]);
 }

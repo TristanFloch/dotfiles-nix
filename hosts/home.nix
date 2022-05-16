@@ -27,10 +27,6 @@
     programs.home-manager = { enable = true; };
 
     home.packages = with pkgs; [
-      gnupg
-      feh
-      brightnessctl
-
       texlive.combined.scheme-full
 
       gcc
