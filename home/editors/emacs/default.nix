@@ -18,10 +18,9 @@
   programs.emacs = let wayland = config.modules.desktop.sessions.wayland;
   in {
     enable = true;
-    package = pkgs.emacsGcc;
-    # if wayland.enable then
-    #   pkgs.emacsPgtkNativeComp else
-    #   pkgs.emacsGitNativeComp;
+    package = if wayland.enable then
+      pkgs.emacsPgtkNativeComp else
+      pkgs.emacsNativeComp;
   };
 
   services.emacs.client.enable = false;
