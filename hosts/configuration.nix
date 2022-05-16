@@ -14,7 +14,7 @@
       options = "--delete-older-than 7d";
       dates = "monthly";
     };
-    settings.auto-optimise-store = true;
+    # settings.auto-optimise-store = true;
   };
 
   # Use the systemd-boot EFI boot loader.
@@ -62,6 +62,7 @@
   services.blueman.enable = true;
 
   # Enable touchpad support (enabled default in most desktopManager).
+  # TODO if xsession.enable?
   services.xserver.libinput.enable = true;
 
   # Define a user account.
