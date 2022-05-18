@@ -10,6 +10,7 @@ in
     ./rofi
     ./wofi
     ./picom
+    ./mailspring
   ];
 
   nixpkgs.config.allowUnfree = true;
