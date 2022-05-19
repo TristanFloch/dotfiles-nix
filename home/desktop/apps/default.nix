@@ -7,6 +7,7 @@ in
   imports = [
     ./dunst
     ./polybar
+    ./waybar
     ./rofi
     ./wofi
     ./picom

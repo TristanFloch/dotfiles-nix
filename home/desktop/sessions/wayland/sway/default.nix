@@ -11,7 +11,7 @@ in
       wrapperFeatures.gtk = true;
       config = rec {
         modifier = "Mod4";
-        # bars = [ ]; # TODO waybar config
+        bars = [{ command = "${pkgs.waybar}/bin/waybar"; }];
         terminal = "${pkgs.alacritty}/bin/alacritty";
         defaultWorkspace = "workspace number 1";
         workspaceAutoBackAndForth = true;
@@ -79,7 +79,10 @@ in
           };
         };
 
-        startup = [ ];
+        startup = [
+          # { command = "systemctl --user restart waybar"; }
+          # { command = "waybar"; }
+        ];
 
         assigns = {
           "2" = [{ class = "Firefox"; }];

@@ -1,8 +1,8 @@
 { config, lib, pkgs, ... }:
 
 let
-  commonOptions.modules = {
-    desktop.sessions = {
+  commonOptions = {
+    modules.desktop.sessions = {
       x.enable = true; # defaults to i3 + polybar
       wayland.enable = false;
     };
