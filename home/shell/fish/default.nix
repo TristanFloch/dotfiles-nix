@@ -6,15 +6,17 @@
     interactiveShellInit = ''
       set fish_greeting
       set -x MANPAGER "sh -c 'col -bx | bat -l man -p'"
+      fish_add_path ~/.emacs.d.doom/bin/doom
     '';
 
     shellAbbrs = {
-      doom = "~/.emacs.d.doom/bin/doom";
       intl = "setxkbmap us_intl";
       us = "setxkbmap us";
-      apply = "~/.config/nixpkgs/apply.sh";
-      nix-shell = "nix-shell --run fish";
     } // import ./gitAbbrs.nix;
+
+    shellAliases = {
+      nix-shell = "nix-shell --run fish";
+    };
 
     plugins = import ./plugins.nix pkgs;
 
@@ -28,6 +30,10 @@
       monitor = {
         body = builtins.readFile ./functions/monitor.fish;
         description = "connects/disconnects pluged/unpluged monitors";
+      };
+      config = {
+        body = builtins.readFile ./functions/config.fish;
+        description = "shorthands for nixos-rebuild options";
       };
     };
   };
