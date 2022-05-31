@@ -1,4 +1,4 @@
-colors: fonts:
+pkgs: colors: fonts:
 {
   "module/space" = {
     type = "custom/text";
@@ -270,7 +270,7 @@ colors: fonts:
     ramp-volume-font = fonts.icons;
 
     # Right and Middle click;
-    click-right = "pavucontrol";
+    click-right = "${pkgs.pavucontrol}/bin/pavucontrol";
   };
 
   "module/battery" = {

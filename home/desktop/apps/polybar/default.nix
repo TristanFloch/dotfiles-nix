@@ -31,8 +31,8 @@ in
           icons = 2;
           separators = 3;
         };
-        config = import ./config.nix colors fonts;
-        modules = import ./modules.nix colors fonts;
+        config = import ./config.nix colors fonts ;
+        modules = import ./modules.nix pkgs colors fonts;
       in
       {
         enable = true;
