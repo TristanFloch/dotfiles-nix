@@ -55,8 +55,8 @@ in
         };
 
         startup = [
-          { command = "systemctl --user restart polybar"; always = true; notification = false; }
-          { command = "feh --bg-fill ~/Pictures/IMG_1043.jpg"; always = true; notification = false; }
+          { command = "systemctl --user restart polybar"; always = false; notification = false; }
+          { command = "feh --bg-fill ~/Pictures/IMG_1043.jpg"; always = false; notification = false; }
         ];
 
         assigns = {
@@ -87,12 +87,6 @@ in
             "${mod}+Shift+q" = "kill";
             "${mod}+d" = "exec rofi -show drun";
             "${mod}+Shift+e" = "exec ~/.config/rofi/powermenu.sh";
-
-            "XF86MonBrightnessUp" = "exec brightnessctl -c backlight set +10%";
-            "XF86MonBrightnessDown" = "exec brightnessctl -c backlight set 10%-";
-            "XF86AudioRaiseVolume" = "exec amixer set Master 5%+";
-            "XF86AudioLowerVolume" = "exec amixer set Master 5%-";
-            "XF86AudioMute" = "exec amixer set Master toggle";
 
             "${mod}+n" = "border normal";
 
@@ -132,6 +126,17 @@ in
             "${mod}+Shift+7" = "move container to workspace $ws7; workspace $ws7";
             "${mod}+Shift+8" = "move container to workspace $ws8; workspace $ws8";
             "${mod}+Shift+9" = "move container to workspace $ws9; workspace $ws9";
+
+            "XF86MonBrightnessUp" = "exec brightnessctl -c backlight set +10%";
+            "XF86MonBrightnessDown" = "exec brightnessctl -c backlight set 10%-";
+            "XF86AudioRaiseVolume" = "exec amixer set Master 5%+";
+            "XF86AudioLowerVolume" = "exec amixer set Master 5%-";
+            "XF86AudioMute" = "exec amixer set Master toggle";
+
+            "${mod}+F1" = "exec emacs";
+            "${mod}+F2" = "exec firefox";
+            "${mod}+F3" = "exec thunar";
+            "${mod}+F4" = "exec pavucontrol";
           };
       };
       extraConfig = ''

@@ -12,7 +12,6 @@ in
       config = rec {
         modifier = "Mod4";
         # bars = [ ]; # TODO waybar config
-        # Error: Error creating GL context; Could not create EGL display object
         terminal = "${pkgs.alacritty}/bin/alacritty";
         defaultWorkspace = "workspace number 1";
         workspaceAutoBackAndForth = true;
@@ -116,12 +115,6 @@ in
             # "${mod}+Return" = "exec ${pkgs.alacritty}/bin/alacritty";
             # "${mod}+Shift+e" = "exec ~/.config/rofi/powermenu.sh"; # FIXME
 
-            "XF86MonBrightnessUp" = "exec brightnessctl -c backlight set +10%";
-            "XF86MonBrightnessDown" = "exec brightnessctl -c backlight set 10%-";
-            "XF86AudioRaiseVolume" = "exec amixer set Master 5%+";
-            "XF86AudioLowerVolume" = "exec amixer set Master 5%-";
-            "XF86AudioMute" = "exec amixer set Master toggle";
-
             "${mod}+n" = "border normal";
 
             "${mod}+h" = "focus left";
@@ -160,6 +153,17 @@ in
             "${mod}+Shift+7" = "move container to workspace $ws7; workspace $ws7";
             "${mod}+Shift+8" = "move container to workspace $ws8; workspace $ws8";
             "${mod}+Shift+9" = "move container to workspace $ws9; workspace $ws9";
+
+            "XF86MonBrightnessUp" = "exec brightnessctl -c backlight set +10%";
+            "XF86MonBrightnessDown" = "exec brightnessctl -c backlight set 10%-";
+            "XF86AudioRaiseVolume" = "exec amixer set Master 5%+";
+            "XF86AudioLowerVolume" = "exec amixer set Master 5%-";
+            "XF86AudioMute" = "exec amixer set Master toggle";
+
+            "${mod}+F1" = "exec emacs";
+            "${mod}+F2" = "exec firefox";
+            "${mod}+F3" = "exec thunar";
+            "${mod}+F4" = "exec pavucontrol";
           };
       };
       extraConfig = ''
