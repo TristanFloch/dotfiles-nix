@@ -1,28 +1,21 @@
 { config, lib, pkgs, ... }:
 
 let
-  commonOptions = {
-    modules.desktop.sessions = {
+  commonOptions.modules = {
+    desktop.sessions = {
       x.enable = true; # defaults to i3 + polybar
       wayland.enable = false;
     };
   };
 
-  homeManagerOptions = {
-    modules = {
-      dev = {
-        cc.enable = true;
-        python.enable = true;
-      };
+  homeManagerOptions.modules = {
+    dev = {
+      cc.enable = true;
+      python.enable = true;
     };
   };
-in
-{
-  imports = [
-    ./hardware-configuration.nix
-    ../configuration.nix
-    ../home.nix
-  ];
+in {
+  imports = [ ./hardware-configuration.nix ../configuration.nix ../home.nix ];
 
   networking.hostName = "nixos-zenbook";
 
