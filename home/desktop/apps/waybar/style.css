@@ -1,0 +1,156 @@
+window#waybar {
+    background: transparent;
+}
+
+#window {
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    padding-right: 12px;
+    margin-right: 10px;
+    transition: none;
+    color: #f8f8f2;
+    background-color: #1e2029;
+    margin-bottom: 6px;
+    font-family: Ubuntu;
+    font-size: 13px;
+}
+
+#workspaces {
+    background-color: #1e2029;
+    border-radius: 20px;
+    font-family: Ubuntu Nerd Font;
+    font-size: 17px;
+    margin-bottom: 6px;
+}
+
+#workspaces button {
+    color: #f8f8f2;
+    border: none;
+    transition: none;
+    border-radius: 20px;
+}
+
+#workspaces button:hover {
+    color: #1e2029;
+    background-color: #6272a4;
+}
+
+#workspaces button.focused {
+    color: #bd93f9;
+}
+
+#workspaces button.focused:hover {
+    color: #1e2029;
+    background-color: #bd93f9;
+}
+
+#workspaces button.urgent {
+    color: #ffb86c;
+}
+
+#workspaces button.urgent:hover {
+    color: #1e2029;
+    background-color: #ffb86c;
+}
+
+#pulseaudio,
+#backlight,
+#cpu,
+#clock,
+#memory,
+#tray,
+#disk,
+#temperature,
+#battery {
+    color: #f8f8f2;
+    background-color: #1e2029;
+    margin-bottom: 6px;
+    font-family: Ubuntu Nerd Font;
+    font-size: 13px;
+    padding-right: 12px;
+}
+
+#temperature.critical {
+    color: #ff5555;
+}
+
+#tray {
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    padding-left: 12px;
+    margin-left: 10px;
+}
+
+#battery,
+#clock,
+#disk,
+#pulseaudio {
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+
+#backlight {
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    padding-left: 12px;
+}
+
+#battery,
+#pulseaudio {
+    padding-left: 12px;
+}
+
+#battery.warning {
+    color: #ffb86c;
+}
+
+#battery.critical {
+    /* TODO blink animation */
+    color: #ff5555;
+}
+
+#custom-window-icon,
+#custom-cpu-icon,
+#custom-memory-icon,
+#custom-temperature-icon,
+#custom-clock-icon,
+#custom-disk-icon {
+    font-family: Ubuntu Nerd Font;
+    font-size: 17px;
+    padding-left: 12px;
+    padding-right: 10px;
+    margin-bottom: 6px;
+    background-color: #1e2029;
+}
+
+#custom-window-icon {
+    color: #bd93f9;
+}
+
+#custom-memory-icon {
+    color: #ff79c6;
+}
+
+#custom-disk-icon {
+    color: #6272a4;
+}
+
+#custom-clock-icon,
+#custom-cpu-icon,
+#custom-temperature-icon {
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    margin-left: 10px;
+}
+
+#custom-clock-icon {
+    color: #6272a4;
+}
+
+#custom-cpu-icon {
+    color: #8be9fd;
+}
+
+#custom-temperature-icon {
+    color: #ff5555;
+}
