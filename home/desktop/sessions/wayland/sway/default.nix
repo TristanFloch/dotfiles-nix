@@ -11,10 +11,19 @@ in
       wrapperFeatures.gtk = true;
       config = rec {
         modifier = "Mod4";
-        bars = [{ command = "${pkgs.waybar}/bin/waybar"; }];
+        bars = [ ];
         terminal = "${pkgs.alacritty}/bin/alacritty";
         defaultWorkspace = "workspace number 1";
         workspaceAutoBackAndForth = true;
+        output = { "*" = {
+          bg = "~/Pictures/IMG_1043.jpg fill";
+        }; };
+        input = { "*" = {
+          tap = "enabled";
+        }; };
+        seat = { "*" = {
+          xcursor_theme = "Dracula-cursors 16";
+        }; };
 
         gaps = {
           inner = 14;
@@ -80,8 +89,6 @@ in
         };
 
         startup = [
-          # { command = "systemctl --user restart waybar"; }
-          # { command = "waybar"; }
         ];
 
         assigns = {
@@ -114,8 +121,8 @@ in
           in
           lib.mkOptionDefault {
             "${mod}+Shift+q" = "kill";
-            "${mod}+d" = "exec wofi --show drun";
-            # "${mod}+Return" = "exec ${pkgs.alacritty}/bin/alacritty";
+            "${mod}+Return" = "exec ${pkgs.alacritty}/bin/alacritty";
+            "${mod}+d" = "exec ${pkgs.wofi}/bin/wofi --show drun";
             # "${mod}+Shift+e" = "exec ~/.config/rofi/powermenu.sh"; # FIXME
 
             "${mod}+n" = "border normal";
