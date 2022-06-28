@@ -8,7 +8,11 @@
       package = pkgs.dracula-theme;
     };
 
-    iconTheme = { name = "Dracula"; };
+    iconTheme = {
+      # name = "Dracula";
+      name = "Tela-purple-dark";
+      package = pkgs.tela-icon-theme;
+    };
 
     font = {
       name = "Ubuntu";
@@ -21,8 +25,12 @@
   #   sha256 = "sha256-rcSKlgI3bxdh4INdebijKElqbmAfTwO+oEt6M2D1ls0=";
   # };
 
-  home.file = {
-    ".icons".source = ./icons;
-    ".icons".recursive = true;
-  };
+  # home.file = {
+  #   ".icons".source = ./icons;
+  #   ".icons".recursive = true;
+  # };
+
+  # xdg.systemDirs.data = [
+  #   "/home/tristan/.icons"
+  # ];
 }
