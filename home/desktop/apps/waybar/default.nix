@@ -10,7 +10,12 @@ in {
       enable = true;
       systemd.enable = true;
       style = ./style.css;
-      settings = {
+      settings = let
+        icon = symbol: color: size:
+          "<span font_desc='Ubuntu Nerd Font ${
+            builtins.toString size
+          }' foreground='${color}'>${symbol}</span>";
+      in {
         mainBar = {
           position = "bottom";
           spacing = 0;
@@ -72,14 +77,13 @@ in {
             };
             format = "{icon}     {capacity}%";
             format-time = "{H}h {M}min";
-            format-charging =
-              "<span font_desc='Ubuntu Nerd Font 10' foreground='#50fa7b'></span>    {capacity}%";
+            format-charging = icon "" "#50fa7b" 10;
             format-icons = [
-              "<span font_desc='Ubuntu Nerd Font 10' foreground='#ff5555'></span>"
-              "<span font_desc='Ubuntu Nerd Font 10' foreground='#ffb86c'></span>"
-              "<span font_desc='Ubuntu Nerd Font 10' foreground='#f1fa8c'></span>"
-              "<span font_desc='Ubuntu Nerd Font 10' foreground='#f1fa8c'></span>"
-              "<span font_desc='Ubuntu Nerd Font 10' foreground='#50fa7b'></span>"
+              (icon "" "#ff5555" 10)
+              (icon "" "#ffb86c" 10)
+              (icon "" "#f1fa8c" 10)
+              (icon "" "#f1fa8c" 10)
+              (icon "" "#50fa7b" 10)
             ];
             full-at = 80;
           };
@@ -117,9 +121,9 @@ in {
           "backlight" = {
             format = "{icon}    {percent}%";
             format-icons = [
-              "<span font_desc='Ubuntu Nerd Font 12' foreground='#6272a4'></span>"
-              "<span font_desc='Ubuntu Nerd Font 12' foreground='#bd93f9'></span>"
-              "<span font_desc='Ubuntu Nerd Font 12' foreground='#8be9fd'></span>"
+              (icon "" "#6272a4" 12)
+              (icon "" "#bd93f9" 12)
+              (icon "" "#8be9fd" 12)
             ];
             on-scroll-up = "brightnessctl -c backlight set +5%";
             on-scroll-down = "brightnessctl -c backlight set 5%-";
@@ -150,31 +154,35 @@ in {
             tooltip-format = "{used} out of {total} used ({percentage_used}%)";
           };
 
-          "pulseaudio" = {
+          "pulseaudio" = let
+            ramp = symbols:
+              with lib; [
+                (icon (elemAt symbols 0) "#50fa7b" 12)
+                (icon (elemAt symbols 1) "#50fa7b" 12)
+                (icon (elemAt symbols 2) "#f1fa8c" 12)
+                (icon (elemAt symbols 3) "#ffb86c" 12)
+                (icon (elemAt symbols 4) "#ff5555" 12)
+              ];
+          in {
             scroll-step = 5;
             format = "{icon}    {volume}%";
-            format-muted =
-              "<span font_desc='Ubuntu Nerd Font 12' foreground='#6272a4'></span>    {volume}%";
-            format-bluetooth = "{icon}    {volume}%";
-            format-bluetooth-muted = "";
+            format-muted = "${icon "" "#6272a4" 12}    {volume}%";
+            # format-bluetooth =
+            #   "{icon}    {volume}%   <span font_desc='Ubuntu Nerd Font 12' foreground='#ff79c6'></span>";
+            # format-bluetooth-muted = "";
 
             # format-source = " {volume}%";
             # format-source-muted = "";
 
-            format-icons = {
-              headphones = "";
-              handsfree = "";
-              headset = "";
-              phone = "";
-              portable = "";
-              car = "";
-              default = [
-                "<span font_desc='Ubuntu Nerd Font 12' foreground='#50fa7b'></span>"
-                "<span font_desc='Ubuntu Nerd Font 12' foreground='#50fa7b'></span>"
-                "<span font_desc='Ubuntu Nerd Font 12' foreground='#f1fa8c'></span>"
-                "<span font_desc='Ubuntu Nerd Font 12' foreground='#ffb86c'></span>"
-                "<span font_desc='Ubuntu Nerd Font 12' foreground='#ff5555'></span>"
-              ];
+            format-icons = rec {
+              headphone = default;
+              handsfree = ramp [ "" "" "" "" "" ];
+              headset = headphone;
+              speaker = ramp [ "蓼" "蓼" "蓼" "蓼" "蓼" ];
+              # phone = "";
+              # portable = "";
+              # car = "";
+              default = ramp [ "" "" "" "" "" ];
             };
             on-click = "amixer set Master toggle";
             on-click-right = "${pkgs.pavucontrol}/bin/pavucontrol";
