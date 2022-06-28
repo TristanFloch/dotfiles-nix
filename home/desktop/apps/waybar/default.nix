@@ -4,8 +4,7 @@ let
   inherit (lib) mkIf;
   # TODO change for a sway option
   wayland = config.modules.desktop.sessions.wayland;
-in
-{
+in {
   config = lib.mkIf wayland.enable {
     programs.waybar = {
       enable = true;
@@ -22,6 +21,7 @@ in
             "custom/clock-icon"
             "clock"
             "sway/mode"
+            "keyboard-state"
           ];
           modules-center = [ "sway/workspaces" ];
           modules-right = [
@@ -71,12 +71,15 @@ in
               critical = 10;
             };
             format = "{icon}     {capacity}%";
+            format-time = "{H}h {M}min";
+            format-charging =
+              "<span font_desc='Ubuntu Nerd Font 10' foreground='#50fa7b'></span>    {capacity}%";
             format-icons = [
-              "<span font_desc='Ubuntu Nerd Font 11' foreground='#ff5555'></span>"
-              "<span font_desc='Ubuntu Nerd Font 11' foreground='#ffb86c'></span>"
-              "<span font_desc='Ubuntu Nerd Font 11' foreground='#f1fa8c'></span>"
-              "<span font_desc='Ubuntu Nerd Font 11' foreground='#f1fa8c'></span>"
-              "<span font_desc='Ubuntu Nerd Font 11' foreground='#50fa7b'></span>"
+              "<span font_desc='Ubuntu Nerd Font 10' foreground='#ff5555'></span>"
+              "<span font_desc='Ubuntu Nerd Font 10' foreground='#ffb86c'></span>"
+              "<span font_desc='Ubuntu Nerd Font 10' foreground='#f1fa8c'></span>"
+              "<span font_desc='Ubuntu Nerd Font 10' foreground='#f1fa8c'></span>"
+              "<span font_desc='Ubuntu Nerd Font 10' foreground='#50fa7b'></span>"
             ];
             full-at = 80;
           };
@@ -128,8 +131,8 @@ in
           };
 
           "temperature" = {
-              critical-threshold = 80;
-              tooltip = false;
+            critical-threshold = 80;
+            tooltip = false;
           };
 
           "tray" = {
@@ -148,9 +151,10 @@ in
           };
 
           "pulseaudio" = {
-            scroll-step = 1; # %, can be a float
+            scroll-step = 5;
             format = "{icon}    {volume}%";
-            format-muted = "<span font_desc='Ubuntu Nerd Font 12' foreground='#6272a4'></span>    {volume}%";
+            format-muted =
+              "<span font_desc='Ubuntu Nerd Font 12' foreground='#6272a4'></span>    {volume}%";
             format-bluetooth = "{icon}    {volume}%";
             format-bluetooth-muted = "";
 
@@ -165,12 +169,24 @@ in
               portable = "";
               car = "";
               default = [
-                "<span font_desc='Ubuntu Nerd Font 12' foreground='#ffb86c'></span>"
+                "<span font_desc='Ubuntu Nerd Font 12' foreground='#50fa7b'></span>"
+                "<span font_desc='Ubuntu Nerd Font 12' foreground='#50fa7b'></span>"
+                "<span font_desc='Ubuntu Nerd Font 12' foreground='#f1fa8c'></span>"
+                "<span font_desc='Ubuntu Nerd Font 12' foreground='#ffb86c'></span>"
                 "<span font_desc='Ubuntu Nerd Font 12' foreground='#ff5555'></span>"
               ];
             };
             on-click = "amixer set Master toggle";
             on-click-right = "${pkgs.pavucontrol}/bin/pavucontrol";
+          };
+
+          "keyboard-state" = {
+            format = "{icon}";
+            capslock = true;
+            format-icons = {
+              locked = "";
+              unlocked = "";
+            };
           };
         };
       };

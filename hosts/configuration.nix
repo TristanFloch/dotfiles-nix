@@ -69,7 +69,7 @@
   users.users.tristan = {
     isNormalUser = true;
     initialPassword = "1234"; # Change on first login.
-    extraGroups = [ "wheel" "networkmanager" "video" "docker" "dialout" ];
+    extraGroups = [ "wheel" "networkmanager" "video" "docker" "dialout" "input" ];
     shell = pkgs.fish;
   };
 
