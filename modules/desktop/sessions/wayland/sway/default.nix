@@ -6,9 +6,7 @@ let
 in
 {
   config = mkIf cfg.enable {
-    programs.sway = {
-      enable = true;
-    };
+    programs.sway.enable = true;
 
     services.dbus.enable = true;
     xdg.portal = {
