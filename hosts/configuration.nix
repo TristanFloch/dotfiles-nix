@@ -46,8 +46,6 @@
   #   keyMap = "us";
   # };
 
-  services.xserver.layout = "us, us_intl";
-
   programs.dconf.enable = true;
 
   # Configure keymap in X11
@@ -70,23 +68,24 @@
 
   services.blueman.enable = true;
 
-  # Enable touchpad support (enabled default in most desktopManager).
-  # TODO if xsession.enable?
-  services.xserver.libinput.enable = true;
-
   # Define a user account.
   users.users.tristan = {
     isNormalUser = true;
     initialPassword = "1234"; # Change on first login.
-    extraGroups = [ "wheel" "networkmanager" "video" "docker" "dialout" "input" ];
+    extraGroups =
+      [ "wheel" "networkmanager" "video" "docker" "dialout" "input" ];
     shell = pkgs.fish;
   };
 
-  virtualisation.docker.enable = true;
+  # virtualisation.docker.enable = true;
 
   nixpkgs.config.allowUnfree = true;
 
-  environment.systemPackages = with pkgs; [ vim wget firefox docker ];
+  environment.systemPackages = with pkgs; [
+    vim
+    wget
+    firefox # docker
+  ];
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
