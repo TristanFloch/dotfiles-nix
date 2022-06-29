@@ -19,10 +19,16 @@ in
       gtkUsePortal = true;
     };
 
-    environment.loginShellInit = ''
-      if [ -z $DISPLAY ] && [ "$(tty)" = "/dev/tty1" ]; then
-        exec sway
-      fi
-    '';
+    services.greetd = {
+      enable = true;
+      settings = rec {
+        initial_session = {
+          command = "${pkgs.sway}/bin/sway";
+          user = "tristan";
+        };
+
+        default_session = initial_session;
+      };
+    };
   };
 }
