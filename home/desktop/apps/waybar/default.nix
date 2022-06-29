@@ -1,7 +1,6 @@
 { config, lib, pkgs, ... }:
 
 let
-  inherit (lib) mkIf;
   # TODO change for a sway option
   wayland = config.modules.desktop.sessions.wayland;
 in {

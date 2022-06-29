@@ -10,6 +10,7 @@ in
     ./waybar
     ./rofi
     ./wofi
+    ./swaylock
     ./picom
     ./mailspring
   ];
