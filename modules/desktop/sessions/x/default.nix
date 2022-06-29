@@ -19,6 +19,9 @@ in
         autoLogin.enable = true;
         autoLogin.user = "tristan";
       };
+
+      libinput.enable = true;
+      layout = "us, us_intl";
     };
   };
 }
