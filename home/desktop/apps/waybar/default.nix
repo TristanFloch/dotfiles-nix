@@ -23,6 +23,7 @@ in {
           modules-left = [
             "custom/window-icon"
             "sway/window"
+            "custom/sway-scratch"
             "custom/clock-icon"
             "clock"
             "sway/mode"
@@ -195,6 +196,43 @@ in {
               locked = "";
               unlocked = "";
             };
+          };
+
+          "custom/sway-scratch" = let
+            swaymsg = "${pkgs.sway}/bin/swaymsg";
+            sway-scratch = pkgs.writeShellScriptBin "sway-scratch.sh" ''
+              count=$(${swaymsg} -r -t get_tree |
+                      ${pkgs.jq}/bin/jq -r 'recurse(.nodes[]) |
+                      first(select(.name=="__i3_scratch")) |
+                      .floating_nodes | length')
+
+              if [[ "$count" -eq 0 ]]; then
+                class="none"
+              elif [[ "$count" -eq 1 ]]; then
+                class="one"
+              elif [[ "$count" -gt 1 ]]; then
+                class="many"
+              else
+                class="unknown"
+              fi
+
+              printf '{"text":"%s", "class":"%s", "alt":"%s", "tooltip":"%s"}\n' "$count" "$class" "$class" "$count"
+            '';
+          in {
+            interval = 1;
+            return-type = "json";
+            format = "{icon}";
+            format-icons = {
+              none = "";
+              one = "";
+              many = "";
+              unknown = "";
+            };
+            exec = "${sway-scratch}/bin/sway-scratch.sh";
+            exec-if = "exit 0";
+            on-click = "${swaymsg} scratchpad show";
+            on-click-right = "${swaymsg} move window to scratchpad";
+            tooltip = true;
           };
         };
       };

@@ -177,3 +177,26 @@ window#waybar {
 #custom-temperature-icon {
     color: #ff5555;
 }
+
+#custom-sway-scratch {
+    font-family: Ubuntu Nerd Font;
+    font-size: 17px;
+    color: #1e2029;
+    margin-bottom: 6px;
+    padding-left: 12px;
+    padding-right: 12px;
+    margin-left: 10px;
+    border-radius: 20px;
+}
+
+#custom-sway-scratch.none {
+    background-color: #6272a4;
+}
+
+#custom-sway-scratch.one, #custom-sway-scratch.many {
+    background-color: #bd93f9;
+}
+
+#custom-sway-scratch.unknown {
+    background-color: #ffb86c;
+}
