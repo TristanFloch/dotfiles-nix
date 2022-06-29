@@ -77,7 +77,7 @@ in {
             };
             format = "{icon}     {capacity}%";
             format-time = "{H}h {M}min";
-            format-charging = icon "" "#50fa7b" 10;
+            format-charging = "${icon "" "#50fa7b" 10}     {capacity}%";
             format-icons = [
               (icon "" "#ff5555" 10)
               (icon "" "#ffb86c" 10)
