@@ -3,13 +3,9 @@
 let
   inherit (lib) mkIf;
   cfg = config.modules.desktop.sessions.wayland;
-in
-{
+in {
   config = mkIf cfg.enable {
-    home.packages = with pkgs; [
-      wayland
-      swayidle
-    ];
+    home.packages = with pkgs; [ wayland swayidle ];
 
     wayland.windowManager.sway = {
       enable = true;
@@ -17,7 +13,10 @@ in
         base = true;
         gtk = true;
       };
-      config = rec {
+      config = let
+        swaylock = "${pkgs.swaylock}/bin/swaylock";
+        swaymsg = "${pkgs.sway}/bin/swaymsg";
+      in rec {
         modifier = "Mod4";
         bars = [ ];
         fonts = {
@@ -27,15 +26,9 @@ in
         terminal = "${pkgs.alacritty}/bin/alacritty";
         defaultWorkspace = "workspace number 1";
         workspaceAutoBackAndForth = true;
-        output = { "*" = {
-          bg = "~/Pictures/IMG_1043.jpg fill";
-        }; };
-        input = { "*" = {
-          tap = "enabled";
-        }; };
-        seat = { "*" = {
-          xcursor_theme = "Dracula-cursors 16";
-        }; };
+        output = { "*" = { bg = "~/Pictures/IMG_1043.jpg fill"; }; };
+        input = { "*" = { tap = "enabled"; }; };
+        seat = { "*" = { xcursor_theme = "Dracula-cursors 16"; }; };
 
         gaps = {
           inner = 14;
@@ -100,13 +93,19 @@ in
           };
         };
 
-        startup = [
-        ];
+        startup = [{
+          command = ''
+            ${pkgs.swayidle}/bin/swayidle \
+            timeout 300 ${swaylock} \
+            timeout 600 '${swaymsg} "output * dpms off"' \
+            resume '${swaymsg} "output * dpms on"'
+          '';
+        }];
 
         assigns = {
           "2" = [{ class = "Firefox"; }];
           "5" = [{ class = "VirtualBox Machine"; }]; # FIXME
-          "6" = [{ class = "discord"; } { class = "Slack"; }];
+          "6" = [ { class = "discord"; } { class = "Slack"; } ];
           "7" = [{ class = "Thunderbird"; }];
           "8" = [{ class = "Spotify"; }]; # FIXME
         };
@@ -128,65 +127,66 @@ in
           ];
         };
 
-        keybindings =
-          let mod = modifier;
-          in
-          lib.mkOptionDefault {
-            "${mod}+Shift+q" = "kill";
-            "${mod}+Return" = "exec ${pkgs.alacritty}/bin/alacritty";
-            "${mod}+d" = "exec ${pkgs.wofi}/bin/wofi --show drun";
-            # "${mod}+Shift+e" = "exec ~/.config/rofi/powermenu.sh"; # FIXME
+        keybindings = let
+          mod = modifier;
+          alt = "Mod1";
+        in lib.mkOptionDefault {
+          "${mod}+Shift+q" = "kill";
+          "${mod}+Return" = "exec ${pkgs.alacritty}/bin/alacritty";
+          "${mod}+d" = "exec ${pkgs.wofi}/bin/wofi --show drun";
+          "Control+${alt}+l" = "exec ${swaylock}";
+          # "${mod}+Shift+e" = "exec ~/.config/rofi/powermenu.sh"; # FIXME
 
-            "${mod}+n" = "border normal";
+          "${mod}+n" = "border normal";
 
-            "${mod}+h" = "focus left";
-            "${mod}+j" = "focus down";
-            "${mod}+k" = "focus up";
-            "${mod}+l" = "focus right";
+          "${mod}+h" = "focus left";
+          "${mod}+j" = "focus down";
+          "${mod}+k" = "focus up";
+          "${mod}+l" = "focus right";
 
-            "${mod}+Left" = "focus left";
-            "${mod}+Down" = "focus down";
-            "${mod}+Up" = "focus up";
-            "${mod}+Right" = "focus right";
+          "${mod}+Left" = "focus left";
+          "${mod}+Down" = "focus down";
+          "${mod}+Up" = "focus up";
+          "${mod}+Right" = "focus right";
 
-            "${mod}+Shift+h" = "move left";
-            "${mod}+Shift+j" = "move down";
-            "${mod}+Shift+k" = "move up";
-            "${mod}+Shift+l" = "move right";
+          "${mod}+Shift+h" = "move left";
+          "${mod}+Shift+j" = "move down";
+          "${mod}+Shift+k" = "move up";
+          "${mod}+Shift+l" = "move right";
 
-            "${mod}+Shift+Left" = "move left";
-            "${mod}+Shift+Down" = "move down";
-            "${mod}+Shift+Up" = "move up";
-            "${mod}+Shift+Right" = "move right";
+          "${mod}+Shift+Left" = "move left";
+          "${mod}+Shift+Down" = "move down";
+          "${mod}+Shift+Up" = "move up";
+          "${mod}+Shift+Right" = "move right";
 
-            "${mod}+v" = "split h"; # TODO send notification
-            "${mod}+g" = "split v"; # TODO send notification
-            "${mod}+q" = "split toggle";
+          "${mod}+v" = "split h"; # TODO send notification
+          "${mod}+g" = "split v"; # TODO send notification
+          "${mod}+q" = "split toggle";
 
-            "${mod}+Shift+space" = "floating toggle";
-            "${mod}+Shift+t" = "floating toggle";
+          "${mod}+Shift+space" = "floating toggle";
+          "${mod}+Shift+t" = "floating toggle";
 
-            "${mod}+Shift+1" = "move container to workspace $ws1; workspace $ws1";
-            "${mod}+Shift+2" = "move container to workspace $ws2; workspace $ws2";
-            "${mod}+Shift+3" = "move container to workspace $ws3; workspace $ws3";
-            "${mod}+Shift+4" = "move container to workspace $ws4; workspace $ws4";
-            "${mod}+Shift+5" = "move container to workspace $ws5; workspace $ws5";
-            "${mod}+Shift+6" = "move container to workspace $ws6; workspace $ws6";
-            "${mod}+Shift+7" = "move container to workspace $ws7; workspace $ws7";
-            "${mod}+Shift+8" = "move container to workspace $ws8; workspace $ws8";
-            "${mod}+Shift+9" = "move container to workspace $ws9; workspace $ws9";
+          "${mod}+Shift+1" = "move container to workspace $ws1; workspace $ws1";
+          "${mod}+Shift+2" = "move container to workspace $ws2; workspace $ws2";
+          "${mod}+Shift+3" = "move container to workspace $ws3; workspace $ws3";
+          "${mod}+Shift+4" = "move container to workspace $ws4; workspace $ws4";
+          "${mod}+Shift+5" = "move container to workspace $ws5; workspace $ws5";
+          "${mod}+Shift+6" = "move container to workspace $ws6; workspace $ws6";
+          "${mod}+Shift+7" = "move container to workspace $ws7; workspace $ws7";
+          "${mod}+Shift+8" = "move container to workspace $ws8; workspace $ws8";
+          "${mod}+Shift+9" = "move container to workspace $ws9; workspace $ws9";
 
-            "XF86MonBrightnessUp" = "exec brightnessctl -c backlight set +10%";
-            "XF86MonBrightnessDown" = "exec brightnessctl -c backlight set 10%-";
-            "XF86AudioRaiseVolume" = "exec amixer set Master 5%+";
-            "XF86AudioLowerVolume" = "exec amixer set Master 5%-";
-            "XF86AudioMute" = "exec amixer set Master toggle";
+          "XF86MonBrightnessUp" = "exec brightnessctl -c backlight set +10%";
+          "XF86MonBrightnessDown" = "exec brightnessctl -c backlight set 10%-";
+          "XF86AudioRaiseVolume" = "exec amixer set Master 5%+";
+          "XF86AudioLowerVolume" = "exec amixer set Master 5%-";
+          "XF86AudioMute" = "exec amixer set Master toggle";
 
-            "${mod}+F1" = "exec emacs";
-            "${mod}+F2" = "exec firefox";
-            "${mod}+F3" = "exec thunar";
-            "${mod}+F4" = "exec pavucontrol";
-          };
+          "${mod}+F1" = "exec emacs";
+          "${mod}+F2" = "exec firefox";
+          "${mod}+F3" = "exec thunar";
+          "${mod}+F4" = "exec pavucontrol";
+        };
       };
       extraConfig = ''
         set $ws1 1
