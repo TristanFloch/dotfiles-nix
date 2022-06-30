@@ -5,8 +5,9 @@ let
   wayland = config.modules.desktop.sessions.wayland;
 in {
   config = lib.mkIf wayland.enable {
-    programs.waybar = {
+    programs.waybar = rec {
       enable = true;
+      package = pkgs.waybar.override { withMediaPlayer = true; };
       systemd.enable = true;
       style = ./style.css;
       settings = let
@@ -27,6 +28,7 @@ in {
             "clock"
             "sway/mode"
             "keyboard-state"
+            "custom/spotify"
           ];
           modules-center = [ "sway/workspaces" ];
           modules-right = [
@@ -199,7 +201,7 @@ in {
 
           "custom/sway-scratch" = let
             swaymsg = "${pkgs.sway}/bin/swaymsg";
-            sway-scratch = pkgs.writeShellScriptBin "sway-scratch.sh" ''
+            swayScratch = pkgs.writeShellScriptBin "sway-scratch.sh" ''
               count=$(${swaymsg} -r -t get_tree |
                       ${pkgs.jq}/bin/jq -r 'recurse(.nodes[]) |
                       first(select(.name=="__i3_scratch")) |
@@ -227,11 +229,25 @@ in {
               many = "";
               unknown = "";
             };
-            exec = "${sway-scratch}/bin/sway-scratch.sh";
+            exec = "${swayScratch}/bin/sway-scratch.sh";
             exec-if = "exit 0";
             on-click = "${swaymsg} scratchpad show";
             on-click-right = "${swaymsg} move window to scratchpad";
             tooltip = true;
+          };
+
+          "custom/spotify" = {
+            format = "${icon "" "#1DB954" 13}   {}";
+            max-length = 40;
+            # interval = 30; # Remove this if your script is endless and write in loop
+            exec = "${package}/bin/waybar-mediaplayer.py";
+            exec-if = "pgrep spotify";
+            return-type = "json";
+
+            # on-scroll-up = "playerctl --player=spotify position 5+";
+            # on-scroll-down = "playerctl --player=spotify position 5-";
+            # on-click = "playerctl --player=spotify play-pause";
+            # on-click-right = "swaymsg [class=Spotify] focus;
           };
         };
       };
