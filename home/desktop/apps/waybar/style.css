@@ -72,6 +72,7 @@ window#waybar {
 #tray,
 #disk,
 #temperature,
+#custom-spotify,
 #battery {
     color: #f8f8f2;
     background-color: #1e2029;
@@ -109,6 +110,12 @@ window#waybar {
 #battery,
 #pulseaudio {
     padding-left: 12px;
+}
+
+#custom-spotify {
+    border-radius: 20px;
+    padding-left: 12px;
+    margin-left: 10px;
 }
 
 #battery.warning {
