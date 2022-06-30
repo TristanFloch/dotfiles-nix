@@ -16,6 +16,7 @@ in {
       config = let
         swaylock = "${pkgs.swaylock}/bin/swaylock";
         swaymsg = "${pkgs.sway}/bin/swaymsg";
+        drun = "${pkgs.rofi}/bin/rofi -modi drun -show drun";
       in rec {
         modifier = "Mod4";
         bars = [ ];
@@ -133,9 +134,8 @@ in {
         in lib.mkOptionDefault {
           "${mod}+Shift+q" = "kill";
           "${mod}+Return" = "exec ${pkgs.alacritty}/bin/alacritty";
-          "${mod}+d" = "exec ${pkgs.wofi}/bin/wofi --show drun";
-          "Control+${alt}+l" = "exec ${swaylock}";
-          # "${mod}+Shift+e" = "exec ~/.config/rofi/powermenu.sh"; # FIXME
+          "${mod}+d" = "exec ${drun}";
+          "${mod}+Shift+e" = "exec ~/.config/rofi/powermenu.sh"; # FIXME
 
           "${mod}+n" = "border normal";
 
