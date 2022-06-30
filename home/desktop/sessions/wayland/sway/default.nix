@@ -113,12 +113,10 @@ in {
 
         window = {
           border = 1;
-          commands = [
-            # {
-            #   command = "move to workspace $ws8";
-            #   criteria = { class = "Spotify"; };
-            # }
-          ];
+          commands = [{
+            command = "move to workspace $ws8";
+            criteria = { class = "Spotify"; };
+          }];
         };
 
         floating = {
