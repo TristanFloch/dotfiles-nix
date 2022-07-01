@@ -91,6 +91,7 @@ in {
 
             Escape = "mode default";
             Return = "mode default";
+            "${modifier}+r" = "mode default";
           };
         };
 
