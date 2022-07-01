@@ -5,9 +5,8 @@ let
   wayland = config.modules.desktop.sessions.wayland;
 in {
   config = lib.mkIf wayland.enable {
-    programs.waybar = rec {
+    programs.waybar = {
       enable = true;
-      package = pkgs.waybar.override { withMediaPlayer = true; };
       systemd.enable = true;
       style = ./style.css;
       settings = let
@@ -15,6 +14,9 @@ in {
           "<span font_desc='Ubuntu Nerd Font ${
             builtins.toString size
           }' foreground='${color}'>${symbol}</span>";
+
+        swaymsg = "${pkgs.sway}/bin/swaymsg";
+        playerctl = "${pkgs.playerctl}/bin/playerctl";
       in {
         mainBar = {
           position = "bottom";
@@ -26,9 +28,11 @@ in {
             "custom/sway-scratch"
             "custom/clock-icon"
             "clock"
-            "sway/mode"
             "keyboard-state"
             "custom/spotify"
+            "custom/spotify-prev"
+            "custom/spotify-next"
+            "sway/mode"
           ];
           modules-center = [ "sway/workspaces" ];
           modules-right = [
@@ -200,7 +204,6 @@ in {
           };
 
           "custom/sway-scratch" = let
-            swaymsg = "${pkgs.sway}/bin/swaymsg";
             swayScratch = pkgs.writeShellScriptBin "sway-scratch.sh" ''
               count=$(${swaymsg} -r -t get_tree |
                       ${pkgs.jq}/bin/jq -r 'recurse(.nodes[]) |
@@ -233,21 +236,40 @@ in {
             exec-if = "exit 0";
             on-click = "${swaymsg} scratchpad show";
             on-click-right = "${swaymsg} move window to scratchpad";
-            tooltip = true;
+            tooltip = false;
           };
 
-          "custom/spotify" = {
-            format = "${icon "" "#1DB954" 13}   {}";
-            max-length = 40;
-            # interval = 30; # Remove this if your script is endless and write in loop
-            exec = "${package}/bin/waybar-mediaplayer.py";
-            exec-if = "pgrep spotify";
-            return-type = "json";
+          "custom/spotify" =
+            let mediaPlayer = pkgs.callPackage ./scripts/mediaplayer.nix { };
+            in {
+              format = "${icon "" "#1DB954" 13}   {}";
+              max-length = 35;
+              exec = "${mediaPlayer}/bin/mediaplayer.py 2> /dev/null";
+              exec-if = "pgrep spotify";
+              return-type = "json";
 
-            # on-scroll-up = "playerctl --player=spotify position 5+";
-            # on-scroll-down = "playerctl --player=spotify position 5-";
-            # on-click = "playerctl --player=spotify play-pause";
-            # on-click-right = "swaymsg [class=Spotify] focus;
+              on-scroll-up = "${playerctl} --player=spotify position 5+";
+              on-scroll-down = "${playerctl} --player=spotify position 5-";
+              on-click = "${playerctl} --player=spotify play-pause";
+              on-click-right = "${swaymsg} [class=Spotify] focus";
+            };
+
+          "custom/spotify-next" = {
+            format = "{}";
+            interval = 10;
+            exec = "echo "; # ﭡ
+            exec-if = "pgrep spotify";
+            on-click = "${playerctl} --player=spotify next";
+            tooltip = false;
+          };
+
+          "custom/spotify-prev" = {
+            format = "{}";
+            interval = 10;
+            exec = "echo "; # ﭣ
+            exec-if = "pgrep spotify";
+            on-click = "${playerctl} --player=spotify previous";
+            tooltip = false;
           };
         };
       };
