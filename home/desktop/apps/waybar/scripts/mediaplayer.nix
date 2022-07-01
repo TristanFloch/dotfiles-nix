@@ -7,7 +7,7 @@ buildPythonApplication {
   version = "1.0";
 
   nativeBuildInputs = with pkgs; [
-    wrapGAppsHook # TODO try without this
+    wrapGAppsHook
     gobject-introspection
   ];
 
@@ -18,7 +18,7 @@ buildPythonApplication {
     python39Packages.setuptools
     python39Packages.pygobject3
   ];
-  strictDeps = false; # TODO try without this
+  strictDeps = false;
 
   src = ./mediaplayer;
 }
