@@ -1,5 +1,9 @@
-{ config, pkgs, ... }:
+{ config, lib, pkgs, ... }:
 
+let
+  inherit (lib) mkIf;
+  xsession = config.modules.desktop.sessions.x;
+in
 {
   gtk = {
     enable = true;
@@ -29,8 +33,4 @@
   #   ".icons".source = ./icons;
   #   ".icons".recursive = true;
   # };
-
-  # xdg.systemDirs.data = [
-  #   "/home/tristan/.icons"
-  # ];
 }
