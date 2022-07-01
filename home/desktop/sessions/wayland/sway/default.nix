@@ -27,9 +27,38 @@ in {
         terminal = "${pkgs.alacritty}/bin/alacritty";
         defaultWorkspace = "workspace number 1";
         workspaceAutoBackAndForth = true;
-        output = { "*" = { bg = "~/Pictures/IMG_1043.jpg fill"; }; };
-        input = { "*" = { tap = "enabled"; }; };
         seat = { "*" = { xcursor_theme = "Dracula-cursors 16"; }; };
+        input = { "*" = { tap = "enabled"; }; };
+        output = let bg = "~/Pictures/IMG_1043.jpg fill";
+        in {
+          eDP-1 = {
+            pos = "0 1080";
+            res = "1920x1080@60Hz";
+            inherit bg;
+          };
+          HDMI-A-1 = {
+            pos = "0 0";
+            res = "1920x1080@60Hz";
+            inherit bg;
+          };
+        };
+
+        workspaceOutputAssign = let
+          primary = "HDMI-A-1";
+          secondary = "eDP-1";
+        in [
+          { workspace = "1"; output = primary; }
+          { workspace = "3"; output = primary; }
+          { workspace = "5"; output = primary; }
+          { workspace = "7"; output = primary; }
+          { workspace = "9"; output = primary; }
+
+          { workspace = "2"; output = secondary; }
+          { workspace = "4"; output = secondary; }
+          { workspace = "6"; output = secondary; }
+          { workspace = "8"; output = secondary; }
+          { workspace = "10"; output = secondary; }
+        ];
 
         gaps = {
           inner = 14;
@@ -39,41 +68,11 @@ in {
         };
 
         colors = {
-          focused = {
-            border = "#6272A4";
-            background = "#6272A4";
-            text = "#F8F8F2";
-            indicator = "#6272A4";
-            childBorder = "#6272A4";
-          };
-          focusedInactive = {
-            border = "#44475A";
-            background = "#44475A";
-            text = "#F8F8F2";
-            indicator = "#44475A";
-            childBorder = "#44475A";
-          };
-          unfocused = {
-            border = "#282A36";
-            background = "#282A36";
-            text = "#BFBFBF";
-            indicator = "#282A36";
-            childBorder = "#282A36";
-          };
-          urgent = {
-            border = "#44475A";
-            background = "#FF5555";
-            text = "#F8F8F2";
-            indicator = "#FF5555";
-            childBorder = "#FF5555";
-          };
-          placeholder = {
-            border = "#282A36";
-            background = "#282A36";
-            text = "#F8F8F2";
-            indicator = "#282A36";
-            childBorder = "#282A36";
-          };
+          focused = { border = "#6272A4"; background = "#6272A4"; text = "#F8F8F2"; indicator = "#6272A4"; childBorder = "#6272A4"; };
+          focusedInactive = { border = "#44475A"; background = "#44475A"; text = "#F8F8F2"; indicator = "#44475A"; childBorder = "#44475A"; };
+          unfocused = { border = "#282A36"; background = "#282A36"; text = "#BFBFBF"; indicator = "#282A36"; childBorder = "#282A36"; };
+          urgent = { border = "#44475A"; background = "#FF5555"; text = "#F8F8F2"; indicator = "#FF5555"; childBorder = "#FF5555"; };
+          placeholder = { border = "#282A36"; background = "#282A36"; text = "#F8F8F2"; indicator = "#282A36"; childBorder = "#282A36"; };
           background = "#F8F8F2";
         };
 
@@ -157,6 +156,16 @@ in {
           "${mod}+Shift+Down" = "move down";
           "${mod}+Shift+Up" = "move up";
           "${mod}+Shift+Right" = "move right";
+
+          "${mod}+Control+Shift+h" = "move workspace to output left";
+          "${mod}+Control+Shift+j" = "move workspace to output down";
+          "${mod}+Control+Shift+k" = "move workspace to output up";
+          "${mod}+Control+Shift+l" = "move workspace to output right";
+
+          "${mod}+Control+Shift+Left" = "move workspace to output left";
+          "${mod}+Control+Shift+Down" = "move workspace to output down";
+          "${mod}+Control+Shift+Up" = "move workspace to output up";
+          "${mod}+Control+Shift+Right" = "move workspace to output right";
 
           "${mod}+v" = "split h"; # TODO send notification
           "${mod}+g" = "split v"; # TODO send notification
