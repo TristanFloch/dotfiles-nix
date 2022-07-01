@@ -19,7 +19,7 @@ in {
         drun = "${pkgs.rofi}/bin/rofi -modi drun -show drun";
       in rec {
         modifier = "Mod4";
-        bars = [ ];
+        bars = [ ]; # waybar is started by systemd
         fonts = {
           names = [ "Ubuntu" "Ubuntu Nerd Font" ];
           size = 11.0;

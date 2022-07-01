@@ -254,6 +254,10 @@ in {
             on-click = "${playerctl} --player=spotify previous";
             tooltip = false;
           };
+
+          "sway/mode" = {
+            format = "${icon "" "#1e2029" 11}   {}";
+          };
         };
       };
     };
