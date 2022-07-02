@@ -111,7 +111,7 @@ in {
 
           "cpu" = {
             format = "{usage}%";
-            tooltip = false;
+            on-click-right = "${pkgs.alacritty}/bin/alacritty -e ${pkgs.htop}/bin/htop";
           };
 
           "custom/memory-icon" = {
@@ -122,6 +122,7 @@ in {
           "memory" = {
             format = "{used:0.1f}GiB";
             tooltip-format = "{used:0.1f}GiB / {total:0.1f}GiB used";
+            on-click-right = "${pkgs.alacritty}/bin/alacritty -e ${pkgs.htop}/bin/htop";
           };
 
           "backlight" = {
