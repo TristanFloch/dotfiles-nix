@@ -4,5 +4,6 @@
   imports = [
     ./htop
     ./git
+    ./xdg
   ];
 }
