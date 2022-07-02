@@ -55,9 +55,11 @@ in {
             tooltip = false;
           };
 
-          "sway/window" = {
+          "sway/window" = rec {
             format = "{}"; # TODO
             max-length = 30;
+            on-click = "${pkgs.rofi}/bin/rofi -modi drun -show drun";
+            on-click-right = on-click;
           };
 
           "sway/workspaces" = {
