@@ -6,7 +6,7 @@
     interactiveShellInit = ''
       set fish_greeting
       set -x MANPAGER "sh -c 'col -bx | bat -l man -p'"
-      fish_add_path ~/.emacs.d.doom/bin/doom
+      fish_add_path ~/.emacs.d.doom/bin/
     '';
 
     shellAbbrs = {
