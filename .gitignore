@@ -3,3 +3,4 @@ polybar/launch.sh
 result
 /.dir-locals.el
 todo.org
+config.nix
