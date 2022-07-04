@@ -15,7 +15,6 @@ in
     ./mailspring
   ];
 
-  nixpkgs.config.allowUnfree = true;
   home.packages = with pkgs; [
     slack
     xfce.thunar
