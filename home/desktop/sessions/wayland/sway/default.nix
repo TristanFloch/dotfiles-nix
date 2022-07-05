@@ -5,6 +5,8 @@ let
   cfg = config.modules.desktop.sessions.wayland;
 in {
   config = mkIf cfg.enable {
+    home.packages = with pkgs; [ autotiling ];
+
     wayland.windowManager.sway = {
       enable = true;
       wrapperFeatures = {
@@ -92,20 +94,26 @@ in {
           };
         };
 
-        startup = [{
-          command = ''
+        startup = [
+          {
+            command = ''
             ${pkgs.swayidle}/bin/swayidle \
             timeout 300 ${swaylock} \
             timeout 600 '${swaymsg} "output * dpms off"' \
             resume '${swaymsg} "output * dpms on"'
           '';
-        }];
+          }
+          {
+            command = "${pkgs.autotiling}/bin/autotiling -w 1 2 3 4 5 6 7 8";
+            always = true;
+          }
+        ];
 
         assigns = {
-          "2" = [{ class = "Firefox"; }];
+          "2" = [{ class = "Firefox"; }]; # FIXME
           "5" = [{ class = "VirtualBox Machine"; }]; # FIXME
           "6" = [ { class = "discord"; } { class = "Slack"; } ];
-          "7" = [{ class = "Thunderbird"; }];
+          "7" = [{ class = "Thunderbird"; }]; # FIXME
           "8" = [{ class = "Spotify"; }]; # FIXME
         };
 
