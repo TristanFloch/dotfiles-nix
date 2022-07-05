@@ -5,8 +5,6 @@ let
   cfg = config.modules.desktop.sessions.wayland;
 in {
   config = mkIf cfg.enable {
-    home.packages = with pkgs; [ wayland swayidle ];
-
     wayland.windowManager.sway = {
       enable = true;
       wrapperFeatures = {
