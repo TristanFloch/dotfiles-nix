@@ -3,7 +3,8 @@
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 { config, pkgs, ... }:
 
-{
+let wayland = config.modules.desktop.sessions.wayland;
+in {
   nix = {
     package = pkgs.nixFlakes;
     extraOptions = ''
@@ -84,7 +85,7 @@
   environment.systemPackages = with pkgs; [
     vim
     wget
-    firefox # docker
+    (if wayland.enable then firefox-wayland else firefox) # docker
   ];
 
   # Some programs need SUID wrappers, can be configured further or are

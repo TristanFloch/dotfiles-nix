@@ -20,7 +20,7 @@ in
     xfce.thunar
     xarchiver
     evince
-    thunderbird
+    (if xsession.enable then thunderbird else thunderbird-wayland)
     pavucontrol
     spotify
     discord
