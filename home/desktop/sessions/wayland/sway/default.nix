@@ -110,10 +110,10 @@ in {
         ];
 
         assigns = {
-          "2" = [{ class = "Firefox"; }]; # FIXME
+          "2" = [{ app_id = "firefox"; }];
           "5" = [{ class = "VirtualBox Machine"; }]; # FIXME
           "6" = [ { class = "discord"; } { class = "Slack"; } ];
-          "7" = [{ class = "Thunderbird"; }]; # FIXME
+          "7" = [{ app_id = "thunderbird"; }];
           "8" = [{ class = "Spotify"; }]; # FIXME
         };
 
