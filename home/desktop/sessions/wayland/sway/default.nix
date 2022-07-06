@@ -5,7 +5,7 @@ let
   cfg = config.modules.desktop.sessions.wayland;
 in {
   config = mkIf cfg.enable {
-    home.packages = with pkgs; [ autotiling ];
+    home.packages = with pkgs; [ autotiling wlogout ];
 
     wayland.windowManager.sway = {
       enable = true;
@@ -139,7 +139,7 @@ in {
           "${mod}+Shift+q" = "kill";
           "${mod}+Return" = "exec ${pkgs.alacritty}/bin/alacritty";
           "${mod}+d" = "exec ${drun}";
-          "${mod}+Shift+e" = "exec ~/.config/rofi/powermenu.sh"; # FIXME
+          "${mod}+Shift+e" = "exec ${pkgs.wlogout}/bin/wlogout --buttons-per-row 6 --column-spacing 40";
 
           "${mod}+n" = "border normal";
 
