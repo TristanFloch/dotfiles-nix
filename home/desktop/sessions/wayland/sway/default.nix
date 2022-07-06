@@ -5,7 +5,7 @@ let
   cfg = config.modules.desktop.sessions.wayland;
 in {
   config = mkIf cfg.enable {
-    home.packages = with pkgs; [ autotiling wlogout ];
+    home.packages = with pkgs; [ autotiling ];
 
     wayland.windowManager.sway = {
       enable = true;
