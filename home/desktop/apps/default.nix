@@ -13,6 +13,7 @@ in
     ./swaylock
     ./picom
     ./mailspring
+    ./wlogout
   ];
 
   home.packages = with pkgs; [
