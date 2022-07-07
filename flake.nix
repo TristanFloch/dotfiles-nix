@@ -3,6 +3,7 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-22.05";
+    nixpkgs-unstable.url = "github:nixos/nixpkgs/nixpkgs-unstable";
 
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
@@ -11,10 +12,16 @@
     emacs-overlay.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = inputs@{ self, nixpkgs, home-manager, ... }:
+  outputs = inputs@{ self, nixpkgs, nixpkgs-unstable, home-manager, emacs-overlay, ... }:
     let
       system = "x86_64-linux";
-      overlays = [ inputs.emacs-overlay.overlay ];
+      overlay-unstable = final: prev: {
+        unstable = nixpkgs-unstable.legacyPackages.x86_64-linux;
+      };
+      overlays = [
+        emacs-overlay.overlay
+        overlay-unstable
+      ];
       modules = builtins.attrValues self.nixosModules;
     in {
       nixosModules = {
