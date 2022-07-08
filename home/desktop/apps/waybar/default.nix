@@ -1,8 +1,9 @@
 { config, lib, pkgs, ... }:
 
 let
-  # TODO change for a sway option
+  inherit (lib) optionals;
   wayland = config.modules.desktop.sessions.wayland;
+  sway = wayland.sway;
 in {
   config = lib.mkIf wayland.enable {
     programs.waybar = {
@@ -18,23 +19,41 @@ in {
         swaymsg = "${pkgs.sway}/bin/swaymsg";
         playerctl = "${pkgs.playerctl}/bin/playerctl";
       in {
-        mainBar = {
+        mainBar = let
+          module-workspaces = {
+            all-outputs = false;
+            format = "{icon}";
+            format-icons = {
+              "1" = ""; # 
+              "2" = "";
+              "3" = "";
+              "4" = "";
+              "5" = "";
+              "6" = "";
+              "7" = "";
+              "8" = "";
+              "default" = "";
+            };
+          };
+        in {
           position = "bottom";
           spacing = 0;
-          height = 38;
-          modules-left = [
+          height = 44;
+          modules-left = (if sway.enable then [
             "custom/window-icon"
             "sway/window"
             "custom/sway-scratch"
-            "custom/clock-icon"
-            "clock"
-            "keyboard-state"
-            "custom/spotify"
-            "custom/spotify-prev"
-            "custom/spotify-next"
-            "sway/mode"
-          ];
-          modules-center = [ "sway/workspaces" ];
+          ] else
+            [ ]) ++ [
+              "custom/clock-icon"
+              "clock"
+              "keyboard-state"
+              "custom/spotify"
+              "custom/spotify-prev"
+              "custom/spotify-next"
+            ] ++ (if sway.enable then [ "sway/mode" ] else [ ]);
+          modules-center =
+            if sway.enable then [ "sway/workspaces" ] else [ "wlr/workspaces" ];
           modules-right = [
             "backlight"
             "pulseaudio"
@@ -62,21 +81,8 @@ in {
             on-click-right = on-click;
           };
 
-          "sway/workspaces" = {
-            all-outputs = false;
-            format = "{icon}";
-            format-icons = {
-              "1" = ""; # 
-              "2" = "";
-              "3" = "";
-              "4" = "";
-              "5" = "";
-              "6" = "";
-              "7" = "";
-              "8" = "";
-              "default" = "";
-            };
-          };
+          "sway/workspaces" = module-workspaces;
+          "wlr/workspaces" = module-workspaces;
 
           "battery" = {
             states = {
@@ -113,7 +119,8 @@ in {
 
           "cpu" = {
             format = "{usage}%";
-            on-click-right = "${pkgs.alacritty}/bin/alacritty -e ${pkgs.htop}/bin/htop";
+            on-click-right =
+              "${pkgs.alacritty}/bin/alacritty -e ${pkgs.htop}/bin/htop";
           };
 
           "custom/memory-icon" = {
@@ -124,7 +131,8 @@ in {
           "memory" = {
             format = "{used:0.1f}GiB";
             tooltip-format = "{used:0.1f}GiB / {total:0.1f}GiB used";
-            on-click-right = "${pkgs.alacritty}/bin/alacritty -e ${pkgs.htop}/bin/htop";
+            on-click-right =
+              "${pkgs.alacritty}/bin/alacritty -e ${pkgs.htop}/bin/htop";
           };
 
           "backlight" = {
@@ -206,24 +214,24 @@ in {
             };
           };
 
-          "custom/sway-scratch" = let
-            swayScratch = pkgs.callPackage ./scripts/sway-scratch.nix { };
-          in {
-            interval = 1;
-            return-type = "json";
-            format = "{icon}";
-            format-icons = {
-              none = "";
-              one = "";
-              many = "";
-              unknown = "";
+          "custom/sway-scratch" =
+            let swayScratch = pkgs.callPackage ./scripts/sway-scratch.nix { };
+            in {
+              interval = 1;
+              return-type = "json";
+              format = "{icon}";
+              format-icons = {
+                none = "";
+                one = "";
+                many = "";
+                unknown = "";
+              };
+              exec = "${swayScratch}/bin/sway-scratch.sh";
+              exec-if = "exit 0";
+              on-click = "${swaymsg} scratchpad show";
+              on-click-right = "${swaymsg} move window to scratchpad";
+              tooltip = false;
             };
-            exec = "${swayScratch}/bin/sway-scratch.sh";
-            exec-if = "exit 0";
-            on-click = "${swaymsg} scratchpad show";
-            on-click-right = "${swaymsg} move window to scratchpad";
-            tooltip = false;
-          };
 
           "custom/spotify" =
             let mediaPlayer = pkgs.callPackage ./scripts/mediaplayer.nix { };
@@ -258,9 +266,7 @@ in {
             tooltip = false;
           };
 
-          "sway/mode" = {
-            format = "${icon "" "#1e2029" 11}   {}";
-          };
+          "sway/mode" = { format = "${icon "" "#1e2029" 11}   {}"; };
         };
       };
     };
