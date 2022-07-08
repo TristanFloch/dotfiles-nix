@@ -1,7 +1,8 @@
 { options, config, lib, pkgs, ... }:
 
-{
-  options.modules.desktop.sessions.wayland.enable = lib.mkEnableOption "Wayland";
+let inherit (lib) mkEnableOption;
+in {
+  options.modules.desktop.sessions.wayland.enable = mkEnableOption "Wayland";
 
-  imports = [ ./sway ];
+  imports = [ ./sway ./hyprland ];
 }

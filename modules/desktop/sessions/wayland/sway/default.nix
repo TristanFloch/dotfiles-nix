@@ -1,10 +1,15 @@
-{ config, lib, pkgs, ... }:
+{ options, config, lib, pkgs, ... }:
 
 let
-  inherit (lib) mkIf;
-  cfg = config.modules.desktop.sessions.wayland;
+  inherit (lib) mkIf mkEnableOption;
+  wayland = config.modules.desktop.sessions.wayland;
+  cfg = wayland.sway;
 in
 {
+  options.modules.desktop.sessions.wayland.sway.enable =
+    (mkEnableOption "Sway")
+    // { default = wayland.enable; };
+
   config = mkIf cfg.enable {
     programs.sway = {
       enable = true;
