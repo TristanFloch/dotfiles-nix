@@ -15,7 +15,7 @@ let
       fi
     }
 
-    ${pkgs.socat}/bin/socat - UNIX-CONNECT:/tmp/hypr/.socket2.sock | while read line; do handle $line; done
+    ${pkgs.socat}/bin/socat - UNIX-CONNECT:/tmp/hypr/"$HYPRLAND_INSTANCE_SIGNATURE"/.socket2.sock | while read line; do handle $line; done
   '';
 in {
   options.modules.desktop.sessions.wayland.hyprland.enable =
