@@ -13,6 +13,8 @@ in {
       extraPackages = with pkgs; [ swaybg swaylock swayidle ];
     };
 
+    programs.xwayland.enable = true;
+
     services.greetd = {
       enable = true;
       settings = rec {
