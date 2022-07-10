@@ -14,6 +14,7 @@ in
     ./picom
     ./mailspring
     ./wlogout
+    ./discord
   ];
 
   home.packages = with pkgs; [
@@ -24,7 +25,6 @@ in
     (if xsession.enable then thunderbird else thunderbird-wayland)
     pavucontrol
     spotify
-    discord
     pdfarranger
     gimp
     betterlockscreen
