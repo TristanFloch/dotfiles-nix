@@ -2,7 +2,11 @@
 
 let xsession = config.modules.desktop.sessions.x;
 in {
-  imports = [ ./gtk ./font ];
+  imports = [
+    ./gtk
+    ./font
+    ./qt
+  ];
 
   home.pointerCursor = {
     name = "Dracula-cursors";
