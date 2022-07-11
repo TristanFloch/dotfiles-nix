@@ -23,26 +23,19 @@
 
   outputs = inputs@{ self, ... }:
     let
+      inherit (builtins) attrValues;
       system = "x86_64-linux";
-      modules = builtins.attrValues self.nixosModules;
-      unstable-overlay = final: prev: {
-        unstable = inputs.nixpkgs-unstable.legacyPackages.${system};
-      };
-      waybar-overlay = final: prev: {
-        waybar = prev.waybar.overrideAttrs (oldAttrs: {
-          mesonFlags = oldAttrs.mesonFlags ++ [ "-Dexperimental=true" ];
-        });
-      };
-      hyprland-overlay = inputs.hyprland.overlays.default;
-      emacs-overlay = inputs.emacs-overlay.overlay;
+    in rec {
+      overlays = {
+        default = import ./overlay {
+          inherit inputs;
+          inherit system;
+        };
 
-      overlays = [
-        emacs-overlay
-        unstable-overlay
-        hyprland-overlay
-        waybar-overlay
-      ];
-    in {
+        hyprland = inputs.hyprland.overlays.default;
+        emacs = inputs.emacs-overlay.overlay;
+      };
+
       nixosModules = {
         modules = import ./modules;
 
@@ -62,8 +55,8 @@
 
             ./hosts/nixos-zenbook
 
-            { nixpkgs.overlays = overlays; }
-          ] ++ modules;
+            { nixpkgs.overlays = attrValues overlays; }
+          ] ++ attrValues nixosModules;
         };
       };
     };
