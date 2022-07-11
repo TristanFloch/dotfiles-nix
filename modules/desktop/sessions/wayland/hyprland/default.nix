@@ -13,7 +13,7 @@ in {
       extraPackages = with pkgs; [ swaybg swaylock swayidle ];
     };
 
-    programs.xwayland.enable = true;
+    security.pam.services.swaylock = {};
 
     services.greetd = {
       enable = true;

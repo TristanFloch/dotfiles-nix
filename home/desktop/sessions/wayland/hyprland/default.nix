@@ -3,7 +3,7 @@
 let
   inherit (lib) mkIf mkEnableOption;
   cfg = config.modules.desktop.sessions.wayland.hyprland;
-  hyprctl = "${pkgs.unstable.hyprland}/bin/hyprctl";
+  hyprctl = "${pkgs.hyprland}/bin/hyprctl";
   handle_monitor_connect = pkgs.writeShellScriptBin "handle_monitor_connect.sh" ''
     function handle {
       if [ ''${1:0:12} = "monitoradded" ]; then
