@@ -8,6 +8,7 @@ in {
   config = lib.mkIf wayland.enable {
     programs.waybar = {
       enable = true;
+      package = if sway.enable then pkgs.waybar else pkgs.waybar-hyprland;
       systemd.enable = true;
       style = ./style.css;
       settings = let
