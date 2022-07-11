@@ -17,7 +17,7 @@ in {
       enable = true;
       settings = rec {
         initial_session = {
-          command = "${pkgs.unstable.hyprland}/bin/Hyprland";
+          command = "${pkgs.hyprland}/bin/Hyprland";
           user = "tristan";
         };
 

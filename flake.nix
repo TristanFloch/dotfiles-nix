@@ -21,15 +21,27 @@
     };
   };
 
-  outputs = inputs@{ self, nixpkgs, nixpkgs-unstable, home-manager
-    , emacs-overlay, hyprland, ... }:
+  outputs = inputs@{ self, ... }:
     let
       system = "x86_64-linux";
-      overlay-unstable = final: prev: {
-        unstable = nixpkgs-unstable.legacyPackages.x86_64-linux;
-      };
-      overlays = [ emacs-overlay.overlay overlay-unstable ];
       modules = builtins.attrValues self.nixosModules;
+      unstable-overlay = final: prev: {
+        unstable = inputs.nixpkgs-unstable.legacyPackages.${system};
+      };
+      waybar-overlay = final: prev: {
+        waybar = prev.waybar.overrideAttrs (oldAttrs: {
+          mesonFlags = oldAttrs.mesonFlags ++ [ "-Dexperimental=true" ];
+        });
+      };
+      hyprland-overlay = inputs.hyprland.overlays.default;
+      emacs-overlay = inputs.emacs-overlay.overlay;
+
+      overlays = [
+        emacs-overlay
+        unstable-overlay
+        hyprland-overlay
+        waybar-overlay
+      ];
     in {
       nixosModules = {
         modules = import ./modules;
@@ -42,11 +54,11 @@
       };
 
       nixosConfigurations = {
-        nixos-zenbook = nixpkgs.lib.nixosSystem {
+        nixos-zenbook = inputs.nixpkgs.lib.nixosSystem {
           inherit system;
           modules = [
-            home-manager.nixosModule
-            hyprland.nixosModules.default
+            inputs.home-manager.nixosModule
+            inputs.hyprland.nixosModules.default
 
             ./hosts/nixos-zenbook
 
