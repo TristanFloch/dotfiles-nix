@@ -13,8 +13,12 @@ in {
     xdg.portal = {
       enable = true;
       wlr.enable = true;
-      extraPortals = with pkgs; [ xdg-desktop-portal-wlr ];
       gtkUsePortal = true;
+
+      extraPortals = if cfg.hyprland.enable then
+        [ pkgs.xdg-desktop-portal-wlr-hyprland ]
+      else
+        [ pkgs.xdg-desktop-portal-wlr ];
     };
   };
 }
