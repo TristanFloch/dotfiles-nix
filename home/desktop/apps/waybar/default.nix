@@ -83,7 +83,7 @@ in {
           };
 
           "sway/workspaces" = module-workspaces;
-          "wlr/workspaces" = module-workspaces;
+          "wlr/workspaces" = module-workspaces // { on-click = "activate"; }; # FIXME
 
           "battery" = {
             states = {
