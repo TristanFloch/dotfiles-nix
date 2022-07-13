@@ -15,10 +15,11 @@ in {
       wlr.enable = true;
       gtkUsePortal = true;
 
-      extraPortals = if cfg.hyprland.enable then
-        [ pkgs.xdg-desktop-portal-wlr-hyprland ]
-      else
-        [ pkgs.xdg-desktop-portal-wlr ];
+      extraPortals = [ pkgs.xdg-desktop-portal-gtk ]
+        ++ (if cfg.hyprland.enable then
+          [ pkgs.xdg-desktop-portal-wlr-hyprland ]
+        else
+          [ pkgs.xdg-desktop-portal-wlr ]);
     };
   };
 }
