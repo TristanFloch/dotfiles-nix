@@ -36,7 +36,11 @@ window#waybar {
     background-color: #6272a4;
 }
 
-#workspaces button.focused,
+#workspace button.visible {
+    color: #6272a4;
+}
+
+#workspaces button.current_output.focused,
 #workspaces button.active {
     color: #bd93f9;
 }

@@ -82,8 +82,13 @@ in {
             on-click-right = on-click;
           };
 
-          "sway/workspaces" = module-workspaces;
-          "wlr/workspaces" = module-workspaces // { on-click = "activate"; }; # FIXME
+          "sway/workspaces" = module-workspaces // {
+            disable-scroll-wraparound = true;
+          };
+
+          "wlr/workspaces" = module-workspaces // {
+            on-click = "activate"; # FIXME
+          };
 
           "battery" = {
             states = {
