@@ -19,6 +19,16 @@
       url = "github:hyprwm/Hyprland";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
+
+    hlissner-config = { # god of Doom Emacs
+      url = "github:hlissner/dotfiles";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        nixpkgs-unstable.follows = "nixpkgs-unstable";
+        home-manager.follows = "home-manager";
+        emacs-overlay.follows = "emacs-overlay";
+      };
+    };
   };
 
   outputs = inputs@{ self, ... }:
@@ -58,6 +68,11 @@
             { nixpkgs.overlays = attrValues overlays; }
           ] ++ attrValues nixosModules;
         };
+      };
+
+      apps."${system}" = rec {
+        default = hey;
+        hey = inputs.hlissner-config.defaultApp."${system}";
       };
     };
 }

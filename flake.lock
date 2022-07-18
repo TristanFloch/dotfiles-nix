@@ -1,5 +1,26 @@
 {
   "nodes": {
+    "agenix": {
+      "inputs": {
+        "nixpkgs": [
+          "hlissner-config",
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1648942457,
+        "narHash": "sha256-i29Z1t3sVfCNfpp+KAfeExvpqHQSbLO1KWylTtfradU=",
+        "owner": "ryantm",
+        "repo": "agenix",
+        "rev": "0d5e59ed645e4c7b60174bc6f6aac6a203dc0b01",
+        "type": "github"
+      },
+      "original": {
+        "owner": "ryantm",
+        "repo": "agenix",
+        "type": "github"
+      }
+    },
     "emacs-overlay": {
       "inputs": {
         "flake-utils": "flake-utils",
@@ -33,6 +54,37 @@
       "original": {
         "owner": "numtide",
         "repo": "flake-utils",
+        "type": "github"
+      }
+    },
+    "hlissner-config": {
+      "inputs": {
+        "agenix": "agenix",
+        "emacs-overlay": [
+          "emacs-overlay"
+        ],
+        "home-manager": [
+          "home-manager"
+        ],
+        "nixos-hardware": "nixos-hardware",
+        "nixpkgs": [
+          "nixpkgs"
+        ],
+        "nixpkgs-unstable": [
+          "nixpkgs-unstable"
+        ]
+      },
+      "locked": {
+        "lastModified": 1651415531,
+        "narHash": "sha256-Ip9iJDYzOFCad8Z+hUcZdIvu43UfAay9TRF6Jmz5M20=",
+        "owner": "hlissner",
+        "repo": "dotfiles",
+        "rev": "0df9027010b424410a4622eba54b979c256f0efb",
+        "type": "github"
+      },
+      "original": {
+        "owner": "hlissner",
+        "repo": "dotfiles",
         "type": "github"
       }
     },
@@ -78,6 +130,21 @@
         "type": "github"
       }
     },
+    "nixos-hardware": {
+      "locked": {
+        "lastModified": 1649849514,
+        "narHash": "sha256-zQyTr2UebTKUh1KLyLtevhHsM8umPK1LfQLGUGjRjiQ=",
+        "owner": "nixos",
+        "repo": "nixos-hardware",
+        "rev": "1a0ccdbf4583ed0fce37eea7955e8ef90f840a9f",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nixos",
+        "repo": "nixos-hardware",
+        "type": "github"
+      }
+    },
     "nixpkgs": {
       "locked": {
         "lastModified": 1657972522,
@@ -113,6 +180,7 @@
     "root": {
       "inputs": {
         "emacs-overlay": "emacs-overlay",
+        "hlissner-config": "hlissner-config",
         "home-manager": "home-manager",
         "hyprland": "hyprland",
         "nixpkgs": "nixpkgs",
