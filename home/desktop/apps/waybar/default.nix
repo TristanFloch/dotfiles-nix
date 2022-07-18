@@ -18,6 +18,7 @@ in {
           }' foreground='${color}'>${symbol}</span>";
 
         swaymsg = "${pkgs.sway}/bin/swaymsg";
+        hyprctl = "${pkgs.hyprland}/bin/hyprctl";
         playerctl = "${pkgs.playerctl}/bin/playerctl";
         brightnessctl = "${pkgs.brightnessctl}/bin/brightnessctl";
         amixer = "${pkgs.alsa-utils}/bin/amixer";
@@ -46,9 +47,9 @@ in {
           modules-left = (if sway.enable then [
             "custom/window-icon"
             "sway/window"
-            "custom/sway-scratch"
           ] else
             [ ]) ++ [
+              "custom/scratchpads"
               "custom/clock-icon"
               "clock"
               "keyboard-state"
@@ -223,24 +224,40 @@ in {
             };
           };
 
-          "custom/sway-scratch" =
-            let swayScratch = pkgs.callPackage ./scripts/sway-scratch.nix { };
-            in {
-              interval = 1;
-              return-type = "json";
-              format = "{icon}";
-              format-icons = {
-                none = "";
-                one = "";
-                many = "";
-                unknown = "";
-              };
-              exec = "${swayScratch}/bin/sway-scratch.sh";
-              exec-if = "exit 0";
-              on-click = "${swaymsg} scratchpad show";
-              on-click-right = "${swaymsg} move window to scratchpad";
-              tooltip = false;
+          "custom/scratchpads" = let
+            scratchpadsScript = if sway.enable then
+              "${
+                pkgs.callPackage ./scripts/sway-scratch.nix { }
+              }/bin/sway-scratch.sh"
+            else
+              "${
+                pkgs.callPackage ./scripts/hyprland-special.nix { }
+              }/bin/hyprland-special.sh";
+          in {
+            interval = 1;
+            return-type = "json";
+            format = "{icon}";
+            format-icons = {
+              none = "";
+              one = "";
+              many = "";
+              unknown = "";
             };
+            exec = "${scratchpadsScript}";
+            exec-if = "exit 0";
+            tooltip = true;
+
+            on-click = if sway.enable then
+              "${swaymsg} scratchpad show"
+            else
+              "${hyprctl} dispatch togglespecialworkspace uselessArg2";
+
+            on-click-right = if sway.enable then
+              "${swaymsg} move window to scratchpad"
+            else
+              null;
+
+          };
 
           "custom/spotify" =
             let mediaPlayer = pkgs.callPackage ./scripts/mediaplayer.nix { };

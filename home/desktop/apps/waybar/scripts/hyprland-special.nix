@@ -1,10 +1,10 @@
 { config, lib, pkgs, ... }:
 
-pkgs.writeShellScriptBin "sway-scratch.sh" ''
-  count=$(${pkgs.sway}/bin/swaymsg -r -t get_tree |
-          ${pkgs.jq}/bin/jq -r 'recurse(.nodes[]) |
-          first(select(.name=="__i3_scratch")) |
-          .floating_nodes | length')
+pkgs.writeShellScriptBin "hyprland-special.sh" ''
+  count=$(${pkgs.hyprland}/bin/hyprctl clients |
+          ${pkgs.ripgrep}/bin/rg 'workspace' |
+          ${pkgs.ripgrep}/bin/rg 'special' |
+          ${pkgs.coreutils}/bin/wc -l)
 
   if [ "$count" -eq 0 ]; then
     class="none"

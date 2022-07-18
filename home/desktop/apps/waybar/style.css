@@ -218,7 +218,7 @@ window#waybar {
     color: #ff5555;
 }
 
-#custom-sway-scratch {
+#custom-scratchpads {
     font-family: Ubuntu Nerd Font;
     font-size: 17px;
     color: #1e2029;
@@ -229,14 +229,14 @@ window#waybar {
     border-radius: 20px;
 }
 
-#custom-sway-scratch.none {
+#custom-scratchpads.none {
     background-color: #6272a4;
 }
 
-#custom-sway-scratch.one, #custom-sway-scratch.many {
+#custom-scratchpads.one, #custom-scratchpads.many {
     background-color: #bd93f9;
 }
 
-#custom-sway-scratch.unknown {
+#custom-scratchpads.unknown {
     background-color: #ffb86c;
 }
