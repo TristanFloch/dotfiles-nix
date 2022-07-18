@@ -19,6 +19,8 @@ in {
 
         swaymsg = "${pkgs.sway}/bin/swaymsg";
         playerctl = "${pkgs.playerctl}/bin/playerctl";
+        brightnessctl = "${pkgs.brightnessctl}/bin/brightnessctl";
+        amixer = "${pkgs.alsa-utils}/bin/amixer";
         pgrep = "${pkgs.procps}/bin/pgrep";
       in {
         mainBar = let
@@ -149,8 +151,8 @@ in {
               (icon "" "#bd93f9" 12)
               (icon "" "#8be9fd" 12)
             ];
-            on-scroll-up = "brightnessctl -c backlight set +5%";
-            on-scroll-down = "brightnessctl -c backlight set 5%-";
+            on-scroll-up = "${brightnessctl} -c backlight set +5%";
+            on-scroll-down = "${brightnessctl} -c backlight set 5%-";
           };
 
           "custom/temperature-icon" = {
@@ -208,7 +210,7 @@ in {
               # car = "";
               default = ramp [ "" "" "" "" "" ];
             };
-            on-click = "amixer set Master toggle";
+            on-click = "${amixer} set Master toggle";
             on-click-right = "${pkgs.pavucontrol}/bin/pavucontrol";
           };
 
