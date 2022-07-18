@@ -3,6 +3,8 @@
 let
   inherit (lib) mkIf mkEnableOption;
   cfg = config.modules.desktop.sessions.wayland;
+  gtk-portal-no-gnome =
+    pkgs.xdg-desktop-portal-gtk.override ({ buildPortalsInGnome = false; });
 in {
   options.modules.desktop.sessions.wayland.enable = mkEnableOption "Wayland";
 
@@ -14,12 +16,10 @@ in {
       enable = true;
       wlr.enable = true;
       gtkUsePortal = true;
-
-      extraPortals = [ pkgs.xdg-desktop-portal-gtk ]
-        ++ (if cfg.hyprland.enable then
-          [ pkgs.xdg-desktop-portal-wlr-hyprland ]
-        else
-          [ pkgs.xdg-desktop-portal-wlr ]);
+      extraPortals = with pkgs; [
+        xdg-desktop-portal-wlr
+        gtk-portal-no-gnome
+      ];
     };
   };
 }
