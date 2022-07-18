@@ -12,12 +12,7 @@ let
     };
   };
 
-  homeManagerOptions.modules = {
-    dev = {
-      cc.enable = true;
-      python.enable = true;
-    };
-  };
+  homeManagerOptions.modules = { };
 in {
   imports = [ ./hardware-configuration.nix ../configuration.nix ../home.nix ];
 

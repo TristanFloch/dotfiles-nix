@@ -1,5 +1,9 @@
-{ config, lib, pkgs, ... }:
+{ pkgs, ... }:
 
+# TODO function to refactor this
 {
-  imports = [ ./cc ./python ./tex ];
+  cc = import ./cc { inherit pkgs; };
+  python = import ./python { inherit pkgs; };
+  tex = import ./tex { inherit pkgs; };
+  rust = import ./rust { inherit pkgs; };
 }

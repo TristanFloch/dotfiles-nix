@@ -25,6 +25,7 @@
     let
       inherit (builtins) attrValues;
       system = "x86_64-linux";
+      pkgs = import inputs.nixpkgs { inherit system; };
     in rec {
       overlays = {
         default = import ./overlay {
@@ -59,5 +60,7 @@
           ] ++ attrValues nixosModules;
         };
       };
+
+      devShells.${system} = import ./home/dev { inherit pkgs; };
     };
 }

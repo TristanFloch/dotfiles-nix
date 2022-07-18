@@ -4,7 +4,6 @@
   imports = [
     ./config
     ./desktop
-    ./dev
     ./editors
     ./hardware
     ./services
