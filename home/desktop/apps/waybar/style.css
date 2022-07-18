@@ -2,7 +2,7 @@ window#waybar {
     background: transparent;
 }
 
-#window {
+#window, #taskbar {
     border-top-right-radius: 20px;
     border-bottom-right-radius: 20px;
     padding-right: 12px;

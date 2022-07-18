@@ -23,6 +23,7 @@ in {
         brightnessctl = "${pkgs.brightnessctl}/bin/brightnessctl";
         amixer = "${pkgs.alsa-utils}/bin/amixer";
         pgrep = "${pkgs.procps}/bin/pgrep";
+        appLauncher = "${pkgs.rofi}/bin/rofi -modi drun -show drun";
       in {
         mainBar = let
           module-workspaces = {
@@ -44,11 +45,9 @@ in {
           position = "bottom";
           spacing = 0;
           height = 44;
-          modules-left = (if sway.enable then [
-            "custom/window-icon"
-            "sway/window"
-          ] else
-            [ ]) ++ [
+          modules-left = [ "custom/window-icon" ]
+            ++ (if sway.enable then [ "sway/window" ] else [ "wlr/taskbar" ])
+            ++ [
               "custom/scratchpads"
               "custom/clock-icon"
               "clock"
@@ -74,15 +73,27 @@ in {
             "tray"
           ];
 
-          "custom/window-icon" = {
+          "custom/window-icon" = rec {
             format = "";
             tooltip = false;
+            on-click = "${appLauncher}";
+            on-click-right = on-click;
           };
 
           "sway/window" = rec {
             format = "{}"; # TODO
             max-length = 30;
-            on-click = "${pkgs.rofi}/bin/rofi -modi drun -show drun";
+            on-click = "${appLauncher}";
+            on-click-right = on-click;
+          };
+
+          "wlr/taskbar" = rec {
+            # FIXME module not working
+            # format = "{icon}    {title}";
+            format = "";
+            icon-size = 14;
+            # active-first = true;
+            on-click = "${appLauncher}";
             on-click-right = on-click;
           };
 
@@ -90,9 +101,7 @@ in {
             disable-scroll-wraparound = true;
           };
 
-          "wlr/workspaces" = module-workspaces // {
-            on-click = "activate"; # FIXME
-          };
+          "wlr/workspaces" = module-workspaces // { on-click = "activate"; };
 
           "battery" = {
             states = {
