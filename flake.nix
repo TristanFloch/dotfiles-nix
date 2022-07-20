@@ -23,7 +23,7 @@
 
   outputs = inputs@{ self, ... }:
     let
-      inherit (builtins) attrValues;
+      inherit (builtins) attrValues mapAttrs;
       system = "x86_64-linux";
       pkgs = import inputs.nixpkgs { inherit system; };
     in rec {
@@ -56,7 +56,20 @@
 
             ./hosts/nixos-zenbook
 
-            { nixpkgs.overlays = attrValues overlays; }
+            {
+              nixpkgs.overlays = attrValues overlays;
+              environment.etc = {
+                "nix/channels/nixpkgs".source = inputs.nixpkgs.outPath;
+                "nix/channels/home-manager".source = inputs.home-manager.outPath;
+              };
+              nix = {
+                registry = mapAttrs (_: value: { flake = value; }) inputs;
+                nixPath = [
+                  "nixpkgs=/etc/nix/channels/nixpkgs"
+                  "home-manager=/etc/nix/channels/home-manager"
+                ];
+              };
+            }
           ] ++ attrValues nixosModules;
         };
       };
