@@ -7,6 +7,15 @@
       add_newline = true;
       line_break.disabled = true;
 
+      nix_shell = {
+        format = "via [$symbol( $name)$state]($style) ";
+        impure_msg = " \\(\\)";
+        pure_msg = "";
+        symbol = "❄ ";
+      };
+
+      git_branch.truncation_length = 20;
+
       # Dracula theme
       aws.style = "bold #ffb86c";
       cmd_duration.style = "bold #f1fa8c";
