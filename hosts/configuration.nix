@@ -15,7 +15,10 @@ in {
       options = "--delete-older-than 7d";
       dates = "monthly";
     };
-    # settings.auto-optimise-store = true;
+    settings = {
+      auto-optimise-store = true;
+      warn-dirty = false;
+    };
   };
 
   # Use the systemd-boot EFI boot loader.

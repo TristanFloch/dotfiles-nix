@@ -4,9 +4,6 @@
   home.packages = with pkgs; [ xdg_utils ];
   xdg = {
     enable = true;
-    configFile."nix/nix.conf".text = ''
-      warn-dirty = false
-    '';
     configFile."nixpkgs/config.nix".text = ''
     {
       allowUnfree = true;
