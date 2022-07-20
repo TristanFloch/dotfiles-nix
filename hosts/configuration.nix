@@ -7,15 +7,13 @@ let wayland = config.modules.desktop.sessions.wayland;
 in {
   nix = {
     package = pkgs.nixFlakes;
-    extraOptions = ''
-      experimental-features = nix-command flakes
-    '';
     gc = {
       automatic = true;
       options = "--delete-older-than 7d";
       dates = "monthly";
     };
     settings = {
+      experimental-features = "nix-command flakes";
       auto-optimise-store = true;
       warn-dirty = false;
     };
