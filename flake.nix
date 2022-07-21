@@ -56,21 +56,10 @@
 
             ./hosts/nixos-zenbook
 
-            {
-              nixpkgs.overlays = attrValues overlays;
-              environment.etc = {
-                "nix/channels/nixpkgs".source = inputs.nixpkgs.outPath;
-                "nix/channels/home-manager".source = inputs.home-manager.outPath;
-              };
-              nix = {
-                registry = mapAttrs (_: value: { flake = value; }) inputs;
-                nixPath = [
-                  "nixpkgs=/etc/nix/channels/nixpkgs"
-                  "home-manager=/etc/nix/channels/home-manager"
-                ];
-              };
-            }
+            { nixpkgs.overlays = attrValues overlays; }
           ] ++ attrValues nixosModules;
+
+          specialArgs = { inherit inputs; };
         };
       };
 

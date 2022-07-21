@@ -1,7 +1,7 @@
 # Edit this configuration file to define what should be installed on
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
-{ config, pkgs, ... }:
+{ inputs, config, pkgs, lib, ... }:
 
 let wayland = config.modules.desktop.sessions.wayland;
 in {
@@ -17,6 +17,16 @@ in {
       auto-optimise-store = true;
       warn-dirty = false;
     };
+    registry = lib.mapAttrs (_: value: { flake = value; }) inputs;
+    nixPath = [
+      "nixpkgs=/etc/nix/channels/nixpkgs"
+      "home-manager=/etc/nix/channels/home-manager"
+    ];
+  };
+
+  environment.etc = {
+    "nix/channels/nixpkgs".source = inputs.nixpkgs.outPath;
+    "nix/channels/home-manager".source = inputs.home-manager.outPath;
   };
 
   # Use the systemd-boot EFI boot loader.
