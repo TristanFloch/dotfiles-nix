@@ -19,6 +19,6 @@ else if test $ARG != "build"
 end
 
 # TODO refacto with nixpath and host from config
-set CMD $PREFIX nixos-rebuild $ARG --flake 'self#'
+set CMD $PREFIX nixos-rebuild $ARG --flake '~/.config/nixpkgs/#'
 echo $CMD
 eval $CMD
