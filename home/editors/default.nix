@@ -4,5 +4,6 @@
   imports = [
     ./vim
     ./emacs
+    ./helix
   ];
 }

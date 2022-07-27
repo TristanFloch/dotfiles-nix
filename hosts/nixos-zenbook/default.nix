@@ -12,7 +12,9 @@ let
     };
   };
 
-  homeManagerOptions.modules = { };
+  homeManagerOptions.modules = {
+    editors.helix.enable = true;
+  };
 in {
   imports = [ ./hardware-configuration.nix ../configuration.nix ../home.nix ];
 
