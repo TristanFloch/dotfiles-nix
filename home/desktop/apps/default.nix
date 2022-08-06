@@ -35,5 +35,6 @@ in
     gnupg
     bitwarden
     bitwarden-cli
+    cachix
   ] ++ (if xsession.enable then [ feh ] else [ ]);
 }
