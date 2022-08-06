@@ -1,4 +1,5 @@
-{ config, pkgs, ... }:
+{ config, lib, pkgs, ... }:
+
 {
   programs.fish = {
     enable = true;
@@ -9,14 +10,9 @@
       fish_add_path ~/.emacs.d.doom/bin/
     '';
 
-    shellAbbrs = {
-      intl = "setxkbmap us_intl";
-      us = "setxkbmap us";
-    } // import ./gitAbbrs.nix;
+    shellAbbrs = { } // import ./gitAbbrs.nix;
 
-    shellAliases = {
-      nix-shell = "nix-shell --run fish";
-    };
+    shellAliases = { nix-shell = "nix-shell --run fish"; };
 
     plugins = import ./plugins.nix pkgs;
 

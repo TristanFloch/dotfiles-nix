@@ -21,7 +21,8 @@ in
       };
 
       libinput.enable = true;
-      layout = "us, us_intl";
+      layout = "us";
+      xkbVariant = "altgr-intl";
     };
   };
 }

@@ -33,7 +33,11 @@ in {
         defaultWorkspace = "workspace number 1";
         workspaceAutoBackAndForth = true;
         seat = { "*" = { xcursor_theme = "Dracula-cursors 16"; }; };
-        input = { "*" = { tap = "enabled"; }; };
+        input = { "*" = {
+          tap = "enabled";
+          xkb_layout = "us";
+          xkb_variant = "altgr-intl";
+        }; };
         output = let bg = "~/Pictures/IMG_1043.jpg fill";
         in {
           eDP-1 = {
