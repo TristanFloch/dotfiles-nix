@@ -33,5 +33,7 @@ in
     inkscape
     brightnessctl
     gnupg
+    bitwarden
+    bitwarden-cli
   ] ++ (if xsession.enable then [ feh ] else [ ]);
 }
