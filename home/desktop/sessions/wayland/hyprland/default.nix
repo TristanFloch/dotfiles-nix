@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ inputs, config, lib, pkgs, ... }:
 
 let
   inherit (lib) mkIf mkEnableOption;
@@ -26,24 +26,17 @@ in {
   options.modules.desktop.sessions.wayland.hyprland.enable =
     mkEnableOption "Hyprland";
 
+  imports = [ inputs.hyprland.homeManagerModules.default ];
+
   config = mkIf cfg.enable {
-    home.packages = [ handle_monitor_connect ];
+    home.packages = [ handle_monitor_connect ]
+      ++ (with pkgs; [ swaybg swaylock swayidle ]);
 
-    xdg.configFile = {
-      "hypr/hyprland.conf" = {
-        source = ./hyprland.conf;
-        onChange = "${hyprctl} reload";
-      };
-    };
-
-    systemd.user.targets.hyprland-session = {
-      Unit = {
-        Description = "hyprland compositor session";
-        Documentation = [ "man:systemd.special(7)" ];
-        BindsTo = [ "graphical-session.target" ];
-        Wants = [ "graphical-session-pre.target" ];
-        After = [ "graphical-session-pre.target" ];
-      };
+    wayland.windowManager.hyprland = {
+      enable = true;
+      systemdIntegration = true;
+      xwayland = true;
+      extraConfig = builtins.readFile ./hyprland.conf;
     };
   };
 }

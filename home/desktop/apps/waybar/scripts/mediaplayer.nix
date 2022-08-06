@@ -15,8 +15,9 @@ buildPythonApplication {
     playerctl
     glib
     python3
-    python39Packages.setuptools
+    python39Packages.setuptoolsBuildHook
     python39Packages.pygobject3
+    python39Packages.pip
   ];
   strictDeps = false;
 

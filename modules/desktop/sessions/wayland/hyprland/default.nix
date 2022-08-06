@@ -10,10 +10,10 @@ in {
   config = mkIf cfg.enable {
     programs.hyprland = {
       enable = true;
-      extraPackages = with pkgs; [ swaybg swaylock swayidle ];
+      package = null; # use the home manager module instead
     };
 
-    security.pam.services.swaylock = {};
+    security.pam.services.swaylock = { };
 
     services.greetd = {
       enable = true;
