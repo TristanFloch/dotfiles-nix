@@ -14,6 +14,7 @@ in
     ./picom
     ./mailspring
     ./wlogout
+    ./mako
   ];
 
   home.packages = with pkgs; [
