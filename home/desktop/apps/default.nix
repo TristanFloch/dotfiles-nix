@@ -14,7 +14,6 @@ in
     ./picom
     ./mailspring
     ./wlogout
-    ./discord
   ];
 
   home.packages = with pkgs; [
@@ -36,5 +35,6 @@ in
     bitwarden
     bitwarden-cli
     cachix
+    discord
   ] ++ (if xsession.enable then [ feh ] else [ ]);
 }
