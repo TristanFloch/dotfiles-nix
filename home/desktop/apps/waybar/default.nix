@@ -88,14 +88,17 @@ in {
             on-click-right = on-click;
           };
 
-          "wlr/taskbar" = rec {
-            # FIXME module not working
-            # format = "{icon}    {title}";
-            format = "";
-            icon-size = 14;
-            # active-first = true;
-            on-click = "${appLauncher}";
-            on-click-right = on-click;
+          "wlr/taskbar" = {
+            format = "{icon}";
+            icon-size = 20;
+            active-first = true;
+            on-click = "activate";
+            on-click-middle = "close";
+            all-outputs = true;
+            ignore-list = [
+              "Rofi"
+              "Alacritty"
+            ];
           };
 
           "sway/workspaces" = module-workspaces // {
