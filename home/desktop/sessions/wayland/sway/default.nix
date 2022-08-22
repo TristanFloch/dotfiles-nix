@@ -106,11 +106,11 @@ in {
         startup = [
           {
             command = ''
-            ${pkgs.swayidle}/bin/swayidle \
-            timeout 300 ${swaylock} \
-            timeout 600 '${swaymsg} "output * dpms off"' \
-            resume '${swaymsg} "output * dpms on"'
-          '';
+              ${pkgs.swayidle}/bin/swayidle \
+              timeout 300 ${swaylock} \
+              timeout 600 '${swaymsg} "output * dpms off"' \
+              resume '${swaymsg} "output * dpms on"'
+            '';
           }
           {
             command = "${pkgs.autotiling}/bin/autotiling -w 1 2 3 4 5 6 7 8";
