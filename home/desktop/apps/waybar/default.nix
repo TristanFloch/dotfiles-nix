@@ -9,7 +9,7 @@ in {
     programs.waybar = {
       enable = true;
       package = if sway.enable then pkgs.waybar else pkgs.waybar-hyprland;
-      systemd.enable = true;
+      systemd.enable = sway.enable;
       style = ./style.css;
       settings = let
         icon = symbol: color: size:
