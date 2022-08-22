@@ -43,6 +43,7 @@ in {
           };
         in {
           position = "bottom";
+          layer = "top";
           spacing = 0;
           height = 44;
           modules-left = [ "custom/window-icon" ]
