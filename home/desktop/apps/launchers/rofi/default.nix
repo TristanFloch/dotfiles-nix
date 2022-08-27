@@ -2,10 +2,10 @@
 
 let
   inherit (lib) mkEnableOption mkIf;
-  cfg = config.modules.desktop.apps.rofi;
+  cfg = config.modules.desktop.apps.launchers.rofi;
 in {
-  options.modules.desktop.apps.rofi.enable = (mkEnableOption "Rofi launcher")
-    // {
+  options.modules.desktop.apps.launchers.rofi.enable =
+    (mkEnableOption "Rofi launcher") // {
       default = true;
     };
 

@@ -6,13 +6,12 @@ in {
     ./dunst
     ./polybar
     ./waybar
-    ./rofi
-    ./wofi
     ./swaylock
     ./picom
     ./mailspring
     ./wlogout
     ./mako
+    ./launchers
   ];
 
   home.packages = with pkgs;
