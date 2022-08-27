@@ -1,9 +1,7 @@
 { config, lib, pkgs, ... }:
 
-let
-  xsession = config.modules.desktop.sessions.x;
-in
-{
+let xsession = config.modules.desktop.sessions.x;
+in {
   imports = [
     ./dunst
     ./polybar
@@ -17,25 +15,25 @@ in
     ./mako
   ];
 
-  home.packages = with pkgs; [
-    slack
-    xfce.thunar
-    xarchiver
-    evince
-    (if xsession.enable then thunderbird else thunderbird-wayland)
-    pavucontrol
-    spotify
-    pdfarranger
-    gimp
-    betterlockscreen
-    teams
-    viewnior
-    inkscape
-    brightnessctl
-    gnupg
-    bitwarden
-    bitwarden-cli
-    cachix
-    discord
-  ] ++ (if xsession.enable then [ feh ] else [ ]);
+  home.packages = with pkgs;
+    [
+      slack
+      xfce.thunar
+      xarchiver
+      evince
+      (if xsession.enable then thunderbird else thunderbird-wayland)
+      pavucontrol
+      spotify
+      pdfarranger
+      gimp
+      teams
+      viewnior
+      inkscape
+      brightnessctl
+      gnupg
+      bitwarden
+      bitwarden-cli
+      cachix
+      discord
+    ] ++ (if xsession.enable then [ feh betterlockscreen ] else [ ]);
 }
