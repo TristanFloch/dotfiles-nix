@@ -27,6 +27,9 @@ in {
       theme = ./launcher.rasi;
     };
 
+    modules.desktop.apps.launchers.cmd =
+      "${pkgs.rofi}/bin/rofi -modi drun -show drun";
+
     home.file.".config/rofi/colors.rasi".source = ./colors.rasi;
     home.file.".config/rofi/powermenu.sh".source = ./powermenu.sh;
     home.file.".config/rofi/powermenu.rasi".source = ./powermenu.rasi;

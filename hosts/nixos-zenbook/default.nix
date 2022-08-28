@@ -14,6 +14,10 @@ let
 
   homeManagerOptions.modules = {
     editors.helix.enable = true;
+    # FIXME
+    # desktop.apps.launchers = {
+    #   rofi.enable = true;
+    # };
   };
 in {
   imports = [ ./hardware-configuration.nix ../configuration.nix ../home.nix ];

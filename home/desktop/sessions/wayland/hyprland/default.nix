@@ -36,7 +36,11 @@ in {
       enable = true;
       systemdIntegration = true;
       xwayland = true;
-      extraConfig = builtins.readFile ./hyprland.conf;
+      # extraConfig = builtins.readFile ./hyprland.conf;
+      extraConfig = ''
+        $LAUNCHER = ${config.modules.desktop.apps.launchers.cmd}
+        ${(builtins.readFile ./hyprland.conf)};
+      '';
     };
   };
 }
