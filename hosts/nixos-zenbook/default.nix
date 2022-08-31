@@ -3,12 +3,8 @@
 let
   commonOptions = {
     modules.desktop.sessions = {
-      x.enable = false; # defaults to i3 + polybar
-      wayland = {
-        enable = true;
-        sway.enable = false;
-        hyprland.enable = true;
-      };
+      x.enable = true; # defaults to i3 + polybar
+      wayland.enable = false; # defaults to sway + waybar
     };
   };
 
