@@ -11,6 +11,6 @@ in {
   config = mkIf (wayland.enable && wofi.enable) {
     home.packages = with pkgs; [ wofi ];
 
-    home.file.".config/wofi/style.css".source = ./style.css;
+    xdg.configFile."wofi/style.css".source = ./style.css;
   };
 }
