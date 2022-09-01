@@ -85,7 +85,7 @@ in
           in
           lib.mkOptionDefault {
             "${mod}+Shift+q" = "kill";
-            "${mod}+d" = "exec rofi -show drun";
+            "${mod}+d" = "exec ${config.modules.desktop.apps.launchers.cmd}";
             "${mod}+Shift+e" = "exec ~/.config/rofi/powermenu.sh";
 
             "${mod}+n" = "border normal";

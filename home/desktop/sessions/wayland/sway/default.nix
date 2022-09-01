@@ -21,7 +21,7 @@ in {
       config = let
         swaylock = "${pkgs.swaylock}/bin/swaylock";
         swaymsg = "${pkgs.sway}/bin/swaymsg";
-        drun = "${pkgs.rofi}/bin/rofi -modi drun -show drun";
+        drun = config.modules.desktop.apps.launchers.cmd;
       in rec {
         modifier = "Mod4";
         bars = [ ]; # waybar is started by systemd
