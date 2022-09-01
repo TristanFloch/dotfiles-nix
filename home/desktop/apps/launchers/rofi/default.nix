@@ -2,11 +2,12 @@
 
 let
   inherit (lib) mkEnableOption mkIf;
+  xsession = config.modules.desktop.sessions.x;
   cfg = config.modules.desktop.apps.launchers.rofi;
 in {
   options.modules.desktop.apps.launchers.rofi.enable =
     (mkEnableOption "Rofi launcher") // {
-      default = true;
+      default = xsession.enable;
     };
 
   config = mkIf cfg.enable {
