@@ -36,9 +36,14 @@ in {
   };
 
   # Use the systemd-boot EFI boot loader.
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
-
+  boot.loader = {
+    systemd-boot = {
+      enable = true;
+      configurationLimit = 7;
+    };
+    efi.canTouchEfiVariables = true;
+    timeout = 5;
+  };
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
   networking.networkmanager.enable = true;
   programs.nm-applet.enable = true;
