@@ -101,14 +101,12 @@ in {
     shell = pkgs.fish;
   };
 
-  # virtualisation.docker.enable = true;
-
   nixpkgs.config.allowUnfree = true;
 
   environment.systemPackages = with pkgs; [
     vim
     wget
-    (if wayland.enable then firefox-wayland else firefox) # docker
+    (if wayland.enable then firefox-wayland else firefox)
   ];
 
   # Some programs need SUID wrappers, can be configured further or are

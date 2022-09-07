@@ -1,5 +1,5 @@
 { config, lib, pkgs, ... }:
 
 {
-  imports = [ ./desktop ];
+  imports = [ ./desktop ./services ];
 }
