@@ -5,9 +5,9 @@
   xdg = {
     enable = true;
     configFile."nixpkgs/config.nix".text = ''
-    {
-      allowUnfree = true;
-    }
+      {
+        allowUnfree = true;
+      }
     '';
     mimeApps = {
       enable = true;
@@ -49,7 +49,11 @@
         "application/x-extension-xhtml" = [ "firefox.desktop" ];
         "application/x-extension-xht" = [ "firefox.desktop" ];
         "application/zip" = [ "userapp-unzip-YDGVG1.desktop" ];
-        "application/pdf" = [ "userapp-evince-FZ2CH1.desktop" ];
+        "application/pdf" = [
+          "userapp-evince-FZ2CH1.desktop"
+          "userapp-evince-XX4BS1.desktop"
+          "userapp-evince-QMLES1.desktop"
+        ];
         "image/png" = [ "feh.desktop" "org.xfce.ristretto.desktop" ];
         "image/jpeg" = [ "viewnior.desktop" ];
         "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" =
