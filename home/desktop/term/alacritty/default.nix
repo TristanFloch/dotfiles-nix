@@ -4,8 +4,16 @@
     settings = {
       font = {
         normal = {
-          family = "Source Code Pro";
-          style = "medium";
+          family = "alacritty";
+          style = "Regular";
+        };
+        bold = {
+          family = "alacritty";
+          style = "Bold";
+        };
+        italic = {
+          family = "alacritty";
+          style = "Italic";
         };
         size = 13.3;
         offset = { x = 0; y = 0; };

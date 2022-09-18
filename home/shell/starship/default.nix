@@ -9,7 +9,7 @@
 
       nix_shell = {
         format = "via [$symbol( $name)$state]($style) ";
-        impure_msg = " \\(\\)";
+        impure_msg = " ";
         pure_msg = "";
         symbol = "❄ ";
       };
@@ -28,8 +28,11 @@
         style_user = "bold #bd93f9";
       };
       character = {
-        success_symbol = "[➜](bold #f8f8f2)";
-        error_symbol = "[❯](bold #ff5555)";
+        success_symbol = "👉";# 🚀
+        error_symbol = "💥";
+      };
+      directory = {
+        home_symbol = " ⛺";
       };
     };
   };
