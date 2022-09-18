@@ -1,6 +1,8 @@
-{ config, lib, pkgs, ... }:
+{ inputs, config, lib, pkgs, ... }:
 
-let xsession = config.modules.desktop.sessions.x;
+let
+  xsession = config.modules.desktop.sessions.x;
+  webcord = inputs.webcord.packages.${pkgs.system}.default;
 in {
   imports = [
     ./dunst
@@ -20,7 +22,6 @@ in {
       xfce.thunar
       xarchiver
       evince
-      (if xsession.enable then thunderbird else thunderbird-wayland)
       pavucontrol
       spotify
       pdfarranger
@@ -33,6 +34,13 @@ in {
       bitwarden
       bitwarden-cli
       cachix
+    ] ++ (if xsession.enable then [
+      feh
+      betterlockscreen
+      thunderbird
       discord
-    ] ++ (if xsession.enable then [ feh betterlockscreen ] else [ ]);
+    ] else [
+      thunderbird-wayland
+      webcord
+    ]);
 }

@@ -18,9 +18,11 @@ in {
       warn-dirty = false;
       substituters = [
         "https://nix-community.cachix.org/"
+        "https://webcord.cachix.org"
       ];
       trusted-public-keys = [
         "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
+        "webcord.cachix.org-1:l555jqOZGHd2C9+vS8ccdh8FhqnGe8L78QrHNn+EFEs="
       ];
       trusted-users = [ "root" "@wheel" ];
     };
