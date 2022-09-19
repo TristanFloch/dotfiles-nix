@@ -20,6 +20,8 @@
       ls = "exa $argv";
       cat = "bat $argv";
       ccat = "${pkgs.coreutils}/bin/cat $argv";
+      tree = "exa --tree $argv";
+      ttree = "${pkgs.tree}/bin/tree $argv";
       ex = {
         body = builtins.readFile ./functions/ex.fish;
         description = "extracts any archive format";
