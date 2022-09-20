@@ -42,5 +42,6 @@ in {
     ] else [
       thunderbird-wayland
       webcord
+      wl-clipboard
     ]);
 }
