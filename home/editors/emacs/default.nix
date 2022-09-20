@@ -27,8 +27,6 @@ in {
     python3Full
   ];
 
-  services.gpg-agent.pinentryFlavor = "emacs";
-
   xdg.desktopEntries = let
     commonOptions = {
       genericName = "Text Editor";
