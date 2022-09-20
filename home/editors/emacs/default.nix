@@ -52,9 +52,6 @@ in {
       ];
       categories = [ "Development" "TextEditor" ];
       terminal = false;
-      # settings = {
-      #   StartupWmClass = "Emacs"; # FIXME
-      # };
     };
   in {
     doom-emacs = {
