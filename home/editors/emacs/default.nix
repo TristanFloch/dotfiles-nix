@@ -2,17 +2,10 @@
 
 let
   wayland = config.modules.desktop.sessions.wayland;
-
-  flavor =
+  myEmacs =
     if wayland.enable then pkgs.emacsPgtkNativeComp else pkgs.emacsNativeComp;
-  myEmacsWithPkgs = (pkgs.emacsPackagesFor flavor).emacsWithPackages
+  myEmacsWithPkgs = (pkgs.emacsPackagesFor myEmacs).emacsWithPackages
     (epkgs: with epkgs; [ vterm ]);
-
-  # myLatex = (pkgs.texlive.combine {
-  #   inherit (pkgs.texlive) scheme-basic
-  #     dvisvgm dvipng # for preview and export as html
-  #     wrapfig amsmath ulem hyperref capt-of;
-  # });
 in {
   programs.emacs = {
     enable = true;
@@ -32,10 +25,6 @@ in {
     xclip
     fd
     python3Full
-    (python38.withPackages(ps: with ps; [jupyter]))
-    shfmt
-    # myLatex
-    texlive.combined.scheme-medium
   ];
 
   xdg.desktopEntries = let
