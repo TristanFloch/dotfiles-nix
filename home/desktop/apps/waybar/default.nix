@@ -53,9 +53,11 @@ in {
               "custom/clock-icon"
               "clock"
               "keyboard-state"
-              "custom/spotify"
-              "custom/spotify-prev"
-              "custom/spotify-next"
+
+              # FIXME
+              # "custom/spotify"
+              # "custom/spotify-prev"
+              # "custom/spotify-next"
             ] ++ (if sway.enable then [ "sway/mode" ] else [ ]);
           modules-center =
             if sway.enable then [ "sway/workspaces" ] else [ "wlr/workspaces" ];
