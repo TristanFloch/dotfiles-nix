@@ -3,6 +3,13 @@
 let
   xsession = config.modules.desktop.sessions.x;
   webcord = inputs.webcord.packages.${pkgs.system}.default;
+  myThunar = pkgs.xfce.thunar.override {
+    thunarPlugins = with pkgs.xfce; [
+      thunar-volman
+      thunar-archive-plugin
+      thunar-media-tags-plugin
+    ];
+  };
 in {
   imports = [
     ./dunst
@@ -18,8 +25,8 @@ in {
 
   home.packages = with pkgs;
     [
+      myThunar
       slack
-      xfce.thunar
       xarchiver
       evince
       pavucontrol
