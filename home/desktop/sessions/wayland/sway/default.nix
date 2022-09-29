@@ -21,6 +21,10 @@ in {
       config = let
         swaylock = "${pkgs.swaylock}/bin/swaylock";
         swaymsg = "${pkgs.sway}/bin/swaymsg";
+        grim = "${pkgs.grim}/bin/grim";
+        jq = "${pkgs.jq}/bin/jq";
+        slurp = "${pkgs.slurp}/bin/slurp";
+        wl-copy = "${pkgs.wl-clipboard}/bin/wl-copy";
         drun = config.modules.desktop.apps.launchers.cmd;
       in rec {
         modifier = "Mod4";
@@ -146,6 +150,7 @@ in {
           alt = "Mod1";
         in lib.mkOptionDefault {
           "${mod}+Shift+q" = "kill";
+          "${mod}+Shift+r" = "reload";
           "${mod}+Return" = "exec ${pkgs.alacritty}/bin/alacritty";
           "${mod}+d" = "exec ${drun}";
           "${mod}+Shift+e" = "exec ${pkgs.wlogout}/bin/wlogout --buttons-per-row 6 --column-spacing 40";
@@ -209,8 +214,12 @@ in {
           "${mod}+F2" = "exec firefox";
           "${mod}+F3" = "exec thunar";
           "${mod}+F4" = "exec pavucontrol";
+
+          "Print" = "exec ${grim} -g \"$(${swaymsg} -t get_tree | ${jq} -j '.. | select(.type?) | select(.focused).rect | \"\(.x),\(.y) \(.width)x\(.height)\"')\""; # FIXME
+          "${mod}+Shift+s" = "exec ${grim} -g \"$(${slurp})\" - | ${wl-copy}";
         };
       };
+
       extraConfig = ''
         set $ws1 1
         set $ws2 2
