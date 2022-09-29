@@ -10,6 +10,17 @@ let
       thunar-media-tags-plugin
     ];
   };
+
+  # Pick a display to mirror using wl-mirror and slurp
+  wl-mirror-pick = pkgs.writeShellApplication {
+    name = "wl-mirror-pick";
+    runtimeInputs = with pkgs; [ slurp wl-mirror ];
+    text = # bash
+      ''
+        output=$(slurp -f "%o" -o)
+        wl-mirror "$output"
+      '';
+  };
 in {
   imports = [
     ./dunst
@@ -50,6 +61,8 @@ in {
       thunderbird-wayland
       webcord
       wl-clipboard
+      wl-mirror
+      wl-mirror-pick
       chromium
     ]);
 }
