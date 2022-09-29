@@ -43,5 +43,6 @@ in {
       thunderbird-wayland
       webcord
       wl-clipboard
+      chromium
     ]);
 }
