@@ -8,6 +8,12 @@ let
   };
   myEmacsWithPkgs = (pkgs.emacsPackagesFor myEmacs).emacsWithPackages
     (epkgs: with epkgs; [ vterm ]);
+  myTex = (pkgs.texlive.combine {
+    inherit (pkgs.texlive)
+      scheme-medium dvisvgm dvipng wrapfig
+      capt-of # amsmath ulem hyperref  latexmk
+    ;
+  });
 in {
   programs.emacs = {
     enable = true;
@@ -27,6 +33,7 @@ in {
     xclip
     fd
     python3Full
+    myTex
   ];
 
   xdg.desktopEntries = let
