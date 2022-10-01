@@ -11,10 +11,12 @@ in
     // { default = xsession.enable; };
 
   config = mkIf cfg.enable {
-    xsession.windowManager.i3 = rec {
+    xsession.windowManager.i3 = {
       enable = true;
       package = pkgs.i3-gaps;
-      config = {
+      config = let
+        drun = config.modules.desktop.apps.launchers.cmd;
+      in rec {
         modifier = "Mod4";
         bars = [ ];
         terminal = "${pkgs.alacritty}/bin/alacritty";
@@ -81,11 +83,11 @@ in
 
         keybindings =
           let
-            mod = config.modifier;
+            mod = modifier;
           in
           lib.mkOptionDefault {
             "${mod}+Shift+q" = "kill";
-            "${mod}+d" = "exec ${config.modules.desktop.apps.launchers.cmd}";
+            "${mod}+d" = "exec ${drun}";
             "${mod}+Shift+e" = "exec ~/.config/rofi/powermenu.sh";
 
             "${mod}+n" = "border normal";
