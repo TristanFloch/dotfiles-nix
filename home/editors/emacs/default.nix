@@ -33,6 +33,8 @@ in {
     xclip
     fd
     python3Full
+    python-language-server
+    poetry
     myTex
   ];
 
