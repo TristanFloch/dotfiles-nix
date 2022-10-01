@@ -63,8 +63,8 @@ in {
       wl-clipboard
       wl-mirror
       wl-mirror-pick
+      wf-recorder
       slurp
       grim
-      chromium
     ]);
 }
