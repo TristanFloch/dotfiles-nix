@@ -6,8 +6,8 @@ let
       x.enable = false; # defaults to i3 + polybar
       wayland = {
         enable = true;
-        sway.enable = false;
-        hyprland.enable = true;
+        sway.enable = true;
+        hyprland.enable = false;
       };
     };
   };
