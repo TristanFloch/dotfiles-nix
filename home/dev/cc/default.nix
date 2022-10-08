@@ -9,4 +9,6 @@ pkgs.mkShell {
     gdb
     bear
   ];
+
+  shellHook = "fish";
 }

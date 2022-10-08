@@ -4,4 +4,6 @@ pkgs.mkShell {
   nativeBuildInputs = with pkgs; [
     texlive.combined.scheme-full
   ];
+
+  shellHook = "fish";
 }

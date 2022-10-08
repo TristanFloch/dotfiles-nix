@@ -5,4 +5,6 @@ pkgs.mkShell {
     python3Full
     python-language-server
   ];
+
+  shellHook = "fish";
 }
