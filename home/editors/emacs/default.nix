@@ -80,6 +80,12 @@ in {
       exec = "emacs --with-profile gnu";
       icon = "emacs";
     } // commonOptions;
+
+    emacs-minimal = {
+      name = "Emacs (Minimal)";
+      exec = "emacs --with-profile minimal";
+      icon = "emacs";
+    } // commonOptions;
   };
 
   home.file.".icons/doom.png".source = ./doom.png;
