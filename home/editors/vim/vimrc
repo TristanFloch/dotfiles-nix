@@ -1,10 +1,9 @@
 filetype on
+syntax on
 set background=dark
 set showmatch
 set mouse=a
 set nu rnu
-set ttymouse=sgr " mouse in alacritty
-set list " end of line $ char
 set scrolloff=10
 set smarttab
 set showmode
@@ -15,10 +14,14 @@ set linebreak
 set expandtab
 set autoindent
 set smartindent
-filetype indent on
 set smarttab
 set incsearch
 set smartcase
+set tabstop=8
+set shiftwidth=4
+set list
+set listchars=tab:»\ ,trail:·
+set ttymouse=sgr
 
 let g:lightline = { 'colorscheme': 'dracula' }
 let g:fzf_colors =
