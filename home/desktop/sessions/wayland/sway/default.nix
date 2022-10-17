@@ -125,7 +125,11 @@ in {
         assigns = {
           "2" = [{ app_id = "firefox"; }];
           "5" = [{ class = "VirtualBox Machine"; }]; # FIXME
-          "6" = [ { class = "discord"; } { class = "Slack"; } ];
+          "6" = [
+            { class = "discord"; }
+            { class = "WebCord"; }
+            { class = "Slack"; }
+          ];
           "7" = [{ app_id = "thunderbird"; }];
           "8" = [{ class = "Spotify"; }]; # FIXME
         };
