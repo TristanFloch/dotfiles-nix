@@ -41,7 +41,7 @@
             foreground = "0x44475a";
             background = "0xffb86c";
           };
-          bar = {
+          footer_bar = {
             background = "0x282a36";
             foreground = "0xf8f8f2";
           };
