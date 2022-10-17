@@ -1,0 +1,42 @@
+#!/usr/bin/env python
+
+import subprocess
+import argparse
+import pathlib
+
+def parserCreate() -> argparse.ArgumentParser:
+    p = argparse.ArgumentParser()
+    p.add_argument('rebuild', choices=['switch', 'test', 'boot', 'build'])
+    p.add_argument('--show-trace', action='store_true')
+    return p
+
+def findFlakeDir() -> pathlib.PurePath:
+    p = pathlib.Path('~/.config/nixpkgs')
+    return p.expanduser()
+
+def sexyPrintCmd(cmd: str):
+    bold = '\033[;1m'
+    italic = '\033[;3m'
+    normal = '\033[0m'
+    print(f'{italic}Runnning command:{normal} {bold}{cmd}{normal}\n')
+
+def main():
+    p = parserCreate()
+    args = p.parse_args()
+
+    if not args.rebuild:
+        p.print_help()
+        return
+
+    cmd = ['nixos-rebuild', args.rebuild, '--flake', '.#' ]
+    if args.rebuild in [ 'switch', 'test', 'boot' ]:
+        cmd = ['sudo'] + cmd;
+    if args.show_trace:
+        cmd.append('--show-trace')
+
+    sexyPrintCmd(subprocess.list2cmdline(cmd))
+    path = findFlakeDir()
+    subprocess.run(cmd, cwd=path)
+
+if __name__ == '__main__':
+    main()

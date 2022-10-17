@@ -1,12 +1,7 @@
 { config, lib, pkgs, ... }:
 
 {
-  imports = [
-    ./bat
-    ./direnv
-    ./fish
-    ./starship
-  ];
+  imports = [ ./bat ./direnv ./fish ./starship ];
 
   home.packages = with pkgs; [
     exa

@@ -63,5 +63,7 @@
       };
 
       devShells.${system} = import ./home/dev { inherit pkgs; };
+
+      packages.${system} = import ./pkgs { inherit pkgs; };
     };
 }
