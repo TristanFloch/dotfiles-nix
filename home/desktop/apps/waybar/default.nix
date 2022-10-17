@@ -53,11 +53,9 @@ in {
               "custom/clock-icon"
               "clock"
               "keyboard-state"
-
-              # FIXME
-              # "custom/spotify"
-              # "custom/spotify-prev"
-              # "custom/spotify-next"
+              "custom/spotify"
+              "custom/spotify-prev"
+              "custom/spotify-next"
             ] ++ (if sway.enable then [ "sway/mode" ] else [ ]);
           modules-center =
             if sway.enable then [ "sway/workspaces" ] else [ "wlr/workspaces" ];
@@ -275,7 +273,7 @@ in {
           };
 
           "custom/spotify" =
-            let mediaPlayer = pkgs.callPackage ./scripts/mediaplayer.nix { };
+            let mediaPlayer = pkgs.callPackage ./scripts/mediaplayer { };
             in {
               format = "${icon "" "#1DB954" 13}   {}";
               max-length = 35;

@@ -6,20 +6,17 @@ buildPythonApplication {
   pname = "waybar-mediaplayer";
   version = "1.0";
 
-  nativeBuildInputs = with pkgs; [
-    wrapGAppsHook
-    gobject-introspection
-  ];
+  nativeBuildInputs = with pkgs; [ wrapGAppsHook gobject-introspection ];
 
   propagatedBuildInputs = with pkgs; [
     playerctl
     glib
     python3
-    python39Packages.setuptoolsBuildHook
-    python39Packages.pygobject3
-    python39Packages.pip
+    python310Packages.setuptoolsBuildHook
+    python310Packages.pygobject3
+    python310Packages.pip
   ];
   strictDeps = false;
 
-  src = ./mediaplayer;
+  src = ./.;
 }
