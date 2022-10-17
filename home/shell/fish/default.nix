@@ -30,10 +30,6 @@
         body = builtins.readFile ./functions/monitor.fish;
         description = "connects/disconnects pluged/unpluged monitors";
       };
-      config = {
-        body = builtins.readFile ./functions/config.fish;
-        description = "shorthands for nixos-rebuild options";
-      };
     };
   };
 
