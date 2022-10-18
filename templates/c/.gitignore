@@ -1,0 +1,10 @@
+result
+build
+.direnv
+.envrc
+.clang-format
+
+*.o
+*.a
+*.pdf
+a.out
