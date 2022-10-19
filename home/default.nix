@@ -10,4 +10,6 @@
     ./shell
     ./themes
   ];
+
+  home.enableNixpkgsReleaseCheck = true;
 }
