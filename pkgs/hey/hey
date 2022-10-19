@@ -28,7 +28,7 @@ def main():
         p.print_help()
         return
 
-    cmd = ['nixos-rebuild', args.rebuild, '--flake', '.#' ]
+    cmd = ['nixos-rebuild', args.rebuild, '-j6', '--flake', '.#' ]
     if args.rebuild in [ 'switch', 'test', 'boot' ]:
         cmd = ['sudo'] + cmd;
     if args.show_trace:
