@@ -6,20 +6,18 @@
 let wayland = config.modules.desktop.sessions.wayland;
 in {
   nix = {
-    package = pkgs.nixFlakes;
+    package = pkgs.nix;
     gc = {
       automatic = true;
       options = "--delete-older-than 7d";
       dates = "monthly";
     };
     settings = {
-      experimental-features = "nix-command flakes";
+      experimental-features = [ "nix-command" "flakes" "repl-flake" ];
       auto-optimise-store = true;
       warn-dirty = false;
-      substituters = [
-        "https://nix-community.cachix.org/"
-        "https://webcord.cachix.org"
-      ];
+      substituters =
+        [ "https://nix-community.cachix.org/" "https://webcord.cachix.org" ];
       trusted-public-keys = [
         "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
         "webcord.cachix.org-1:l555jqOZGHd2C9+vS8ccdh8FhqnGe8L78QrHNn+EFEs="
@@ -33,7 +31,8 @@ in {
 
     # Map registries to channels
     # Very useful when using legacy commands
-    nixPath = lib.mapAttrsToList (key: value: "${key}=${value.to.path}") config.nix.registry;
+    nixPath = lib.mapAttrsToList (key: value: "${key}=${value.to.path}")
+      config.nix.registry;
   };
 
   # Use the systemd-boot EFI boot loader.
