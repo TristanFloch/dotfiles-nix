@@ -18,6 +18,7 @@
 
     functions = {
       ls = "exa $argv";
+      lls = "${pkgs.coreutils}/bin/ls $argv";
       cat = "bat $argv";
       ccat = "${pkgs.coreutils}/bin/cat $argv";
       tree = "exa --tree $argv";
