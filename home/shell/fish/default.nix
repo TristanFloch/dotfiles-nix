@@ -12,7 +12,9 @@
 
     shellAbbrs = { } // import ./gitAbbrs.nix;
 
-    shellAliases = { nix-shell = "nix-shell --run fish"; };
+    shellAliases = {
+      # nix-shell = "nix-shell --run fish";
+    };
 
     plugins = import ./plugins.nix pkgs;
 
