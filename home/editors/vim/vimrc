@@ -23,6 +23,8 @@ set list
 set listchars=tab:»\ ,trail:·
 set ttymouse=sgr
 
+autocmd FileType ada setlocal shiftwidth=3
+
 let g:lightline = { 'colorscheme': 'dracula' }
 let g:fzf_colors =
 \ { 'border':  ['fg', 'Comment'],
@@ -49,7 +51,7 @@ nnoremap <leader>ss :BLines<CR>
 nnoremap <leader>sp :Rg<CR>
 nnoremap <leader>ps :wa<CR>
 nnoremap <leader>w <C-w>
-nnoremap <leader>bk :q<CR>
+nnoremap <leader>bk :bdelete<CR>
 nnoremap <leader>bK :qa<CR>
 nnoremap <leader>` <C-^>
 
