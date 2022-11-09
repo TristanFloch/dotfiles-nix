@@ -14,6 +14,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    emacs-overlay = {
+      url = "github:nix-community/emacs-overlay";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     webcord = {
       url = "github:fufexan/webcord-flake";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -33,6 +38,7 @@
         };
 
         hyprland = inputs.hyprland.overlays.default;
+        emacs = inputs.emacs-overlay.overlays.default;
       };
 
       nixosModules = {

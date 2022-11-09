@@ -2,10 +2,8 @@
 
 let
   wayland = config.modules.desktop.sessions.wayland;
-  myEmacs = pkgs.emacs.override {
-    nativeComp = true;
-    withPgtk = wayland.enable;
-  };
+  myEmacs =
+    if wayland.enable then pkgs.emacsPgtkNativeComp else pkgs.emacsNativeComp;
   myEmacsWithPkgs = (pkgs.emacsPackagesFor myEmacs).emacsWithPackages
     (epkgs: with epkgs; [ vterm ]);
   myTex = (pkgs.texlive.combine {

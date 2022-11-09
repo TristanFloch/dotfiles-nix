@@ -50,39 +50,27 @@ in {
             ++ (if sway.enable then [ "sway/window" ] else [ "wlr/taskbar" ])
             ++ [
               "custom/scratchpads"
-              "custom/clock-icon"
               "clock"
               "keyboard-state"
-              "custom/spotify"
               "custom/spotify-prev"
               "custom/spotify-next"
+              "custom/spotify"
             ] ++ (if sway.enable then [ "sway/mode" ] else [ ]);
           modules-center =
             if sway.enable then [ "sway/workspaces" ] else [ "wlr/workspaces" ];
           modules-right = [
             "backlight"
             "pulseaudio"
-            "custom/cpu-icon"
             "cpu"
-            "custom/memory-icon"
             "memory"
-            "custom/disk-icon"
             "disk"
-            "custom/temperature-icon"
             "temperature"
             "battery"
             "tray"
           ];
 
-          "custom/window-icon" = rec {
-            format = "";
-            tooltip = false;
-            on-click = "${appLauncher}";
-            on-click-right = on-click;
-          };
-
           "sway/window" = rec {
-            format = "{}"; # TODO
+            format = "${icon "" "#bd93f9" 13}    {}"; # TODO
             max-length = 30;
             on-click = "${appLauncher}";
             on-click-right = on-click;
@@ -95,10 +83,7 @@ in {
             on-click = "activate";
             on-click-middle = "close";
             all-outputs = true;
-            ignore-list = [
-              "Rofi"
-              "Alacritty"
-            ];
+            ignore-list = [ "Rofi" "Alacritty" ];
           };
 
           "sway/workspaces" = module-workspaces // {
@@ -125,34 +110,20 @@ in {
             full-at = 80;
           };
 
-          "custom/clock-icon" = {
-            format = "";
-            tooltip = false;
-          };
-
           "clock" = {
-            format = "{:%d/%m - %H:%M}";
-            format-alt = "{:%a, %d. %b %Y - %H:%M:%S}";
-          };
-
-          "custom/cpu-icon" = {
-            format = "";
-            tooltip = false;
+            format = "${icon "" "#6272a4" 13}     {:%d/%m - %H:%M}";
+            format-alt =
+              "${icon "" "#6272a4" 13}     {:%a, %d. %b %Y - %H:%M:%S}";
           };
 
           "cpu" = {
-            format = "{usage}%";
+            format = "${icon "" "#8be9fd" 13}    {usage}%";
             on-click-right =
               "${pkgs.alacritty}/bin/alacritty -e ${pkgs.htop}/bin/htop";
           };
 
-          "custom/memory-icon" = {
-            format = "力";
-            tooltip = false;
-          };
-
           "memory" = {
-            format = "{used:0.1f}GiB";
+            format = "${icon "力" "#ff79c6" 12}   {used:0.1f}GiB";
             tooltip-format = "{used:0.1f}GiB / {total:0.1f}GiB used";
             on-click-right =
               "${pkgs.alacritty}/bin/alacritty -e ${pkgs.htop}/bin/htop";
@@ -169,12 +140,8 @@ in {
             on-scroll-down = "${brightnessctl} -c backlight set 5%-";
           };
 
-          "custom/temperature-icon" = {
-            format = "";
-            tooltip = false;
-          };
-
           "temperature" = {
+            format = "${icon "" "#ff5555" 14}    {temperatureC}°C";
             critical-threshold = 80;
             tooltip = false;
           };
@@ -184,13 +151,8 @@ in {
             spacing = 10;
           };
 
-          "custom/disk-icon" = {
-            format = "";
-            tooltip = false;
-          };
-
           "disk" = {
-            format = "{free}";
+            format = "${icon "" "#6272a4" 14}   {free}";
             tooltip-format = "{used} out of {total} used ({percentage_used}%)";
           };
 
@@ -275,7 +237,7 @@ in {
           "custom/spotify" =
             let mediaPlayer = pkgs.callPackage ./scripts/mediaplayer { };
             in {
-              format = "${icon "" "#1DB954" 13}   {}";
+              format = "{}    ${icon "" "#1DB954" 13}";
               max-length = 35;
               exec = "${mediaPlayer}/bin/mediaplayer.py 2> /dev/null";
               exec-if = "${pgrep} spotify";

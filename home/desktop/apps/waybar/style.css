@@ -1,3 +1,11 @@
+label {
+    all: unset;
+}
+
+button {
+    all: unset;
+}
+
 window#waybar {
     background: transparent;
 }
@@ -92,18 +100,17 @@ window#waybar {
     font-family: Ubuntu Nerd Font;
     font-size: 13px;
     padding-right: 10px;
+    border-radius: 0px;
 }
 
 #temperature.critical {
     color: #ff5555;
 }
 
-#tray,
 #custom-spotify {
-    border-top-left-radius: 20px;
-    border-bottom-left-radius: 20px;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
     padding-left: 12px;
-    margin-left: 10px;
 }
 
 #custom-spotify {
@@ -126,15 +133,25 @@ window#waybar {
 #custom-spotify-prev {
     font-family: Ubuntu Nerd Font;
     font-size: 17px;
-    margin-bottom: 8px;
-    background-color: #1e2029;
+    margin-bottom: 7px;
+}
+
+#custom-spotify-prev {
+    margin-left: 10px;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+    padding: 4px;
     color: #f8f8f2;
-    padding-right: 10px;
+    background-color: #1e2029;
 }
 
 #custom-spotify-next {
-    border-top-right-radius: 20px;
-    border-bottom-right-radius: 20px;
+    padding: 4px;
+    background-color: #1DB954;
+    color: #1e2029;
+    border-radius: 0px;
 }
 
 #battery,
@@ -152,6 +169,7 @@ window#waybar {
 }
 
 #battery,
+#window,
 #pulseaudio {
     padding-left: 12px;
 }
@@ -177,50 +195,22 @@ window#waybar {
     border-radius: 20px;
 }
 
-#custom-window-icon,
-#custom-cpu-icon,
-#custom-memory-icon,
-#custom-temperature-icon,
-#custom-clock-icon,
-#custom-disk-icon {
-    font-family: Ubuntu Nerd Font;
-    font-size: 17px;
-    padding-left: 12px;
-    padding-right: 10px;
-    margin-bottom: 8px;
-    background-color: #1e2029;
-}
-
-#custom-window-icon {
-    color: #bd93f9;
-}
-
-#custom-memory-icon {
-    color: #ff79c6;
-}
-
-#custom-disk-icon {
-    color: #6272a4;
-}
-
-#custom-clock-icon,
-#custom-cpu-icon,
-#custom-temperature-icon {
+#clock,
+#cpu,
+#temperature {
     border-top-left-radius: 20px;
     border-bottom-left-radius: 20px;
+    padding-left: 12px;
     margin-left: 10px;
-}
-
-#custom-clock-icon {
-    color: #6272a4;
-}
-
-#custom-cpu-icon {
-    color: #8be9fd;
 }
 
 #custom-temperature-icon {
     color: #ff5555;
+}
+
+#memory,
+#disk {
+    padding-left: 10px;
 }
 
 #custom-scratchpads {
@@ -236,12 +226,22 @@ window#waybar {
 
 #custom-scratchpads.none {
     background-color: #6272a4;
+    color: #1e2029;
 }
 
 #custom-scratchpads.one, #custom-scratchpads.many {
     background-color: #bd93f9;
+    color: #1e2029;
 }
 
 #custom-scratchpads.unknown {
     background-color: #ffb86c;
+    color: #1e2029;
+}
+
+#tray {
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    margin-left: 10px;
+    padding-left: 12px;
 }
