@@ -4,13 +4,30 @@ let
   inherit (lib) optionals;
   wayland = config.modules.desktop.sessions.wayland;
   sway = wayland.sway;
+  available-themes = {
+    dracula.colors = {
+      background-dark = "#1e2029";
+      background = "#282a36";
+      foreground = "#f8f8f2";
+      comment = "#6272a4";
+      cyan = "#8be9fd";
+      green = "#50fa7b";
+      orange = "#ffb86c";
+      pink = "#ff79c6";
+      purple = "#bd93f9";
+      red = "#ff5555";
+      yellow = "#f1fa8c";
+      black = "#000000";
+    };
+  };
+  colors = available-themes.${config.home.theme.name}.colors;
 in {
   config = lib.mkIf wayland.enable {
     programs.waybar = {
       enable = true;
       package = if sway.enable then pkgs.waybar else pkgs.waybar-hyprland;
       systemd.enable = sway.enable;
-      style = ./style.css;
+      style = import ./style.nix { inherit colors; };
       settings = let
         icon = symbol: color: size:
           "<span font_desc='Ubuntu Nerd Font ${
@@ -70,7 +87,7 @@ in {
           ];
 
           "sway/window" = rec {
-            format = "${icon "" "#bd93f9" 13}    {}"; # TODO
+            format = "${icon "" colors.purple 13}    {}"; # TODO
             max-length = 30;
             on-click = "${appLauncher}";
             on-click-right = on-click;
@@ -99,31 +116,31 @@ in {
             };
             format = "{icon}     {capacity}%";
             format-time = "{H}h {M}min";
-            format-charging = "${icon "" "#50fa7b" 10}     {capacity}%";
+            format-charging = "${icon "" colors.green 10}     {capacity}%";
             format-icons = [
-              (icon "" "#ff5555" 10)
-              (icon "" "#ffb86c" 10)
-              (icon "" "#f1fa8c" 10)
-              (icon "" "#f1fa8c" 10)
-              (icon "" "#50fa7b" 10)
+              (icon "" colors.red 10)
+              (icon "" colors.orange 10)
+              (icon "" colors.yellow 10)
+              (icon "" colors.yellow 10)
+              (icon "" colors.green 10)
             ];
             full-at = 80;
           };
 
           "clock" = {
-            format = "${icon "" "#6272a4" 13}     {:%d/%m - %H:%M}";
+            format = "${icon "" colors.comment 13}     {:%d/%m - %H:%M}";
             format-alt =
-              "${icon "" "#6272a4" 13}     {:%a, %d. %b %Y - %H:%M:%S}";
+              "${icon "" colors.comment 13}     {:%a, %d. %b %Y - %H:%M:%S}";
           };
 
           "cpu" = {
-            format = "${icon "" "#8be9fd" 13}    {usage}%";
+            format = "${icon "" colors.cyan 13}    {usage}%";
             on-click-right =
               "${pkgs.alacritty}/bin/alacritty -e ${pkgs.htop}/bin/htop";
           };
 
           "memory" = {
-            format = "${icon "力" "#ff79c6" 12}   {used:0.1f}GiB";
+            format = "${icon "力" colors.pink 12}   {used:0.1f}GiB";
             tooltip-format = "{used:0.1f}GiB / {total:0.1f}GiB used";
             on-click-right =
               "${pkgs.alacritty}/bin/alacritty -e ${pkgs.htop}/bin/htop";
@@ -132,16 +149,16 @@ in {
           "backlight" = {
             format = "{icon}    {percent}%";
             format-icons = [
-              (icon "" "#6272a4" 12)
-              (icon "" "#bd93f9" 12)
-              (icon "" "#8be9fd" 12)
+              (icon "" colors.comment 12)
+              (icon "" colors.purple 12)
+              (icon "" colors.cyan 12)
             ];
             on-scroll-up = "${brightnessctl} -c backlight set +5%";
             on-scroll-down = "${brightnessctl} -c backlight set 5%-";
           };
 
           "temperature" = {
-            format = "${icon "" "#ff5555" 14}    {temperatureC}°C";
+            format = "${icon "" colors.red 14}    {temperatureC}°C";
             critical-threshold = 80;
             tooltip = false;
           };
@@ -152,23 +169,23 @@ in {
           };
 
           "disk" = {
-            format = "${icon "" "#6272a4" 14}   {free}";
+            format = "${icon "" colors.comment 14}   {free}";
             tooltip-format = "{used} out of {total} used ({percentage_used}%)";
           };
 
           "pulseaudio" = let
             ramp = symbols:
               with lib; [
-                (icon (elemAt symbols 0) "#50fa7b" 12)
-                (icon (elemAt symbols 1) "#50fa7b" 12)
-                (icon (elemAt symbols 2) "#f1fa8c" 12)
-                (icon (elemAt symbols 3) "#ffb86c" 12)
-                (icon (elemAt symbols 4) "#ff5555" 12)
+                (icon (elemAt symbols 0) colors.green 12)
+                (icon (elemAt symbols 1) colors.green 12)
+                (icon (elemAt symbols 2) colors.yellow 12)
+                (icon (elemAt symbols 3) colors.orange 12)
+                (icon (elemAt symbols 4) colors.red 12)
               ];
           in {
             scroll-step = 5;
             format = "{icon}    {volume}%";
-            format-muted = "${icon "" "#6272a4" 12}    {volume}%";
+            format-muted = "${icon "" colors.comment 12}    {volume}%";
             # format-bluetooth =
             #   "{icon}    {volume}%   <span font_desc='Ubuntu Nerd Font 12' foreground='#ff79c6'></span>";
             # format-bluetooth-muted = "";

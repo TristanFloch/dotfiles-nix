@@ -11,11 +11,14 @@ in {
 
   config = mkIf cfg.enable {
     programs.mako = let
-      colors = {
-        background = "#1e2029";
-        text = "#f8f8f2";
-        urgent = "#f1fa8c";
+      available-themes = {
+        dracula.colors = {
+          background = "#1e2029";
+          text = "#f8f8f2";
+          urgent = "#f1fa8c";
+        };
       };
+      colors = available-themes.${config.home.theme.name}.colors;
     in {
       enable = true;
       anchor = "top-right";

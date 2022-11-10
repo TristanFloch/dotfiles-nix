@@ -10,9 +10,7 @@ let
       sha256 = "sha256-rcSKlgI3bxdh4INdebijKElqbmAfTwO+oEt6M2D1ls0=";
     };
 
-    propagatedUserEnvPkgs = with pkgs; [
-      gtk-engine-murrine
-    ];
+    propagatedUserEnvPkgs = with pkgs; [ gtk-engine-murrine ];
 
     installPhase = ''
       runHook preInstall
@@ -47,23 +45,26 @@ let
       runHook postInstall
     '';
   };
-in
-{
-  gtk = {
+in {
+  gtk = let
+    available-themes = rec {
+      dracula = {
+        main = {
+          name = "Dracula";
+          package = pkgs.dracula-theme;
+        };
+        icons = {
+          name = "Dracula";
+          package = dracula-icons-bis;
+          # name = "Tela-purple-dark";
+          # package = pkgs.tela-icon-theme;
+        };
+      };
+    };
+  in {
     enable = true;
-    theme = {
-      name = "Dracula";
-      package = pkgs.dracula-theme;
-    };
-
-    iconTheme = {
-      name = "Dracula";
-      package = dracula-icons-bis;
-
-      # name = "Tela-purple-dark";
-      # package = pkgs.tela-icon-theme;
-    };
-
+    theme = available-themes.${config.home.theme.name}.main;
+    iconTheme = available-themes.${config.home.theme.name}.icons;
     font = {
       name = "Ubuntu";
       size = 11;
