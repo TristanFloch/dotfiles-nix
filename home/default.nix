@@ -11,5 +11,4 @@
     ./themes
   ];
 
-  home.enableNixpkgsReleaseCheck = true;
 }
