@@ -22,7 +22,7 @@ let
 in {
   imports = [ ./hardware-configuration.nix ../configuration.nix ../home.nix ];
 
-  networking.hostName = "nixos-zenbook";
+  networking.hostName = "zenbook";
 
   # custom nixos options
   modules = commonOptions.modules // nixosOptions.modules;

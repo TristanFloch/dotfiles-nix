@@ -53,13 +53,13 @@
       };
 
       nixosConfigurations = {
-        nixos-zenbook = inputs.nixpkgs.lib.nixosSystem {
+        zenbook = inputs.nixpkgs.lib.nixosSystem {
           inherit system;
           modules = [
             inputs.home-manager.nixosModule
             inputs.hyprland.nixosModules.default
 
-            ./hosts/nixos-zenbook
+            ./hosts/zenbook
 
             { nixpkgs.overlays = attrValues overlays; }
           ] ++ attrValues nixosModules;
