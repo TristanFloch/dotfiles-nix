@@ -16,7 +16,10 @@
       # nix-shell = "nix-shell --run fish";
     };
 
-    plugins = import ./plugins.nix pkgs;
+    plugins = import ./plugins.nix {
+      inherit config;
+      inherit pkgs;
+    };
 
     functions = {
       ls = "exa $argv";

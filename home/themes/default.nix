@@ -3,7 +3,7 @@
 let
   inherit (lib) mkOption types;
   # TODO assert theme is available
-  available = {
+  available = rec {
     dracula.colors = {
       background-dark = "#1e2029";
       background = "#282a36";
@@ -16,8 +16,21 @@ let
       purple = "#bd93f9";
       red = "#ff5555";
       yellow = "#f1fa8c";
-      black = "#000000";
     };
+    catppuccin-mocha.colors = {
+      background-dark = "#1D1D2D";
+      background = "#1D1D2D";
+      foreground = "#CDD6F4";
+      comment = "#B4BEFE";
+      cyan = "#88B3F9";
+      green = "#A6E3A1";
+      orange = "#FAB387";
+      pink = "#F5C2E7";
+      purple = "#CBA6F7";
+      red = "#F38BA8";
+      yellow = "#F9E2AF";
+    };
+    catppuccin.colors = catppuccin-mocha.colors; # default
   };
 in {
   imports = [ ./gtk ./font ./qt ./cursor ];
@@ -37,6 +50,10 @@ in {
   };
 
   config = {
-    modules.theme.colors = available.${config.modules.theme.name}.colors;
+    modules.theme.colors = let
+      variant = config.modules.theme.variant;
+      avail-str = config.modules.theme.name
+        + lib.optionalString (variant != null) ("-" + variant);
+    in available.${avail-str}.colors;
   };
 }

@@ -1,18 +1,32 @@
-{ pkgs, ... }:
-[
+{ config, pkgs, ... }:
+
+let
+  themes = {
+    dracula = {
+      name = "dracula";
+      src = pkgs.fetchFromGitHub {
+        owner = "dracula";
+        repo = "fish";
+        rev = "28db361b55bb49dbfd7a679ebec9140be8c2d593";
+        sha256 = "07kz44ln75n4r04wyks1838nhmhr7jqmsc1rh7am7glq9ja9inmx";
+      };
+    };
+    catppuccin = {
+      name = "catppuccin";
+      src = pkgs.fetchFromGitHub {
+        owner = "catppuccin";
+        repo = "fish";
+        rev = "0fd0c48a844636c6082f633cc4f2800abb4b6413";
+        sha256 = "0q0vp6a8s42a2pwyp9d12bnl5gwyij0m8p22xc60x7bl8c3gbdhq";
+      };
+    };
+  };
+in builtins.attrValues themes# .${config.modules.theme.name}
+   ++ [
   {
     # FIXME
     name = "done";
     src = pkgs.fishPlugins.done;
-  }
-  {
-    name = "dracula";
-    src = pkgs.fetchFromGitHub {
-      owner = "dracula";
-      repo = "fish";
-      rev = "28db361b55bb49dbfd7a679ebec9140be8c2d593";
-      sha256 = "07kz44ln75n4r04wyks1838nhmhr7jqmsc1rh7am7glq9ja9inmx";
-    };
   }
   {
     name = "z";

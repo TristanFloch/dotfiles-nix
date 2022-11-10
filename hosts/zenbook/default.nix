@@ -13,6 +13,8 @@ let
   };
 
   homeManagerOptions.modules = {
+    theme.name = "catppuccin";
+    theme.variant = "mocha";
     editors.helix.enable = true;
   };
 

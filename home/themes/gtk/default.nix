@@ -60,6 +60,16 @@ in {
           # package = pkgs.tela-icon-theme;
         };
       };
+      catppuccin = {
+        main = {
+          name = "Catppuccin-Dark";
+          package = pkgs.catppuccin-gtk;
+        };
+        icons = {
+          name = "Tela-purple-dark";
+          package = pkgs.tela-icon-theme;
+        };
+      };
     };
   in {
     enable = true;
