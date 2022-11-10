@@ -63,8 +63,8 @@ in {
     };
   in {
     enable = true;
-    theme = available-themes.${config.home.theme.name}.main;
-    iconTheme = available-themes.${config.home.theme.name}.icons;
+    theme = available-themes.${config.modules.theme.name}.main;
+    iconTheme = available-themes.${config.modules.theme.name}.icons;
     font = {
       name = "Ubuntu";
       size = 11;

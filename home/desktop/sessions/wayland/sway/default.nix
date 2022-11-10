@@ -91,7 +91,7 @@ in {
           smartBorders = "on";
         };
 
-        colors = available-themes.${config.home.theme.name}.colors;
+        colors = available-themes.${config.modules.theme.name}.colors;
 
         modes = {
           resize = {
