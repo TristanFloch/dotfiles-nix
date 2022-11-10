@@ -5,7 +5,7 @@ let
   myEmacs =
     if wayland.enable then pkgs.emacsPgtkNativeComp else pkgs.emacsNativeComp;
   myEmacsWithPkgs = (pkgs.emacsPackagesFor myEmacs).emacsWithPackages
-    (epkgs: with epkgs; [ vterm ]);
+    (epkgs: with epkgs; [ vterm autothemer ]);
   myTex = (pkgs.texlive.combine {
     inherit (pkgs.texlive)
       scheme-medium dvisvgm dvipng wrapfig
