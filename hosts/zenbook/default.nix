@@ -13,8 +13,8 @@ let
   };
 
   homeManagerOptions.modules = {
-    theme.name = "catppuccin";
-    theme.variant = "mocha";
+    theme.name = "dracula";
+    theme.variant = null;
     editors.helix.enable = true;
   };
 
