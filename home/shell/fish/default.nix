@@ -36,6 +36,12 @@
         body = builtins.readFile ./functions/monitor.fish;
         description = "connects/disconnects pluged/unpluged monitors";
       };
+      fish_user_key_bindings = {
+        body = ''
+          fish_default_key_bindings -M insert
+          fish_vi_key_bindings --no-erase insert
+        '';
+      };
     };
   };
 
