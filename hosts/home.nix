@@ -2,11 +2,11 @@
 
 {
   home-manager.users.tristan = {
-    home = {
+    home = rec {
       # Home Manager needs a bit of information about you and the
       # paths it should manage.
       username = "tristan";
-      homeDirectory = "/home/tristan";
+      homeDirectory = "/home/${username}";
 
       enableNixpkgsReleaseCheck = true;
 

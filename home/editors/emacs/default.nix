@@ -12,7 +12,7 @@ let
       capt-of # amsmath ulem hyperref  latexmk
     ;
   });
-in {
+in rec {
   programs.emacs = {
     enable = true;
     package = myEmacsWithPkgs;
@@ -60,28 +60,30 @@ in {
       categories = [ "Development" "TextEditor" ];
       terminal = false;
     };
+    emacs = "${programs.emacs.package}/bin/emacs";
+    homeDir = "/home/tristan"; # TODO use ${home.homeDirectory instead}
   in {
     doom-emacs = {
       name = "Doom Emacs";
-      exec = "emacs --with-profile doom";
+      exec = "${emacs} --init-directory ${homeDir}/.emacs.d.doom";
       icon = "doom";
     } // commonOptions;
 
     nano-emacs = {
       name = "NANO Emacs";
-      exec = "emacs --with-profile nano";
+      exec = "${emacs} --init-directory ${homeDir}/.emacs.d.nano";
       icon = "emacs"; # TODO
     } // commonOptions;
 
     gnu-emacs = {
       name = "GNU Emacs";
-      exec = "emacs --with-profile gnu";
+      exec = "${emacs} --init-directory ${homeDir}/.emacs.d.gnu";
       icon = "emacs";
     } // commonOptions;
 
     emacs-minimal = {
       name = "Emacs (Minimal)";
-      exec = "emacs --with-profile minimal";
+      exec = "${emacs} --init-directory ${homeDir}/.emacs.d.minimal";
       icon = "emacs";
     } // commonOptions;
   };
