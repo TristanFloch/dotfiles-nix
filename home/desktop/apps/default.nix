@@ -52,6 +52,7 @@ in {
       bitwarden
       bitwarden-cli
       cachix
+      exfat
     ] ++ (if xsession.enable then [
       feh
       betterlockscreen
