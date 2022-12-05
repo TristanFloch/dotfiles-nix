@@ -2,8 +2,7 @@
 
 let
   wayland = config.modules.desktop.sessions.wayland;
-  myEmacs =
-    if wayland.enable then pkgs.emacsPgtkNativeComp else pkgs.emacsNativeComp;
+  myEmacs = if wayland.enable then pkgs.emacsPgtk else pkgs.emacs;
   myEmacsWithPkgs = (pkgs.emacsPackagesFor myEmacs).emacsWithPackages
     (epkgs: with epkgs; [ vterm autothemer ]);
   myTex = (pkgs.texlive.combine {
