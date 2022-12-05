@@ -6,7 +6,7 @@
 let wayland = config.modules.desktop.sessions.wayland;
 in {
   nix = {
-    package = pkgs.nix;
+    package = pkgs.nixUnstable;
     gc = {
       automatic = true;
       options = "--delete-older-than 7d";
