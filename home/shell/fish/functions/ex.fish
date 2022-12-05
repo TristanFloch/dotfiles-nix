@@ -1,7 +1,7 @@
 if test -f $argv
     switch $argv
-    case '*.tab.bz2'
-        tar xjf $argv
+        case '*.tab.bz2'
+            tar xjf $argv
         case '*.tar.gz'
             tar xzf $argv
         case '*.bz2'
