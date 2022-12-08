@@ -1,7 +1,7 @@
 { options, config, lib, pkgs, ... }:
 
 {
-  imports = [ ./docker ];
+  imports = [ ./docker ./journald ];
 
   services.gvfs.enable = true;
 }
