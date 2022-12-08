@@ -72,6 +72,13 @@
 
       packages.${system} = import ./pkgs { inherit pkgs; };
 
+      apps.${system} = mapAttrs (key: value: {
+        type = "app";
+        program = "${value}/bin/${key}";
+      }) packages.${system};
+
+      defaultApp.${system} = apps.${system}.hey;
+
       templates = import ./templates;
     };
 }
