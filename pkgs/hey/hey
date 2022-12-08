@@ -21,6 +21,9 @@ def parserCreate() -> argparse.ArgumentParser:
                                                                'emacs-overlay',
                                                                'hyprland',
                                                                'webcord'])
+
+    show = command.add_parser('show')
+
     return p
 
 
@@ -56,6 +59,9 @@ def main():
         cmd = ['nix', 'flake', 'lock']
         for i in args.input[0]:
             cmd += ['--update-input', i]
+
+    elif args.command == 'show':
+        cmd = ['nix', 'flake', 'show']
 
     sexyPrintCmd(subprocess.list2cmdline(cmd))
     path = findFlakeDir()
