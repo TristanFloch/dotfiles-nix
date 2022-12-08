@@ -6,6 +6,7 @@
   services = {
     network-manager-applet.enable = true;
     blueman-applet.enable = true;
+    udiskie.enable = true; # automount of disks
     gpg-agent = {
       enable = true;
       enableBashIntegration = true;

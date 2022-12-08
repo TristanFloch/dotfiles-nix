@@ -107,10 +107,11 @@ in {
     vim
     wget
     (if wayland.enable then firefox-wayland else firefox)
+    ntfs3g
   ];
 
   virtualisation.virtualbox.host = {
-    enable = true;
+    enable = false;
     # enableExtensionPack = true; # allows port forwarding for usb2 and usb3
   };
 
