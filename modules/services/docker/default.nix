@@ -7,8 +7,9 @@ in {
   options.modules.services.docker.enable = mkEnableOption "Docker";
 
   config = mkIf cfg.enable {
-    virtualisation.docker.enable = true;
-
-    environment.systemPackages = with pkgs; [ docker ];
+    virtualisation.docker = {
+      enable = true;
+      enableOnBoot = false;
+    };
   };
 }
