@@ -25,6 +25,9 @@ in {
         jq = "${pkgs.jq}/bin/jq";
         slurp = "${pkgs.slurp}/bin/slurp";
         wl-copy = "${pkgs.wl-clipboard}/bin/wl-copy";
+        brightnessctl = "${pkgs.brightnessctl}/bin/brightnessctl";
+        amixer = "${pkgs.alsa-utils}/bin/amixer";
+        playerctl = "${pkgs.playerctl}/bin/playerctl";
         drun = config.modules.desktop.apps.launchers.cmd;
       in rec {
         modifier = "Mod4";
@@ -211,11 +214,15 @@ in {
           "${mod}+Shift+8" = "move container to workspace $ws8; workspace $ws8";
           "${mod}+Shift+9" = "move container to workspace $ws9; workspace $ws9";
 
-          "XF86MonBrightnessUp" = "exec brightnessctl -c backlight set +10%";
-          "XF86MonBrightnessDown" = "exec brightnessctl -c backlight set 10%-";
-          "XF86AudioRaiseVolume" = "exec amixer set Master 5%+";
-          "XF86AudioLowerVolume" = "exec amixer set Master 5%-";
-          "XF86AudioMute" = "exec amixer set Master toggle";
+          "XF86MonBrightnessUp" = "exec ${brightnessctl} -c backlight set +10%";
+          "XF86MonBrightnessDown" = "exec ${brightnessctl} -c backlight set 10%-";
+          "XF86AudioRaiseVolume" = "exec ${amixer} set Master 5%+";
+          "XF86AudioLowerVolume" = "exec ${amixer} set Master 5%-";
+          "XF86AudioMute" = "exec ${amixer} set Master toggle";
+          "XF86AudioNext" = "exec ${playerctl} --player=spotify next";
+          "XF86AudioPrev" = "exec ${playerctl} --player=spotify previous";
+          "XF86AudioPause" = "exec ${playerctl} --player=spotify pause";
+          "XF86AudioPlay" = "exec ${playerctl} --player=spotify play";
 
           "${mod}+F1" = "exec emacs";
           "${mod}+F2" = "exec firefox";
