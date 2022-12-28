@@ -241,7 +241,6 @@ in {
               format = "{}    ${icon "" "#1DB954" 13}";
               max-length = 35;
               exec = "${mediaPlayer}/bin/mediaplayer.py 2> /dev/null";
-              exec-if = "${pgrep} spotify";
               return-type = "json";
 
               on-scroll-up = "${playerctl} --player=spotify position 5+";
@@ -254,7 +253,7 @@ in {
             format = "{}";
             interval = 10;
             exec = "echo "; # ﭡ
-            exec-if = "${pgrep} spotify";
+            exec-if = "${playerctl} status";
             on-click = "${playerctl} --player=spotify next";
             tooltip = false;
           };
@@ -263,7 +262,7 @@ in {
             format = "{}";
             interval = 10;
             exec = "echo "; # ﭣ
-            exec-if = "${pgrep} spotify";
+            exec-if = "${playerctl} status";
             on-click = "${playerctl} --player=spotify previous";
             tooltip = false;
           };
