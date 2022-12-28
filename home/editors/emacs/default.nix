@@ -22,7 +22,7 @@ in rec {
   home.packages = with pkgs; [
     pinentry-emacs
     emacs-all-the-icons-fonts
-    (aspellWithDicts (dicts: with dicts; [ en en-computers en-science ]))
+    (aspellWithDicts (dicts: with dicts; [ en en-computers en-science fr ]))
     shellcheck
     rnix-lsp
     nixfmt
