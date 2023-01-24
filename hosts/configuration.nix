@@ -3,8 +3,7 @@
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 { inputs, config, pkgs, lib, ... }:
 
-let wayland = config.modules.desktop.sessions.wayland;
-in {
+{
   nix = {
     package = pkgs.nixUnstable;
     gc = {
@@ -102,13 +101,6 @@ in {
   };
 
   nixpkgs.config.allowUnfree = true;
-
-  environment.systemPackages = with pkgs; [
-    vim
-    wget
-    (if wayland.enable then firefox-wayland else firefox)
-    ntfs3g
-  ];
 
   virtualisation.virtualbox.host = {
     enable = false;
