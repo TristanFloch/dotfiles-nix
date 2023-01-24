@@ -1,9 +1,16 @@
 { config, lib, pkgs, ... }:
 
 let
+  inherit (lib) types mkOption;
   wayland = config.modules.desktop.sessions.wayland;
   colors = config.modules.theme.colors;
 in {
+  options.modules.desktop.apps.logout.cmd = mkOption {
+    type = types.str;
+    default = "${pkgs.wlogout}/bin/wlogout --buttons-per-row 5 --column-spacing 40";
+    description = "Logout menu command line";
+  };
+
   config = lib.mkIf wayland.enable {
     home.packages = with pkgs; [ wlogout ];
 
@@ -21,16 +28,13 @@ in {
         button {
             color: ${colors.foreground};
             background-color: ${colors.background};
-            border-style: solid;
-            border-width: 1px;
-            border-color: ${colors.comment};
             background-repeat: no-repeat;
             background-position: center;
             background-size: 25%;
-            min-width: 60px;
+            min-width: 50px;
             margin-top: 140px;
             margin-bottom: 140px;
-            border-radius: 25px;
+            border-radius: 8px;
         }
 
         button:focus, button:active, button:hover {
@@ -58,10 +62,6 @@ in {
 
         #logout {
             background-image: image(url("./icons/logout.png"));
-        }
-
-        #hibernate {
-            background-image: image(url("./icons/hibernate.png"));
         }
       '';
       configFile."wlogout/icons" = {
