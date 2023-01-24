@@ -49,7 +49,7 @@ def main():
 
     cmd = []
     if args.command == 'rebuild':
-        cmd = ['nixos-rebuild', args.operation, '-j6', '--flake', '.#' ]
+        cmd = ['nixos-rebuild', args.operation, '-j4', '--flake', '.#' ]
         if args.operation in [ 'switch', 'test', 'boot' ]:
             cmd = ['sudo'] + cmd;
         if args.show_trace:
