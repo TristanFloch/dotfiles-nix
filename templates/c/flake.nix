@@ -11,7 +11,7 @@
       devShells.${system}.default = pkgs.mkShell {
         buildInputs = with pkgs; [ gcc gnumake clang-tools gdb bear ];
         shellHook = ''
-          ${pkgs.fish}/bin/fish
+          ${pkgs.fish}/bin/fish && exit
         '';
       };
     };
