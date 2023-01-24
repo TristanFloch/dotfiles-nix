@@ -13,23 +13,27 @@ let
   };
 
   homeManagerOptions.modules = {
-    theme.name = "dracula";
-    theme.variant = null;
+    theme = {
+      name = "dracula";
+      variant = null;
+    };
+    desktop.apps.launchers = {
+      rofi.enable = false;
+      wofi.enable = true;
+    };
     editors.helix.enable = true;
   };
 
-  nixosOptions.modules = {
-    services.docker.enable = true;
-  };
+  nixosOptions.modules = { services.docker.enable = true; };
 in {
   imports = [ ./hardware-configuration.nix ../configuration.nix ../home.nix ];
 
   networking.hostName = "zenbook";
 
   # custom nixos options
-  modules = commonOptions.modules // nixosOptions.modules;
+  modules = lib.mkMerge [ commonOptions.modules nixosOptions.modules ];
 
   # custom home manager options
-  home-manager.users.tristan.modules = commonOptions.modules
-    // homeManagerOptions.modules;
+  home-manager.users.tristan.modules =
+    lib.mkMerge [ commonOptions.modules homeManagerOptions.modules ];
 }
