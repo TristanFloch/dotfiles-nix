@@ -18,8 +18,8 @@ let
       variant = null;
     };
     desktop.apps.launchers = {
-      rofi.enable = false;
-      wofi.enable = true;
+      rofi.enable = true;
+      wofi.enable = false;
     };
     editors.helix.enable = true;
   };
