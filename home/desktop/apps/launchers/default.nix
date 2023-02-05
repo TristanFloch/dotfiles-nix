@@ -6,7 +6,7 @@ in {
 
   options.modules.desktop.apps.launchers.cmd = mkOption {
     type = types.str;
-    default = "${pkgs.rofi}/bin/rofi -modi drun -show drun";
+    default = "${config.programs.rofi.package}/bin/rofi -modi drun -show drun";
     description = "Launcher line";
   };
 }

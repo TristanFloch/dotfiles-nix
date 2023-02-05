@@ -19,8 +19,8 @@ in {
       theme = ./launcher.rasi;
     };
 
-    modules.desktop.apps.launchers.cmd = "${pkgs.rofi}/bin/rofi -show drun"
-      + optionalString (!xsession.enable) " -normal-window";
+    modules.desktop.apps.launchers.cmd =
+      "${config.programs.rofi.package}/bin/rofi -show drun";
 
     xdg.configFile = {
       "rofi/colors.rasi".source = ./${theme}.rasi;
