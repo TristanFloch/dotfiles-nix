@@ -17,9 +17,14 @@ let
       name = "dracula";
       variant = null;
     };
-    desktop.apps.launchers = {
-      rofi.enable = true;
-      wofi.enable = false;
+    desktop.apps = {
+      launchers = {
+        rofi.enable = true;
+        wofi.enable = false;
+      };
+      bars = {
+        waybar.enable = true;
+      };
     };
     editors.helix.enable = true;
   };

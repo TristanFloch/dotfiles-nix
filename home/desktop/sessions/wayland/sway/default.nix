@@ -30,9 +30,10 @@ in {
         playerctl = "${pkgs.playerctl}/bin/playerctl";
         drun = config.modules.desktop.apps.launchers.cmd;
         logout = config.modules.desktop.apps.logout.cmd;
+        bar = config.modules.desktop.apps.bars.cmd;
       in rec {
         modifier = "Mod4";
-        bars = [ ]; # waybar is started by systemd
+        bars = [ ];
         fonts = {
           names = [ "Ubuntu" "Ubuntu Nerd Font" ];
           size = 11.0;
@@ -126,7 +127,9 @@ in {
           {
             command = "${pkgs.autotiling}/bin/autotiling -w 1 2 3 4 5 6 7 8";
           }
-        ];
+        ] ++ (if !(bar == "") then [
+          { command = bar; }
+        ] else [ ]);
 
         assigns = {
           "2" = [{ app_id = "firefox"; }];

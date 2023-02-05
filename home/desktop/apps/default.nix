@@ -24,14 +24,13 @@ let
 in {
   imports = [
     ./dunst
-    ./polybar
-    ./waybar
     ./swaylock
     ./picom
     ./mailspring
     ./wlogout
     ./mako
     ./launchers
+    ./bars
   ];
 
   home.packages = with pkgs;

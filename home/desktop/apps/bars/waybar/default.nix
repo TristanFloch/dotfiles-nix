@@ -1,12 +1,17 @@
 { config, lib, pkgs, ... }:
 
 let
-  inherit (lib) optionals;
+  inherit (lib) mkEnableOption mkIf optionals;
+  cfg = config.modules.desktop.apps.bars.waybar;
   wayland = config.modules.desktop.sessions.wayland;
   sway = wayland.sway;
   colors = config.modules.theme.colors;
 in {
-  config = lib.mkIf wayland.enable {
+  options.modules.desktop.apps.bars.waybar.enable = mkEnableOption "waybar";
+
+  config = mkIf cfg.enable {
+    modules.desktop.apps.bars.cmd = ""; # launch with systemd instead
+
     programs.waybar = {
       enable = true;
       package = if sway.enable then pkgs.waybar else pkgs.waybar-hyprland;
@@ -24,7 +29,7 @@ in {
         brightnessctl = "${pkgs.brightnessctl}/bin/brightnessctl";
         amixer = "${pkgs.alsa-utils}/bin/amixer";
         pgrep = "${pkgs.procps}/bin/pgrep";
-        appLauncher = "${pkgs.rofi}/bin/rofi -modi drun -show drun";
+        appLauncher = config.modules.desktop.apps.launchers.cmd;
       in {
         mainBar = let
           module-workspaces = {
