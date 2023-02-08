@@ -240,19 +240,18 @@ in {
 
           };
 
-          "custom/spotify" =
-            let mediaPlayer = pkgs.callPackage ./scripts/mediaplayer { };
-            in {
-              format = "{}    ${icon "" "#1DB954" 13}";
-              max-length = 35;
-              exec = "${mediaPlayer}/bin/mediaplayer.py 2> /dev/null";
-              return-type = "json";
+          "custom/spotify" = {
+            format = "{}    ${icon "" "#1DB954" 13}";
+            max-length = 35;
+            exec =
+              "${pkgs.mediaplayer-monitor}/bin/mediaplayer-monitor 2> /dev/null";
+            return-type = "json";
 
-              on-scroll-up = "${playerctl} --player=spotify position 5+";
-              on-scroll-down = "${playerctl} --player=spotify position 5-";
-              on-click = "${playerctl} --player=spotify play-pause";
-              on-click-right = "${swaymsg} [class=Spotify] focus";
-            };
+            on-scroll-up = "${playerctl} --player=spotify position 5+";
+            on-scroll-down = "${playerctl} --player=spotify position 5-";
+            on-click = "${playerctl} --player=spotify play-pause";
+            on-click-right = "${swaymsg} [class=Spotify] focus";
+          };
 
           "custom/spotify-next" = {
             format = "{}";

@@ -31,12 +31,7 @@
       system = "x86_64-linux";
       pkgs = import inputs.nixpkgs { inherit system; };
     in rec {
-      overlays = {
-        default = import ./overlay {
-          inherit inputs;
-          inherit system;
-        };
-
+      overlays = import ./overlays // {
         hyprland = inputs.hyprland.overlays.default;
         emacs = inputs.emacs-overlay.overlays.default;
       };
