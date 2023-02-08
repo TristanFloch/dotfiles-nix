@@ -23,7 +23,7 @@
   gbc = "git checkout -b";
   gbl = "git checkout";
   gbx = "git branch -d";
-  go = "git reset";
+  gO = "git reset";
   gOh = "git reset --hard";
   gOs = "git reset --soft";
   gta = "git tag -a";
