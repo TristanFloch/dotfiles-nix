@@ -2,7 +2,7 @@
 
 let inherit (lib) types mkOption;
 in {
-  imports = [ ./waybar ./polybar ];
+  imports = [ ./waybar ./polybar ./eww ];
 
   options.modules.desktop.apps.bars.cmd = mkOption {
     type = types.str;

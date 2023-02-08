@@ -1,0 +1,16 @@
+(defvar ws-icons '["󱓞", "󰖟", "󰞷", "󰇥", "󰡑", "󰟶", "󰮒", "󰝚", "󰀻"]')
+
+(deflisten ws
+    :initial "{ \"active\": 0,\"workspaces\": [ ] }"
+    "eww-ws")
+
+(defwidget workspaces []
+  (box
+   :class "module workspaces"
+   :spacing 10
+   (for i in "${ws.workspaces}"
+        (button
+         :class { i.is_focused ? "focused" : i.is_urgent ? "urgent" : i.is_visible ? "visible" : "active" }
+         :onclick "swaymsg workspace ${i.id}"
+         (label :class "icon"
+                :text "${ws-icons[i.id - 1]}")))))

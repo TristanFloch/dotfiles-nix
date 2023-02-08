@@ -23,7 +23,8 @@ let
         wofi.enable = false;
       };
       bars = {
-        waybar.enable = true;
+        waybar.enable = false;
+        eww.enable = true;
       };
     };
     editors.helix.enable = true;

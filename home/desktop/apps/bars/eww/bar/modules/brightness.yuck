@@ -1,0 +1,25 @@
+(defvar brightness_rev false)
+(deflisten brightness_lvl
+    :initial "{ \"percent\": 0, \"icon\": \" \" }"
+    "scripts/brightness.sh")
+
+(defwidget brightness []
+  (box
+   :space-evenly false
+   (eventbox
+    :onhover "${EWW_CMD} update brightness_rev=true"
+    :onhoverlost "${EWW_CMD} update brightness_rev=false"
+    :class "module"
+    (box
+     :space-evenly false
+     (label :class "icon brightness-icon" :text {brightness_lvl.icon})
+     (revealer
+      :transition "slideright"
+      :reveal brightness_rev
+      (scale :class "brightness-scale"
+             :width 100
+             :min 0
+             :max 101
+             :active true
+             :onchange "brightnessctl set {}%"
+             :value "${brightness_lvl.percent}"))))))

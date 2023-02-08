@@ -1,0 +1,20 @@
+(defvar net_rev false)
+
+(defpoll net
+    :interval "3s"
+    :initial "{ \"ssid\": \"None\", \"icon\": \"\" }"
+    "scripts/network.sh")
+
+(defwidget network []
+  (eventbox
+   :onhover "${EWW_CMD} update net_rev=true"
+   :onhoverlost "${EWW_CMD} update net_rev=false"
+   :onclick "rfkill toggle wlan"
+   (box
+    :space-evenly false
+    :class "module"
+    (label :class "icon ${net.status}" :text "${net.icon}")
+    (revealer
+     :transition "slideright"
+     :reveal net_rev
+     (label :class "network-label" :text "${net.ssid}")))))

@@ -1,0 +1,160 @@
+@import 'colors.scss';
+
+@mixin rounding {
+  border-radius: 16px;
+}
+
+* {
+  all: unset;
+  font-family: Ubuntu Nerd Font;
+}
+
+window {
+  @include rounding
+}
+
+.bar {
+  color: $fg;
+  background: $bg;
+  padding: 0 1em;
+  @include rounding;
+}
+
+.module {
+  margin: 0 6px;
+}
+
+tooltip {
+  background: $bg;
+  border-radius: 8px;
+  color: $fg;
+}
+
+label {
+  font-size: 1rem;
+}
+
+.separator {
+  color: $bg-alt;
+}
+
+.hour {
+  font-weight: bold;
+  padding-left: 5px;
+}
+
+.minute {
+  font-weight: bold;
+}
+
+.date {
+  background: $bg;
+  @include rounding
+}
+
+.icon-text {
+  font-size: 3rem;
+  padding: .7rem;
+}
+
+.icon {
+  font-family: Material Design Icons Desktop;
+  font-size: 15pt;
+}
+
+.network-label {
+  margin-left: 6px;
+  color: $fg;
+}
+
+.network-disconnected {
+  color: $comment;
+}
+
+.network-connected {
+  color: $purple
+}
+
+.brightness-icon {
+  color: $cyan;
+  margin-left: 3px;
+}
+
+.brightness-scale {
+  padding: 0.3em;
+  margin: 1em 5px 1em 5px;
+  border-radius: 20px;
+  background: linear-gradient(to right, $cyan, $yellow);
+}
+
+.volume-icon {
+  color: $yellow;
+  margin-top: 2px;
+}
+
+.volume-scale {
+  padding: 0.3em;
+  margin: 1em 5px 1em 5px;
+  border-radius: 20px;
+  background: linear-gradient(to right, $yellow, $red);
+}
+
+.workspaces {
+  @include rounding;
+
+  .focused {
+    color: $purple;
+    &:hover {
+      color: $pink;
+    }
+  }
+
+  .visible {
+    color: $comment;
+    &:hover {
+      color: $pink;
+    }
+  }
+
+  .urgent {
+    color: $orange;
+    &:hover {
+      color: $pink;
+    }
+  }
+
+  .active {
+    color: $fg;
+    &:hover {
+      color: $pink;
+    }
+  }
+}
+
+.circle-temperature,
+.circle-disk,
+.circle-cpu,
+.circle-memory,
+.circle-battery {
+  background-color: $bg-alt;
+}
+
+.circle-temperature {
+  color: $red;
+}
+
+.circle-disk {
+  color: $comment;
+}
+
+.circle-cpu {
+  color: $cyan;
+}
+
+.circle-memory {
+  color: $pink
+}
+
+.circle-battery {
+  color: $green;
+}

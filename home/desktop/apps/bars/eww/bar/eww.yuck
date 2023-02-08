@@ -1,0 +1,47 @@
+(include "./modules/workspaces.yuck")
+(include "./modules/clock.yuck")
+(include "./modules/sys.yuck")
+(include "./modules/network.yuck")
+(include "./modules/brightness.yuck")
+(include "./modules/volume.yuck")
+(include "./modules/music.yuck")
+
+(defwidget left []
+  (box :space-evenly false
+       :halign "start"
+       (workspaces)))
+
+(defwidget right []
+  (box :space-evenly false
+       :halign "end"
+       (volume)
+       (brightness)
+       (network)
+       (label :class "separator" :text "|")
+       (sys)
+       (label :class "separator" :text "|")
+       (clock)))
+
+(defwidget center []
+  (box :space-evenly false
+       :halign "center"
+       (music)))
+
+(defwidget bar []
+  (centerbox
+   :class "bar"
+   (left)
+   (center)
+   (right)))
+
+(defwindow bar
+    :monitor 0
+    :geometry (geometry :x "0%"
+                        :y "1%"
+                        :height "46px"
+                        :width "98%"
+                        :anchor "bottom center")
+    :stacking "fg"
+    :exclusive true
+    :focusable false
+    (bar))

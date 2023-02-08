@@ -1,0 +1,55 @@
+(defpoll memory
+    :interval "2s"
+    :initial "{ \"total\": \"0G\", \"used\": \"0G\", \"free\": \"0G\", \"percentage\": 0 }"
+    "scripts/memory.sh")
+
+(defwidget sys []
+  (box
+   :class "module"
+   :space-evenly false
+   :spacing 5
+
+   (circular-progress
+    :value "${EWW_TEMPS.ACPITZ_TEMP1}"
+    :class "circle-temperature"
+    :thickness 3
+    (button
+     :tooltip "  ${EWW_TEMPS.ACPITZ_TEMP1}°C"
+     (label :class "icon-text" :text "")))
+
+   (circular-progress
+    :value "${EWW_DISK["/"].used_perc}"
+    :class "circle-disk"
+    :thickness 3
+    (button
+     :tooltip "Disk: ${round(EWW_DISK["/"].free / 1000000000, 1)}G free"
+     (label :class "icon-text" :text "")))
+
+   (circular-progress
+    :value "${EWW_CPU.avg}"
+    :class "circle-cpu"
+    :thickness 3
+    (button
+     :tooltip "CPU: ${round(EWW_CPU.avg,0)}%"
+     ;; :onclick "${EWW_CMD} open --toggle system-menu"
+     (label :class "icon-text" :text "")))
+
+   (circular-progress
+    :value {memory.percentage}
+    :class "circle-memory"
+    :thickness 3
+    (button
+     :tooltip "RAM: ${memory.used} / ${memory.total} used"
+     ;; :onclick "${EWW_CMD} open --toggle system-menu"
+     (label :class "icon-text" :text "")))
+
+   (circular-progress
+    :value "${EWW_BATTERY["BATT"].capacity}"
+    :class "circle-battery"
+    ;; :style "color: ${battery.color};"
+    :thickness 3
+    (button
+     :tooltip "Battery: ${EWW_BATTERY["BATT"].capacity}%"
+     ;; :onclick "${EWW_CMD} open --toggle system-menu"
+     (label :class "icon-text" :text "")))
+   ))

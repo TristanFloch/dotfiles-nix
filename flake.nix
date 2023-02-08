@@ -23,6 +23,11 @@
       url = "github:fufexan/webcord-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    eww-ws = {
+      url = "github:TristanFloch/eww-ws";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = inputs@{ self, ... }:

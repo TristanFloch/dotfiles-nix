@@ -1,0 +1,25 @@
+(defvar vol_rev false)
+(deflisten vol
+    :initial "{ \"icon\": \" \", \"percent\": \"0\", \"microphone\": \"0\" }"
+    "scripts/volume.sh")
+
+(defwidget volume []
+  (eventbox
+   :class "module"
+   :onhover "${EWW_CMD} update vol_rev=true"
+   :onhoverlost "${EWW_CMD} update vol_rev=false"
+   :onclick "scripts/volume.sh mute SINK"
+   (box
+    :space-evenly false
+    (label :class "icon volume-icon" :text {vol.icon})
+    (revealer
+     :transition "slideright"
+     :reveal vol_rev
+     (scale
+      :class "volume-scale"
+      :width 100
+      :active true
+      :min 0
+      :max 101
+      ;; :value {vol.percent}
+      :onchange "amixer set Master {}%")))))

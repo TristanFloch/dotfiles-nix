@@ -6,6 +6,7 @@
   home.packages = with pkgs; [
     exa
     fd
+    bc
     tree
     killall
     jq

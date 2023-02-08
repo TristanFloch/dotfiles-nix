@@ -106,6 +106,26 @@
         "type": "github"
       }
     },
+    "eww-ws": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1675856410,
+        "narHash": "sha256-OnW7vCcEa1XFyiRV+oeJc6R16YNGHzTq+DjKhczSFDQ=",
+        "owner": "TristanFloch",
+        "repo": "eww-ws",
+        "rev": "aceae18bb87e6f2410c2e648ead1e5f01a3e9bc8",
+        "type": "github"
+      },
+      "original": {
+        "owner": "TristanFloch",
+        "repo": "eww-ws",
+        "type": "github"
+      }
+    },
     "fenix": {
       "inputs": {
         "nixpkgs": [
@@ -312,6 +332,7 @@
     "root": {
       "inputs": {
         "emacs-overlay": "emacs-overlay",
+        "eww-ws": "eww-ws",
         "home-manager": "home-manager",
         "hyprland": "hyprland",
         "nixpkgs": "nixpkgs",
