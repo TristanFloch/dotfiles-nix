@@ -15,6 +15,7 @@
       protonvpn-gui
       protonvpn-cli_2
       openvpn
+      hey
     ];
   };
 }
