@@ -13,7 +13,7 @@ in {
       "${config.programs.eww.package}/bin/eww open bar";
 
     home.packages = let eww-ws = inputs.eww-ws.packages.${pkgs.system}.default;
-    in [ eww-ws pkgs.mediaplayer-monitor pkgs.pulseaudio ];
+    in [ eww-ws pkgs.mediaplayer-monitor pkgs.pulseaudio pkgs.playerctl ];
 
     programs.eww = {
       enable = true;

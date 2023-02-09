@@ -12,14 +12,14 @@ from gi.repository import Playerctl, GLib
 logger = logging.getLogger(__name__)
 
 
-def write_output(text, tooltip, player):
+def write_output(title, status, player_name, tooltip):
     logger.info('Writing output')
 
     output = {
-        'text': text,
-        'class': 'Playing' if player.props.playback_status == 0 else 'Paused',
-        'alt': player.props.player_name,
-        'tooltip': tooltip
+        'text': title,
+        'class': status,
+        'alt': player_name,
+        'tooltip': tooltip,
     }
 
     sys.stdout.write(json.dumps(output) + '\n')
@@ -50,7 +50,8 @@ def on_metadata(player, metadata, manager):
     else:
         track_info = title
 
-    write_output(track_info, track_info_full, player)
+    write_output(track_info, 'Paused' if player.props.playback_status else 'Playing',
+                 player.props.player_name, track_info_full)
 
 
 def on_player_appeared(manager, player, selected_player=None):
@@ -62,6 +63,7 @@ def on_player_appeared(manager, player, selected_player=None):
 
 def on_player_vanished(manager, player):
     logger.info('Player has vanished')
+    write_output('', '', '', 'No player is running')
     sys.stdout.write('\n')
     sys.stdout.flush()
 

@@ -9,6 +9,7 @@
    :onhover "${EWW_CMD} update vol_rev=true"
    :onhoverlost "${EWW_CMD} update vol_rev=false"
    :onclick "scripts/volume.sh mute SINK"
+   :onrightclick "pavucontrol &"
    (box
     :space-evenly false
     (label :class "icon volume-icon" :text {vol.icon})

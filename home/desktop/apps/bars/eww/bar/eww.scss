@@ -10,7 +10,7 @@
 }
 
 window {
-  @include rounding
+  @include rounding;
 }
 
 .bar {
@@ -49,7 +49,7 @@ label {
 
 .date {
   background: $bg;
-  @include rounding
+  @include rounding;
 }
 
 .icon-text {
@@ -60,6 +60,29 @@ label {
 .icon {
   font-family: Material Design Icons Desktop;
   font-size: 15pt;
+}
+
+.music-icon {
+  color: $cyan;
+}
+
+.spotify {
+  color: #1DB954;
+}
+
+.song-title {
+  color: $fg;
+  margin: 0 0.6em;
+}
+
+.media-controls {
+  color: $comment;
+}
+
+.song-prev,
+.song-pp,
+.song-next {
+  margin: 1px;
 }
 
 .network-label {

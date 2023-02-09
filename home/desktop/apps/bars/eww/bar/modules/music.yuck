@@ -1,2 +1,46 @@
+(defvar mediaplayer_rev false)
+(defvar controls_rev false)
+(deflisten mediaplayer
+    :initial "{\"text\": \"\", \"class\": \"\", \"alt\": \"spotify\", \"tooltip\": \"\uf886\n\uf007\n\ue271\"}"
+    "mediaplayer-monitor")
+
 (defwidget music []
-  "")
+  (eventbox
+   :onhover "${EWW_CMD} update controls_rev=true"
+   :onhoverlost "${EWW_CMD} update controls_rev=false"
+   :onclick "playerctl play-pause"
+   :onrightclick "swaymsg [class=Spotify] focus"
+   :tooltip {mediaplayer.tooltip}
+   (box
+    :class "module"
+    :space-evenly false
+    (label
+     :class { matches(mediaplayer.alt, "spotify") ? "icon spotify" : "icon music-icon" }
+     :text { strlength(mediaplayer.class) == 0
+     ? ""
+     : matches(mediaplayer.alt, "spotify") ? "󰓇" : "󱜏" })
+    (label
+     :class "song-title"
+     :limit-width 40
+     :show-truncated true
+     :text {mediaplayer.text})
+    (revealer
+     :transition "slideleft"
+     :reveal controls_rev
+     (box
+      :class "media-controls"
+      (button :class "song-prev"
+              :onclick "playerctl previous"
+              :tooltip "Previous"
+              (label :class "icon"
+                     :text "󰙤"))
+      (button :class "song-pp"
+              :onclick "playerctl play-pause"
+              :tooltip { matches(mediaplayer.class, "Playing") ? "Pause" : "Play" }
+              (label :class "icon"
+                     :text { matches(mediaplayer.class, "Playing") ? "󰏦" : "󰐍" }))
+      (button :class "song-next"
+              :onclick "playerctl next"
+              :tooltip "Next"
+              (label :class "icon"
+                     :text "󰙢")))))))
