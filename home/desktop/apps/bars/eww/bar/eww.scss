@@ -158,7 +158,10 @@ label {
 .circle-disk,
 .circle-cpu,
 .circle-memory,
-.circle-battery {
+.circle-battery-high,
+.circle-battery-good,
+.circle-battery-low,
+.circle-battery-critical {
   background-color: $bg-alt;
 }
 
@@ -178,6 +181,18 @@ label {
   color: $pink
 }
 
-.circle-battery {
+.circle-battery-high {
   color: $green;
+}
+
+.circle-battery-good {
+  color: $yellow;
+}
+
+.circle-battery-low {
+  color: $orange;
+}
+
+.circle-battery-critical {
+  color: $red;
 }

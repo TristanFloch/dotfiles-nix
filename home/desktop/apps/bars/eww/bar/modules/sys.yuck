@@ -6,7 +6,7 @@
 (defwidget sys []
   (box
    :class "module"
-   :space-evenly false
+   :space-evenly true
    :spacing 5
 
    (circular-progress
@@ -40,16 +40,16 @@
     :thickness 3
     (button
      :tooltip "RAM: ${memory.used} / ${memory.total} used"
-     ;; :onclick "${EWW_CMD} open --toggle system-menu"
      (label :class "icon-text" :text "")))
 
    (circular-progress
     :value "${EWW_BATTERY["BATT"].capacity}"
-    :class "circle-battery"
-    ;; :style "color: ${battery.color};"
+    :class { "${EWW_BATTERY["BATT"].capacity}" >= 80 || "matches(${EWW_BATTERY["BATT"].capacity}", "Charging")
+    ? "circle-battery-high" : "${EWW_BATTERY["BATT"].capacity}" >= 50
+    ? "circle-battery-good" : "${EWW_BATTERY["BATT"].capacity}" >= 20
+    ? "circle-battery-low" : "circle-battery-critical" }
     :thickness 3
     (button
      :tooltip "Battery: ${EWW_BATTERY["BATT"].capacity}%"
-     ;; :onclick "${EWW_CMD} open --toggle system-menu"
      (label :class "icon-text" :text "")))
    ))
