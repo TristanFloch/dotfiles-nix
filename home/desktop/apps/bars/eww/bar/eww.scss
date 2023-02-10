@@ -16,7 +16,7 @@ window {
 .bar {
   color: $fg;
   background: $bg;
-  padding: 0 1em;
+  padding: 0 0.4em 0 0.6em;
   @include rounding;
 }
 
@@ -45,6 +45,7 @@ label {
 
 .minute {
   font-weight: bold;
+  padding-right: 0.7rem;
 }
 
 .date {
