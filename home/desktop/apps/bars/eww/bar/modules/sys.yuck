@@ -1,8 +1,4 @@
-(defpoll memory
-    :interval "2s"
-    :initial "{ \"total\": \"0G\", \"used\": \"0G\", \"free\": \"0G\", \"percentage\": 0 }"
-    "scripts/memory.sh")
-
+(defvar ram-rev false)
 (defvar bat-rev false)
 
 (defwidget sys []
@@ -36,13 +32,26 @@
      ;; :onclick "${EWW_CMD} open --toggle system-menu"
      (label :class "icon-text" :text "")))
 
-   (circular-progress
-    :value {memory.percentage}
-    :class "circle-memory"
-    :thickness 3
-    (button
-     :tooltip "RAM: ${memory.used} / ${memory.total} used"
-     (label :class "icon-text" :text "")))
+   (eventbox
+    :onhover "${EWW_CMD} update ram-rev=true"
+    :onhoverlost "${EWW_CMD} update ram-rev=false"
+    :tooltip "RAM: ${round(EWW_RAM.used_mem / 1000000000, 1)}G / ${round(EWW_RAM.total_mem / 1000000000, 1)}G used"
+    (box
+     :space-evenly false
+     (overlay
+      (circular-progress
+       :value {EWW_RAM.used_mem_perc}
+       :class "circle-memory"
+       :thickness 3
+       (label :class "icon-text" :text ""))
+      (revealer
+       :reveal ram-rev
+       (label :class "icon icon-memory" :text "󰒋")))
+     (revealer
+      :transition "slideright"
+      :reveal ram-rev
+      (label :class "sys-text"
+             :text "${round(EWW_RAM.used_mem / 1000000000, 1)}G"))))
 
    (eventbox
     :onhover "${EWW_CMD} update bat-rev=true"
@@ -77,5 +86,5 @@
      (revealer
       :transition "slideright"
       :reveal bat-rev
-      (label :class "bat-text" :text "${EWW_BATTERY["BATT"].capacity}%"))))
+      (label :class "sys-text" :text "${EWW_BATTERY["BATT"].capacity}%"))))
    ))
