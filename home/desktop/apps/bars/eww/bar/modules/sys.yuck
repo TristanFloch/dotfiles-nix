@@ -1,3 +1,4 @@
+(defvar temp-rev false)
 (defvar disk-rev false)
 (defvar cpu-rev false)
 (defvar ram-rev false)
@@ -9,13 +10,27 @@
    :space-evenly false
    :spacing 5
 
-   (circular-progress
-    :value "${EWW_TEMPS.ACPITZ_TEMP1}"
-    :class "circle-temperature"
-    :thickness 3
-    (button
-     :tooltip "  ${EWW_TEMPS.ACPITZ_TEMP1}°C"
-     (label :class "icon-text" :text "")))
+   (eventbox
+    :onhover "${EWW_CMD} update temp-rev=true"
+    :onhoverlost "${EWW_CMD} update temp-rev=false"
+    :tooltip "Temperature: ${EWW_TEMPS.ACPITZ_TEMP1}°C"
+    (box
+     :space-evenly false
+     (overlay
+      (circular-progress
+       :value {EWW_TEMPS.ACPITZ_TEMP1}
+       :class { EWW_TEMPS.ACPITZ_TEMP1 >= 65 ? "circle-temp-critical" : "circle-temp" }
+       :thickness 3
+       (label :class "icon-text" :text ""))
+      (revealer
+       :reveal temp-rev
+       (label :class { EWW_TEMPS.ACPITZ_TEMP1 >= 65 ? "icon icon-temp-critical" : "icon icon-temp" }
+              :text { EWW_TEMPS.ACPITZ_TEMP1 >= 65 ? "󰻲" : "󰔏" })))
+     (revealer
+      :transition "slideright"
+      :reveal temp-rev
+      (label :class "sys-text"
+             :text "${EWW_TEMPS.ACPITZ_TEMP1}°C"))))
 
    (eventbox
     :onhover "${EWW_CMD} update disk-rev=true"

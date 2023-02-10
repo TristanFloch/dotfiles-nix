@@ -154,7 +154,7 @@ label {
   }
 }
 
-.circle-temperature,
+.circle-temp,
 .circle-disk,
 .circle-cpu,
 .circle-memory,
@@ -165,7 +165,13 @@ label {
   background-color: $bg-alt;
 }
 
-.circle-temperature {
+.circle-temp,
+.icon-temp {
+  color: $orange;
+}
+
+.circle-temp-critical,
+.icon-temp-critical {
   color: $red;
 }
 
@@ -210,7 +216,8 @@ label {
 .icon-battery-critical,
 .icon-memory,
 .icon-cpu,
-.icon-disk {
+.icon-disk,
+.icon-temp {
   background-color: $bg;
 }
 
