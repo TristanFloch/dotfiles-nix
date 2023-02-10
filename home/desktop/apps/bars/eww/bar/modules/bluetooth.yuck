@@ -1,0 +1,19 @@
+(defvar bluetooth-rev false)
+(defpoll bluetooth
+    :interval "3s"
+    :initial "{ \"powered\": \"no\", \"name\": \"\" }"
+    "scripts/bluetooth.sh")
+
+(defwidget bluetooth []
+   (eventbox
+    :onhover "${EWW_CMD} update bluetooth-rev=true"
+    :onhoverlost "${EWW_CMD} update bluetooth-rev=false"
+    :class "module"
+    :onclick "rfkill toggle bluetooth"
+    :onrightclick "blueman-manager &"
+    :tooltip { bluetooth.name }
+    (label :class { matches(bluetooth.powered, "no")
+           ? "icon bluetooth-icon-off" : "icon bluetooth-icon"
+           :text { matches(bluetooth.powered, "no")
+           ? "󰂲" :  strlength(bluetooth.name) == 0
+           ? "󰂯" : "󰂱" })))

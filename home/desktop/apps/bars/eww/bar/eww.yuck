@@ -4,6 +4,7 @@
 (include "./modules/network.yuck")
 (include "./modules/brightness.yuck")
 (include "./modules/volume.yuck")
+(include "./modules/bluetooth.yuck")
 (include "./modules/music.yuck")
 
 (defwidget left []
@@ -14,6 +15,7 @@
 (defwidget right []
   (box :space-evenly false
        :halign "end"
+       (bluetooth)
        (volume)
        (brightness)
        (network)

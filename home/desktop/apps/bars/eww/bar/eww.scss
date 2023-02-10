@@ -101,7 +101,7 @@ label {
 
 .brightness-icon {
   color: $cyan;
-  margin-left: 3px;
+  margin-left: 0.3em;
 }
 
 .brightness-scale {
@@ -114,6 +114,7 @@ label {
 .volume-icon {
   color: $yellow;
   margin-top: 2px;
+  margin-left: 0.1em;
 }
 
 .volume-scale {
@@ -121,6 +122,10 @@ label {
   margin: 1em 5px 1em 5px;
   border-radius: 20px;
   background: linear-gradient(to right, $yellow, $red);
+}
+
+.bluetooth-icon {
+  color: $pink;
 }
 
 .workspaces {
