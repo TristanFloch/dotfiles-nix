@@ -1,3 +1,4 @@
+(defvar disk-rev false)
 (defvar cpu-rev false)
 (defvar ram-rev false)
 (defvar bat-rev false)
@@ -16,13 +17,26 @@
      :tooltip "  ${EWW_TEMPS.ACPITZ_TEMP1}°C"
      (label :class "icon-text" :text "")))
 
-   (circular-progress
-    :value "${EWW_DISK["/"].used_perc}"
-    :class "circle-disk"
-    :thickness 3
-    (button
-     :tooltip "Disk: ${round(EWW_DISK["/"].free / 1000000000, 1)}G free"
-     (label :class "icon-text" :text "")))
+   (eventbox
+    :onhover "${EWW_CMD} update disk-rev=true"
+    :onhoverlost "${EWW_CMD} update disk-rev=false"
+    :tooltip "Disk: ${round(EWW_DISK["/"].free / 1000000000, 1)}G free"
+    (box
+     :space-evenly false
+     (overlay
+      (circular-progress
+       :value "${EWW_DISK["/"].used_perc}"
+       :class "circle-disk"
+       :thickness 3
+       (label :class "icon-text" :text ""))
+      (revealer
+       :reveal disk-rev
+       (label :class "icon icon-disk" :text "󰋊")))
+     (revealer
+      :transition "slideright"
+      :reveal disk-rev
+      (label :class "sys-text"
+             :text "${round(EWW_DISK["/"].free / 1000000000, 1)}G"))))
 
    (eventbox
     :onhover "${EWW_CMD} update cpu-rev=true"
