@@ -3,10 +3,12 @@
     :initial "{ \"total\": \"0G\", \"used\": \"0G\", \"free\": \"0G\", \"percentage\": 0 }"
     "scripts/memory.sh")
 
+(defvar bat-rev false)
+
 (defwidget sys []
   (box
    :class "module"
-   :space-evenly true
+   :space-evenly false
    :spacing 5
 
    (circular-progress
@@ -42,14 +44,38 @@
      :tooltip "RAM: ${memory.used} / ${memory.total} used"
      (label :class "icon-text" :text "")))
 
-   (circular-progress
-    :value "${EWW_BATTERY["BATT"].capacity}"
-    :class { "${EWW_BATTERY["BATT"].capacity}" >= 80 || "matches(${EWW_BATTERY["BATT"].capacity}", "Charging")
-    ? "circle-battery-high" : "${EWW_BATTERY["BATT"].capacity}" >= 50
-    ? "circle-battery-good" : "${EWW_BATTERY["BATT"].capacity}" >= 20
-    ? "circle-battery-low" : "circle-battery-critical" }
-    :thickness 3
-    (button
-     :tooltip "Battery: ${EWW_BATTERY["BATT"].capacity}%"
-     (label :class "icon-text" :text "")))
+   (eventbox
+    :onhover "${EWW_CMD} update bat-rev=true"
+    :onhoverlost "${EWW_CMD} update bat-rev=false"
+    :tooltip "Battery: ${EWW_BATTERY["BATT"].capacity}% (${EWW_BATTERY["BATT"].status})"
+    (box
+     :space-evenly false
+     (overlay
+      (circular-progress
+       :value "${EWW_BATTERY["BATT"].capacity}"
+       :class { "${EWW_BATTERY["BATT"].capacity}" >= 80 || matches("${EWW_BATTERY["BATT"].status}", "Charging")
+       ? "circle-battery-high" : "${EWW_BATTERY["BATT"].capacity}" >= 50
+       ? "circle-battery-good" : "${EWW_BATTERY["BATT"].capacity}" >= 20
+       ? "circle-battery-low" : "circle-battery-critical" }
+       :thickness 3
+       (label :class "icon-text" :text ""))
+      (revealer
+       :reveal bat-rev
+       (label
+        :class { "${EWW_BATTERY["BATT"].capacity}" >= 80 || matches("${EWW_BATTERY["BATT"].status}", "Charging")
+        ? "icon icon-battery-high" : "${EWW_BATTERY["BATT"].capacity}" >= 50
+        ? "icon icon-battery-good" : "${EWW_BATTERY["BATT"].capacity}" >= 20
+        ? "icon icon-battery-low" : "icon icon-battery-critical" }
+        :text { matches("${EWW_BATTERY["BATT"].status}", "Charging") && "${EWW_BATTERY["BATT"].capacity}" >= 80
+        ? "󱊦" : matches("${EWW_BATTERY["BATT"].status}", "Charging") && "${EWW_BATTERY["BATT"].capacity}" >= 50
+        ? "󱊥" : matches("${EWW_BATTERY["BATT"].status}", "Charging") && "${EWW_BATTERY["BATT"].capacity}" >= 20
+        ? "󱊤" : matches("${EWW_BATTERY["BATT"].status}", "Charging")
+        ? "󰢟" : "${EWW_BATTERY["BATT"].capacity}" >= 80
+        ? "󱊣" : "${EWW_BATTERY["BATT"].capacity}" >= 50
+        ? "󱊢" : "${EWW_BATTERY["BATT"].capacity}" >= 20
+        ? "󱊡" : "󰂎" })))
+     (revealer
+      :transition "slideright"
+      :reveal bat-rev
+      (label :class "bat-text" :text "${EWW_BATTERY["BATT"].capacity}%"))))
    ))
