@@ -173,11 +173,13 @@ label {
   color: $comment;
 }
 
-.circle-cpu {
+.circle-cpu,
+.icon-cpu {
   color: $cyan;
 }
 
-.circle-memory {
+.circle-memory,
+.icon-memory {
   color: $pink
 }
 
@@ -199,14 +201,6 @@ label {
 .circle-battery-critical,
 .icon-battery-critical {
   color: $red;
-}
-
-.icon-memory {
-  color: $pink;
-}
-
-.icon-cpu {
-  color: $cyan;
 }
 
 .icon-battery-high,
