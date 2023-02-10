@@ -1,3 +1,4 @@
+(defvar cpu-rev false)
 (defvar ram-rev false)
 (defvar bat-rev false)
 
@@ -23,14 +24,26 @@
      :tooltip "Disk: ${round(EWW_DISK["/"].free / 1000000000, 1)}G free"
      (label :class "icon-text" :text "")))
 
-   (circular-progress
-    :value "${EWW_CPU.avg}"
-    :class "circle-cpu"
-    :thickness 3
-    (button
-     :tooltip "CPU: ${round(EWW_CPU.avg,0)}%"
-     ;; :onclick "${EWW_CMD} open --toggle system-menu"
-     (label :class "icon-text" :text "")))
+   (eventbox
+    :onhover "${EWW_CMD} update cpu-rev=true"
+    :onhoverlost "${EWW_CMD} update cpu-rev=false"
+    :tooltip "CPU: ${round(EWW_CPU.avg,0)}%"
+    (box
+     :space-evenly false
+     (overlay
+      (circular-progress
+       :value {EWW_CPU.avg}
+       :class "circle-cpu"
+       :thickness 3
+       (label :class "icon-text" :text ""))
+      (revealer
+       :reveal cpu-rev
+       (label :class "icon icon-cpu" :text "󰍛")))
+     (revealer
+      :transition "slideright"
+      :reveal cpu-rev
+      (label :class "sys-text"
+             :text "${round(EWW_CPU.avg,0)}%"))))
 
    (eventbox
     :onhover "${EWW_CMD} update ram-rev=true"

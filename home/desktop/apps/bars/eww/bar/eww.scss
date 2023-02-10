@@ -205,14 +205,20 @@ label {
   color: $pink;
 }
 
+.icon-cpu {
+  color: $cyan;
+}
+
 .icon-battery-high,
 .icon-battery-good,
 .icon-battery-low,
 .icon-battery-critical,
-.icon-memory {
+.icon-memory,
+.icon-cpu {
   background-color: $bg;
 }
 
 .sys-text {
   margin: 0 0.3em;
+  color: $fg;
 }
