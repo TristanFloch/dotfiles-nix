@@ -8,12 +8,16 @@
    (eventbox
     :onhover "${EWW_CMD} update bluetooth-rev=true"
     :onhoverlost "${EWW_CMD} update bluetooth-rev=false"
-    :class "module"
     :onclick "rfkill toggle bluetooth"
     :onrightclick "blueman-manager &"
-    :tooltip { bluetooth.name }
-    (label :class { matches(bluetooth.powered, "no")
-           ? "icon bluetooth-icon-off" : "icon bluetooth-icon"
-           :text { matches(bluetooth.powered, "no")
-           ? "󰂲" :  strlength(bluetooth.name) == 0
-           ? "󰂯" : "󰂱" })))
+    (box
+     :space-evenly false
+     (label :class { matches(bluetooth.powered, "no")
+            ? "icon bluetooth-icon-off" : "icon bluetooth-icon" }
+            :text { matches(bluetooth.powered, "no")
+            ? "󰂲" :  strlength(bluetooth.name) == 0
+            ? "󰂯" : "󰂱" })
+     (revealer
+      :transition "slideright"
+      :reveal bluetooth-rev
+      (label :class "bluetooth-label" :text {bluetooth.name})))))

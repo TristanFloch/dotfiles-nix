@@ -20,10 +20,6 @@ window {
   @include rounding;
 }
 
-.module {
-  margin: 0 6px;
-}
-
 tooltip {
   background: $bg;
   border-radius: 8px;
@@ -36,11 +32,11 @@ label {
 
 .separator {
   color: $bg-alt;
+  margin: 0 0.5em;
 }
 
 .hour {
   font-weight: bold;
-  padding-left: 5px;
 }
 
 .minute {
@@ -50,6 +46,7 @@ label {
 
 .date {
   background: $bg;
+  margin-right: 0.4em;
   @include rounding;
 }
 
@@ -93,10 +90,12 @@ label {
 
 .network-disconnected {
   color: $comment;
+  margin-left: 0.3em;
 }
 
 .network-connected {
-  color: $purple
+  color: $purple;
+  margin-left: 0.3em;
 }
 
 .brightness-icon {
@@ -114,7 +113,7 @@ label {
 .volume-icon {
   color: $yellow;
   margin-top: 2px;
-  margin-left: 0.1em;
+  margin-left: 0.2em;
 }
 
 .volume-scale {
@@ -128,7 +127,12 @@ label {
   color: $pink;
 }
 
+.bluetooth-icon-off {
+  color: $comment;
+}
+
 .workspaces {
+  margin-left: 0.5em;
   @include rounding;
 
   .focused {

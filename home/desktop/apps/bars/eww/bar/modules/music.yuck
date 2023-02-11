@@ -12,7 +12,6 @@
    :onrightclick "swaymsg [class=Spotify] focus"
    :tooltip {mediaplayer.tooltip}
    (box
-    :class "module"
     :space-evenly false
     (label
      :class { matches(mediaplayer.alt, "spotify") ? "icon spotify" : "icon music-icon" }

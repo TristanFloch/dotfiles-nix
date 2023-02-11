@@ -1,5 +1,4 @@
 (defvar net_rev false)
-
 (defpoll net
     :interval "3s"
     :initial "{ \"ssid\": \"None\", \"icon\": \"\" }"
@@ -12,9 +11,8 @@
    :onclick "rfkill toggle wlan"
    (box
     :space-evenly false
-    :class "module"
-    (label :class "icon ${net.status}" :text "${net.icon}")
+    (label :class "icon ${net.status}" :text {net.icon})
     (revealer
      :transition "slideright"
      :reveal net_rev
-     (label :class "network-label" :text "${net.ssid}")))))
+     (label :class "network-label" :text {net.ssid})))))

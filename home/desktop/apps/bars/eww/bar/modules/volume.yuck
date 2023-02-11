@@ -1,11 +1,10 @@
 (defvar vol_rev false)
 (deflisten vol
-    :initial "{ \"icon\": \" \", \"percent\": \"0\", \"microphone\": \"0\" }"
+    :initial "{ \"icon\": \" \", \"up\": 0, \"percent\": \"0\", \"microphone\": \"0\" }"
     "scripts/volume.sh")
 
 (defwidget volume []
   (eventbox
-   :class "module"
    :onhover "${EWW_CMD} update vol_rev=true"
    :onhoverlost "${EWW_CMD} update vol_rev=false"
    :onclick "scripts/volume.sh mute SINK"

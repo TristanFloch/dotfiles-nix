@@ -6,7 +6,7 @@
 
 (defwidget workspaces []
   (box
-   :class "module workspaces"
+   :class "workspaces"
    :spacing 10
    (for i in "${ws.workspaces}"
         (button

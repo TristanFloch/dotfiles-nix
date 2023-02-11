@@ -10,7 +10,6 @@
    :onhover "${EWW_CMD} update date_rev=true"
    :onhoverlost "${EWW_CMD} update date_rev=false"
    (overlay
-    :class "module"
     (box
      :space-evenly false
      (label
