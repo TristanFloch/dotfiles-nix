@@ -1,6 +1,6 @@
 (defvar vol_rev false)
 (deflisten vol
-    :initial "{ \"icon\": \" \", \"up\": 0, \"percent\": \"0\", \"microphone\": \"0\" }"
+    :initial "{ \"icon\": \"󰖁\", \"percent\": \"0\", \"microphone\": \"0\" }"
     "scripts/volume.sh")
 
 (defwidget volume []
@@ -11,7 +11,8 @@
    :onrightclick "pavucontrol &"
    (box
     :space-evenly false
-    (label :class "icon volume-icon" :text {vol.icon})
+    (label :class { matches(vol.icon, "󰖁") ? "icon volume-icon-muted" : "icon volume-icon" }
+           :text {vol.icon})
     (revealer
      :transition "slideright"
      :reveal vol_rev

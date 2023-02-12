@@ -1,7 +1,7 @@
 (defvar net_rev false)
 (defpoll net
     :interval "3s"
-    :initial "{ \"ssid\": \"None\", \"icon\": \"\" }"
+    :initial "{ \"ssid\": \"\", \"icon\": \"\", \"status\": \"network-disconnected\" }"
     "scripts/network.sh")
 
 (defwidget network []
