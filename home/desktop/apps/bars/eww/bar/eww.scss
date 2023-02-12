@@ -47,7 +47,13 @@ label {
 .date {
   background: $bg;
   margin-right: 0.4em;
+  font-weight: bold;
   @include rounding;
+}
+
+.date-day {
+  margin-right: 0.4em;
+  color: $fg;
 }
 
 .icon-text {
