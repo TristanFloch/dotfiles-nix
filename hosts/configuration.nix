@@ -100,6 +100,8 @@
     shell = pkgs.fish;
   };
 
+  programs.fish.enable = true;
+
   nixpkgs.config.allowUnfree = true;
 
   virtualisation.virtualbox.host = {

@@ -3,7 +3,7 @@
 pkgs.mkShell {
   nativeBuildInputs = with pkgs; [
     python3Full
-    python-language-server
+    python311Packages.python-lsp-server
   ];
 
   shellHook = "fish";

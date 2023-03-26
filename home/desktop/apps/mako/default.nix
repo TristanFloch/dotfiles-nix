@@ -11,7 +11,7 @@ in {
   };
 
   config = mkIf cfg.enable {
-    programs.mako = {
+    services.mako = {
       enable = true;
       anchor = "top-right";
       borderRadius = 6;

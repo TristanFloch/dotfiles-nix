@@ -29,8 +29,8 @@ in rec {
     rtags
     xclip
     fd
+    python311Packages.python-lsp-server
     python3Full
-    python-language-server
     poetry
     myTex
   ];
