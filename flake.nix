@@ -61,8 +61,7 @@
         nixos-zenbook = nixpkgs.lib.nixosSystem {
           specialArgs = { inherit inputs outputs; };
           modules = [
-            # > Our main nixos configuration file <
-            ./nixos/configuration.nix
+            ./nixos/nixos-zenbook
           ];
         };
       };
@@ -75,7 +74,7 @@
           extraSpecialArgs = { inherit inputs outputs; };
           modules = [
             # > Our main home-manager configuration file <
-            ./home-manager/home.nix
+            ./home-manager/tristan/nixos-zenbook.nix
           ];
         };
       };
