@@ -10,6 +10,7 @@
   ];
 
   home.packages = with pkgs; [
-    firefox
+    # firefox
+    brave
   ];
 }
