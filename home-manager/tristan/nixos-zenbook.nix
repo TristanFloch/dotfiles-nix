@@ -5,5 +5,6 @@
 
     ./features/cli
     ./features/vim
+    ./features/fonts
   ];
 }
