@@ -45,6 +45,8 @@
 
     # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
     stateVersion = lib.mkDefault "23.05";
+
+    enableNixpkgsReleaseCheck = true;
   };
 
   # Enable home-manager and git
