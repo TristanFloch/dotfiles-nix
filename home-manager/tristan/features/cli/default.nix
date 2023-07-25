@@ -4,6 +4,7 @@
     ./bat
     ./direnv
     ./fish
+    ./htop
     ./starship
   ];
 
