@@ -91,7 +91,10 @@
       firefox
     #  thunderbird
     ];
+    shell = pkgs.fish;
   };
+
+  programs.fish.enable = true; # later configured using home-manager
 
   # Enable automatic login for the user.
   services.xserver.displayManager.autoLogin = {
