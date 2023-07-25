@@ -7,12 +7,12 @@
       add_newline = true;
       line_break.disabled = true;
 
-      nix_shell = {
-        format = "via [$symbol( $name)$state]($style) ";
-        impure_msg = " ";
-        pure_msg = "";
-        symbol = "❄ ";
-      };
+      # nix_shell = {
+      #   format = "via [$symbol( $name)$state]($style) ";
+      #   impure_msg = " ";
+      #   pure_msg = "";
+      #   symbol = "❄ ";
+      # };
 
       git_branch.truncation_length = 20;
 
