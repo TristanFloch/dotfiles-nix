@@ -4,6 +4,7 @@
     ./global
 
     ./features/cli
+    ./features/desktop/gnome.nix
     ./features/emacs
     ./features/vim
     ./features/fonts

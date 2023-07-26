@@ -29,10 +29,7 @@
 
   services.xserver.displayManager.autoLogin.enable = false;
 
-  programs = {
-    dconf.enable = true;
-    kdeconnect.enable = true;
-  };
+  programs.dconf.enable = true;
 
   # TODO set this up using home-manager
   # Some programs need SUID wrappers, can be configured further or are
