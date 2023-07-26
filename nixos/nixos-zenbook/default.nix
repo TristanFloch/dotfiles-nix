@@ -17,8 +17,15 @@
   networking.hostName = "nixos-zenbook";
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
-  # Enable CUPS to print documents.
-  services.printing.enable = true;
+  # Enable printers
+  services = {
+    printing.enable = true;
+    avahi = {
+      enable = true;
+      nssmdns = true;
+      openFirewall = true;
+    };
+  };
 
   services.xserver.displayManager.autoLogin.enable = false;
 
