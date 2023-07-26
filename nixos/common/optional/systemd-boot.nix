@@ -5,6 +5,6 @@
       configurationLimit = 5;
     };
     efi.canTouchEfiVariables = true;
-    timeout = 5;
+    timeout = 10;
   };
 }
