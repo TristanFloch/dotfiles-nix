@@ -8,6 +8,7 @@
     ../common/users/tristan
 
     ../common/optional/docker.nix
+    ../common/optional/filesystems.nix
     ../common/optional/fish.nix
     ../common/optional/gnome.nix
     ../common/optional/pipewire.nix
