@@ -1,7 +1,7 @@
 { pkgs, ... }:
 
 {
-  imports = [ ./common ];
+  imports = [ ../common ];
 
   dconf.settings = {
     "org/gnome/shell" = {
