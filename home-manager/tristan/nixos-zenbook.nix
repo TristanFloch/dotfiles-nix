@@ -11,8 +11,8 @@
   ];
 
   home.packages = with pkgs; [
-    # firefox
-    brave
+    firefox
+    # brave
     bitwarden
     spotify
   ];
