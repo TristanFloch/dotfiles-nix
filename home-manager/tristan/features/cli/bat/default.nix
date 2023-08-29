@@ -2,7 +2,7 @@
 {
   programs.bat = {
     enable = true;
-    config = { theme = "Dracula"; };
+    # config = { theme = "Dracula"; };
     # themes = { dracula = builtins.readFile (pkgs.fetchFromGitHub {
     #     owner = "dracula";
     #     repo = "sublime"; # Bat uses sublime syntax for its themes
