@@ -4,6 +4,8 @@
     ./global
 
     ./features/cli
+    ./features/fonts
+    ./features/vim
   ];
 
   home = {
@@ -21,4 +23,13 @@
   };
 
   programs.git.signing.key = null;
+
+  # https://nixos.wiki/wiki/Home_Manager#Usage_on_non-NixOS_Linux
+  targets.genericLinux.enable = true;
+
+  # Let HM manage the whole shell session
+  programs.bash = {
+    enable = true;
+    enableCompletion = true;
+  };
 }
