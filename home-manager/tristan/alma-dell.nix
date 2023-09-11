@@ -4,6 +4,7 @@
     ./global
 
     ./features/cli
+    ./features/emacs
     ./features/fonts
     ./features/vim
   ];
