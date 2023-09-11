@@ -1,8 +1,7 @@
 { config, lib, pkgs, ... }:
 
 let
-  myEmacs = pkgs.emacs29-pgtk;
-  myEmacsWithPkgs = (pkgs.emacsPackagesFor myEmacs).emacsWithPackages
+  myEmacsWithPkgs = (pkgs.emacsPackagesFor pkgs.emacs29).emacsWithPackages
     (epkgs: with epkgs; [ vterm autothemer ]);
   # myTex = (pkgs.texlive.combine {
   #   inherit (pkgs.texlive)
