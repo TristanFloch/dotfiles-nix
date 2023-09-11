@@ -68,7 +68,7 @@
         };
       };
 
-      # Standalone home-manager configuration entrypoint
+      # Standalone home-manager configurations entrypoint
       # Available through 'home-manager --flake .#your-username@your-hostname'
       homeConfigurations = {
         "tristan@nixos-zenbook" = home-manager.lib.homeManagerConfiguration {
@@ -77,6 +77,14 @@
           modules = [
             # > Our main home-manager configuration file <
             ./home-manager/tristan/nixos-zenbook.nix
+          ];
+        };
+
+        "tfloch@alma-dell" = home-manager.lib.homeManagerConfiguration {
+          pkgs = nixpkgs.legacyPackages.x86_64-linux;
+          extraSpecialArgs = { inherit inputs outputs; };
+          modules = [
+            ./home-manager/tristan/alma-dell.nix
           ];
         };
       };
