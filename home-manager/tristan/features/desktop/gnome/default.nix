@@ -13,6 +13,7 @@
         "drive-menu@gnome-shell-extensions.gcampax.github.com"
         "gsconnect@andyholmes.github.io"
         "launch-new-instance@gnome-shell-extensions.gcampax.github.com"
+        "pano@elhan.io"
         "screenshot-window-sizer@gnome-shell-extensions.gcampax.github.com"
         "trayIconsReloaded@selfmade.pl"
         "user-theme@gnome-shell-extensions.gcampax.github.com"
@@ -23,11 +24,12 @@
     };
   };
 
-  home.packages = with pkgs; [
-    gnomeExtensions.auto-move-windows
-    gnomeExtensions.gsconnect
-    gnomeExtensions.tray-icons-reloaded
-    gnomeExtensions.user-themes
-    gnomeExtensions.vitals
+  home.packages = with pkgs.gnomeExtensions; [
+    auto-move-windows
+    gsconnect
+    pano
+    tray-icons-reloaded
+    user-themes
+    vitals
   ];
 }
