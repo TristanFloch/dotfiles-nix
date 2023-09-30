@@ -15,8 +15,20 @@
     ../common/optional/systemd-boot.nix
   ];
 
-  networking.hostName = "nixos-zenbook";
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
+  networking = {
+    hostName = "nixos-zenbook";
+    # wireless.enable = true;  # Enables wireless support via wpa_supplicant.
+
+    firewall = {
+      enable = true;
+      allowedTCPPortRanges = [
+        { from = 1714; to = 1764; } # KDE connect
+      ];
+      allowedUDPPortRanges = [
+        { from = 1714; to = 1764; } # KDE connect
+      ];
+    };
+  };
 
   # Enable printers
   services = {
