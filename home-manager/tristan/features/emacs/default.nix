@@ -80,10 +80,10 @@ in rec {
     #   icon = "emacs";
     # } // commonOptions;
 
-    # emacs-minimal = {
-    #   name = "Emacs (Minimal)";
-    #   exec = "${emacs} --init-directory ${homeDir}/.emacs.d.minimal";
-    #   icon = "emacs";
-    # } // commonOptions;
+    emacs-minimal = {
+      name = "Emacs (Minimal)";
+      exec = "${emacs} --init-directory ${config.xdg.configHome}/emacs-minimal";
+      icon = "emacs";
+    } // commonOptions;
   };
 }
