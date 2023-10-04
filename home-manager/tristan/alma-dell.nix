@@ -23,7 +23,13 @@
     settings.experimental-features = [ "nix-command" "flakes" ];
   };
 
-  programs.git.signing.key = null;
+  programs.git = {
+    userEmail = "tristan.floch@digeiz.com";
+    signing.key = "AF3C4AB42C2B9F60FEB065CB093E9E23AA565662";
+    extraConfig = {
+      tag.forceSignAnnotated = true;
+    };
+  };
 
   # https://nixos.wiki/wiki/Home_Manager#Usage_on_non-NixOS_Linux
   targets.genericLinux.enable = true;
