@@ -13,8 +13,8 @@
     username = "tfloch";
 
     packages = with pkgs; [
-      bitwarden
-      spotify
+      python311Packages.python-lsp-server
+      yaml-language-server
     ];
   };
 
