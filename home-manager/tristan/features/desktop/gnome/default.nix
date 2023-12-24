@@ -11,6 +11,7 @@
       enabled-extensions = [
         "auto-move-windows@gnome-shell-extensions.gcampax.github.com"
         "drive-menu@gnome-shell-extensions.gcampax.github.com"
+        "focus-changer@heartmire"
         "gsconnect@andyholmes.github.io"
         "launch-new-instance@gnome-shell-extensions.gcampax.github.com"
         "pano@elhan.io"
@@ -26,6 +27,7 @@
 
   home.packages = with pkgs.gnomeExtensions; [
     auto-move-windows
+    focus-changer
     gsconnect
     pano
     tray-icons-reloaded
