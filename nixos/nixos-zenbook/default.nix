@@ -23,9 +23,11 @@
       enable = true;
       allowedTCPPortRanges = [
         { from = 1714; to = 1764; } # KDE connect
+        { from = 8081; to = 8081; } # Expo Go
       ];
       allowedUDPPortRanges = [
         { from = 1714; to = 1764; } # KDE connect
+        { from = 8081; to = 8081; } # Expo Go
       ];
     };
   };
