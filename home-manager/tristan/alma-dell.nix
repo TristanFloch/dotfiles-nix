@@ -1,5 +1,4 @@
-{ inputs, outputs, lib, config, pkgs, ... }:
-{
+{ inputs, outputs, lib, config, pkgs, ... }: {
   imports = [
     ./global
 
@@ -12,10 +11,7 @@
   home = {
     username = "tfloch";
 
-    packages = with pkgs; [
-      python311Packages.python-lsp-server
-      yaml-language-server
-    ];
+    packages = with pkgs; [ python311Packages.python-lsp-server ];
   };
 
   nix = {
@@ -28,6 +24,7 @@
     signing.key = "AF3C4AB42C2B9F60FEB065CB093E9E23AA565662";
     extraConfig = {
       tag.forceSignAnnotated = true;
+      core.symlinks = true;
     };
   };
 
@@ -37,13 +34,13 @@
   # Let HM manage the whole shell session
   programs.bash = {
     enable = true;
-    enableCompletion = true;
-    bashrcExtra = ''
-      source scl_source enable gcc-toolset-9
+    # enableCompletion = true;
+    enableVteIntegration = true;
+    profileExtra = ''
+      source scl_source enable gcc-toolset-11
 
-      export HISTSIZE=100000     # big history
-      export HISTFILESIZE=100000 # big history
-      export HISTCONTROL=ignoreboth:erasedups # remove duplicates
+      export BOOST_INCLUDEDIR=/usr/include/boost169
+      export BOOST_LIBRARYDIR=/usr/lib64/boost169
 
       # CUDA
       export PATH=/usr/local/cuda/bin/:/usr/local/cuda-12.2/bin:$HOME/.local/bin:$PATH
@@ -52,27 +49,42 @@
 
       export LD_LIBRARY_PATH=/usr/local/lib64/
       export GST_PLUGIN_PATH=/usr/local/lib64/
+    '';
+
+    bashrcExtra = ''
+      export HISTSIZE=100000     # big history
+      export HISTFILESIZE=100000 # big history
+      export HISTCONTROL=ignoreboth:erasedups # remove duplicates
 
       folder(){
-      sudo mkdir -p $1; sudo chown $USER $1
+        sudo mkdir -p $1; sudo chown $USER $1
       }
 
       multifolder(){
-      folder /var/run/dzmultiflux
-      folder /var/run/dzmultiview/acquisition
-      folder /var/spool/dzmultiview/acquisition
-      folder /var/run/dzmultipark
-      folder /var/run/dzwallaggregator
-      folder /var/lib/dzcrowdupdater
-      folder /var/run/dzbenchmark
-      folder /var/run/dzscreenaggregator
-      folder /var/spool/dzscreenaggregator/reports
-      folder /var/spool/dzscreenaggregator/saved_events
-      folder /var/spool/dzmultiflux/detection_dumper
+        folder /var/run/dzmultiflux
+        folder /var/run/dzmultiview/acquisition
+        folder /var/spool/dzmultiview/acquisition
+        folder /var/run/dzmultipark
+        folder /var/run/dzwallaggregator
+        folder /var/lib/dzcrowdupdater
+        folder /var/run/dzbenchmark
+        folder /var/run/dzscreenaggregator
+        folder /var/spool/dzscreenaggregator/reports
+        folder /var/spool/dzscreenaggregator/saved_events
+        folder /var/spool/dzmultiflux/detection_dumper
       }
 
       multifolder 2> /dev/null
+
+      export DZ_USERNAME=VAULT_USERNAME
+      export DZ_PASSWORD=VAULT_PASSWORD
+      export DZ_VAULT_SECRET_ID=980ef93d-335a-2ed3-9583-2ae2b456d76c
     '';
   };
 
+  programs.fish.functions = {
+    mall_ids = ''
+      cat  ~/Documents/configurations/quality_pipeline/malls_config.json | jq -r '.malls[] | "\(.mall_folder) \(.id)"' | column -t
+    '';
+  };
 }
