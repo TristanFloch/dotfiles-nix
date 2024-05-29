@@ -6,7 +6,6 @@
 
     interactiveShellInit = ''
       set fish_greeting
-      # set -x MANPAGER "sh -c 'col -bx | bat -l man -p'"
       fish_add_path ~/.config/emacs-doom/bin/
     '';
 
@@ -21,7 +20,11 @@
       inherit pkgs;
     };
 
-    functions = {
+    functions = let
+      batmanEnabled = config.programs.bat.enable
+        && builtins.elem pkgs.bat-extras.batman
+        config.programs.bat.extraPackages;
+    in {
       ls = "${pkgs.exa}/bin/exa $argv";
       lls = "${pkgs.coreutils}/bin/ls -f $argv"; # fast ls
       cat = "${pkgs.bat}/bin/bat $argv";
@@ -42,6 +45,8 @@
           fish_vi_key_bindings --no-erase insert
         '';
       };
+    } // lib.optionalAttrs batmanEnabled {
+      man = "${pkgs.bat-extras.batman}/bin/batman $argv";
     };
   };
 
