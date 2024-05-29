@@ -2,6 +2,7 @@
 {
   programs.bat = {
     enable = true;
+    extraPackages = with pkgs.bat-extras; [ batdiff batman batgrep batwatch ];
     # config = { theme = "Dracula"; };
     # themes = { dracula = builtins.readFile (pkgs.fetchFromGitHub {
     #     owner = "dracula";
