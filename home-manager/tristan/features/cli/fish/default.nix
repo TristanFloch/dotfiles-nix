@@ -23,7 +23,7 @@
 
     functions = {
       ls = "${pkgs.exa}/bin/exa $argv";
-      lls = "${pkgs.coreutils}/bin/ls $argv";
+      lls = "${pkgs.coreutils}/bin/ls -f $argv"; # fast ls
       cat = "${pkgs.bat}/bin/bat $argv";
       ccat = "${pkgs.coreutils}/bin/cat $argv";
       tree = "${pkgs.exa}/bin/exa --tree $argv";
