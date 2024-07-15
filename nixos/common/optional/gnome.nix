@@ -9,19 +9,20 @@
       displayManager.gdm.enable = true;
       desktopManager.gnome.enable = true;
 
-      layout = "us";
-      xkbVariant = "altgr-intl";
+      xkb = {
+        layout = "us";
+        variant = "altgr-intl";
+      };
 
-      libinput.enable = true;
     };
     geoclue2.enable = true;
+    libinput.enable = true;
   };
 
   environment = {
     gnome.excludePackages = (with pkgs; [ gnome-tour ]) ++ (with pkgs.gnome; [
       cheese # webcam tool
       epiphany # web browser
-      gedit # text editor
       # geary # email reader
       tali # poker game
       iagno # go game

@@ -23,6 +23,6 @@ in {
   home-manager.users.tristan =
     import ../../../../home-manager/tristan/${config.networking.hostName}.nix;
 
-  services.xserver.displayManager.autoLogin.user =
+  services.displayManager.autoLogin.user =
     "tristan"; # set even if autoLogin is disabled
 }
