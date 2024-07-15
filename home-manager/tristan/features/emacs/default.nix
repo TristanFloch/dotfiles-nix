@@ -23,8 +23,7 @@ in rec {
     (aspellWithDicts (dicts: with dicts; [ en en-computers en-science fr ]))
     shellcheck
     shfmt
-    rnix-lsp
-    nixfmt
+    nixfmt-rfc-style
     rtags
     xclip
     fd

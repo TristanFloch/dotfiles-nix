@@ -37,12 +37,12 @@
     printing.enable = true;
     avahi = {
       enable = true;
-      nssmdns = true;
+      nssmdns4 = true;
       openFirewall = true;
     };
   };
 
-  services.xserver.displayManager.autoLogin.enable = false;
+  services.displayManager.autoLogin.enable = false;
 
   programs.dconf.enable = true;
 

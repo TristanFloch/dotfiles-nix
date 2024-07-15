@@ -25,11 +25,11 @@
         && builtins.elem pkgs.bat-extras.batman
         config.programs.bat.extraPackages;
     in {
-      ls = "${pkgs.exa}/bin/exa $argv";
+      ls = "${pkgs.eza}/bin/eza $argv";
       lls = "${pkgs.coreutils}/bin/ls -f $argv"; # fast ls
       cat = "${pkgs.bat}/bin/bat $argv";
       ccat = "${pkgs.coreutils}/bin/cat $argv";
-      tree = "${pkgs.exa}/bin/exa --tree $argv";
+      tree = "${pkgs.eza}/bin/eza --tree $argv";
       ttree = "${pkgs.tree}/bin/tree $argv";
       ex = {
         body = builtins.readFile ./functions/ex.fish;
