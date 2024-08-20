@@ -23,5 +23,6 @@
     unzip
     cmatrix
     neofetch
+    sshs
   ];
 }

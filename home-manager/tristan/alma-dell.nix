@@ -84,7 +84,7 @@
 
   programs.fish.functions = {
     mall_ids = ''
-      cat  ~/Documents/configurations/quality_pipeline/malls_config.json | jq -r '.malls[] | "\(.mall_folder) \(.id)"' | column -t
+      cat  ~/Documents/configurations/quality_pipeline/malls_config.json | jq -r '.malls[] | "\(.mall_folder) \(.id)\t\(.ip_address)"' | column -t
     '';
   };
 }
