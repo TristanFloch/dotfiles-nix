@@ -31,7 +31,8 @@
         success_symbol = "👉"; # 🚀
         error_symbol = "💥";
       };
-      directory = { home_symbol = " ⛺"; };
+      directory.home_symbol = " ⛺";
+      gcloud.disabled = true;
     };
   };
 }
