@@ -20,15 +20,16 @@
   };
 
   environment = {
-    gnome.excludePackages = (with pkgs; [ gnome-tour ]) ++ (with pkgs.gnome; [
+    gnome.excludePackages = with pkgs; [
+      gnome-tour
       cheese # webcam tool
       epiphany # web browser
-      # geary # email reader
+      geary # email reader
       tali # poker game
       iagno # go game
       hitori # sudoku game
       atomix # puzzle game
-    ]);
+    ];
   };
 
   # Workaround for GNOME autologin: https://github.com/NixOS/nixpkgs/issues/103746#issuecomment-945091229

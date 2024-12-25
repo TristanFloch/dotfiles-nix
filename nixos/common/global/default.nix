@@ -11,7 +11,6 @@
   home-manager.extraSpecialArgs = { inherit inputs outputs; };
 
   networking.networkmanager.enable = true;
-  sound.enable = true;
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
