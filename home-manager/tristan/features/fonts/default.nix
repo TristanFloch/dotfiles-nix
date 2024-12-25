@@ -3,7 +3,7 @@
 # TODO make a module out of this
 # https://github.com/Misterio77/nix-config/blob/main/modules/home-manager/fonts.nix
 let
-  material-design-icon-desktop = pkgs.fetchFromGitHub {
+  materialDesignIconDesktop = pkgs.fetchFromGitHub {
     name = "material-design-icons-desktop";
     repo = "MaterialDesign-Font";
     owner = "Templarian";
@@ -15,7 +15,17 @@ let
       cp $out/MaterialDesignIconsDesktop.ttf $out/share/fonts/truetype/
     '';
   };
-in {
+
+  # myNerdFonts = (
+  #   pkgs.nerdfonts.override {
+  #     fonts = [
+  #       # "FiraCode"
+  #       # "DroidSansMono"
+  #     ];
+  #   }
+  # );
+in
+{
   fonts.fontconfig.enable = true;
 
   xdg.configFile."fontconfig/fonts.conf".text = ''
@@ -32,16 +42,16 @@ in {
     </fontconfig>
   '';
 
-  home.packages = with pkgs; [
-    noto-fonts
-    noto-fonts-emoji
-    # dejavu_fonts
-    nerdfonts
-    # roboto
-    # roboto-mono
-    victor-mono
-    ubuntu_font_family
-    source-code-pro
-    material-design-icon-desktop
-  ];
+  home.packages =
+    [
+      # myNerdFonts
+      materialDesignIconDesktop
+    ]
+    ++ (with pkgs; [
+      # noto-fonts
+      noto-fonts-emoji
+      ubuntu_font_family
+      source-code-pro
+      victor-mono
+    ]);
 }
