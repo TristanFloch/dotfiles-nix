@@ -16,14 +16,15 @@ let
     '';
   };
 
-  # myNerdFonts = (
-  #   pkgs.nerdfonts.override {
-  #     fonts = [
-  #       # "FiraCode"
-  #       # "DroidSansMono"
-  #     ];
-  #   }
-  # );
+  myNerdFonts = (
+    pkgs.nerdfonts.override {
+      fonts = [
+        "Ubuntu"
+        "SourceCodePro"
+        "VictorMono"
+      ];
+    }
+  );
 in
 {
   fonts.fontconfig.enable = true;
@@ -44,14 +45,8 @@ in
 
   home.packages =
     [
-      # myNerdFonts
+      myNerdFonts
       materialDesignIconDesktop
-    ]
-    ++ (with pkgs; [
-      # noto-fonts
-      noto-fonts-emoji
-      ubuntu_font_family
-      source-code-pro
-      victor-mono
-    ]);
+      pkgs.noto-fonts-emoji
+    ];
 }
