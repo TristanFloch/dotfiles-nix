@@ -2,15 +2,18 @@
 
 let
   myEmacsWithPkgs = (pkgs.emacsPackagesFor pkgs.emacs29).emacsWithPackages (
-    epkgs: with epkgs; [ vterm ]
+    epkgs: with epkgs; [ vterm treesit-grammars.with-all-grammars ]
   );
+
+  # myTex = (pkgs.texlive.combine {
+  #   inherit (pkgs.texlive)
+  #     scheme-medium dvisvgm dvipng wrapfig
+  #     capt-of # amsmath ulem hyperref  latexmk
+  #   ;
+  # });
+
+  doomEmacsDir = "${config.xdg.configHome}/emacs-doom";
 in
-# myTex = (pkgs.texlive.combine {
-#   inherit (pkgs.texlive)
-#     scheme-medium dvisvgm dvipng wrapfig
-#     capt-of # amsmath ulem hyperref  latexmk
-#   ;
-# });
 rec {
   programs.emacs = {
     enable = true;
@@ -78,7 +81,7 @@ rec {
     {
       doom-emacs = {
         name = "Doom Emacs";
-        exec = "${emacs} --init-directory ${config.xdg.configHome}/emacs-doom";
+        exec = "${emacs} --init-directory ${doomEmacsDir}";
         icon = ./doom.png;
       } // commonOptions;
 
