@@ -22,6 +22,7 @@ let
         "Ubuntu"
         "SourceCodePro"
         "VictorMono"
+        "NerdFontsSymbolsOnly"
       ];
     }
   );
