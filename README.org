@@ -1,0 +1,30 @@
+#+title: Nix Configuration
+#+author: Tristan Floch
+
+
+This is a nix system configuration repo for all my linux and macos systems.
+
+* Bootstrap
+
+Instructions from [[https://nixcademy.com/posts/nix-on-macos/][this]] useful nixcademy article:
+
+** Install nix
+
+Using the /Determinate System's shell installer/:
+
+   #+begin_src shell
+curl \
+  --proto '=https' \
+  --tlsv1.2 \
+  -sSf \
+  -L https://install.determinate.systems/nix \
+  | sh -s -- install
+   #+end_src
+
+** Switch to a configuration
+
+#+begin_src shell
+nix run nix-darwin -- --flake github:TristanFloch/dotfiles-nix#macbook-pro-m4
+#+end_src
+
+Changing `macbook-pro-m4` with the actual hostname.
