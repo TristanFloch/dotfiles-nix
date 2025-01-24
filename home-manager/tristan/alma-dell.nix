@@ -2,6 +2,7 @@
   imports = [
     ./global
 
+    ./features/linux
     ./features/cli
     ./features/emacs
     ./features/fonts

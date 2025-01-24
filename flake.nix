@@ -55,7 +55,7 @@
       # NixOS configurations entrypoint
       # Available through 'nixos-rebuild --flake .#configName'
       nixosConfigurations = {
-        nixosZenbook = lib.nixosSystem {
+        nixos-zenbook = lib.nixosSystem {
           specialArgs = { inherit inputs outputs; };
           modules = [ ./nixos/nixos-zenbook ];
         };
@@ -64,7 +64,7 @@
       # nix-darwin configurations entrypoint
       # Available through 'darwin-rebuild --flake .#configName'
       darwinConfigurations = {
-        macbookProM4 = lib.darwinSystem {
+        macbook-pro-m4 = lib.darwinSystem {
           modules = [ ./darwin/macboook-pro-m4 ];
           specialArgs = { inherit self inputs outputs; };
         };
@@ -83,6 +83,12 @@
           pkgs = pkgsFor.x86_64-linux;
           extraSpecialArgs = { inherit inputs outputs; };
           modules = [ ./home-manager/tristan/alma-dell.nix ];
+        };
+
+        "tristan@macbook-pro-m4" = lib.homeManagerConfiguration {
+          pkgs = pkgsFor.aarch64-darwin;
+          extraSpecialArgs = { inherit inputs outputs; };
+          modules = [ ./home-manager/tristan/macbook-pro-m4.nix ];
         };
       };
     };
