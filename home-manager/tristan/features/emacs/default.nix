@@ -77,8 +77,7 @@ rec {
         terminal = false;
       };
       emacs = "${programs.emacs.package}/bin/emacs";
-    in
-    {
+    in lib.mkIf pkgs.stdenv.isLinux {
       doom-emacs = {
         name = "Doom Emacs";
         exec = "${emacs} --init-directory ${doomEmacsDir}";
