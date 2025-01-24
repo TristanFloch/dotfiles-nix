@@ -12,10 +12,16 @@
     extraSpecialArgs = { inherit inputs outputs; };
   };
 
-  # List packages installed in system profile. To search by name, run:
-  # $ nix-env -qaP | grep wget
-  environment.systemPackages = with pkgs; [
-    vim
-    wget
-  ];
+  environment = {
+    # List packages installed in system profile. To search by name, run:
+    # $ nix-env -qaP | grep wget
+    systemPackages = with pkgs; [
+      vim
+      wget
+    ];
+
+    variables = {
+      LANG = "en_US.UTF-8";
+    };
+  };
 }
