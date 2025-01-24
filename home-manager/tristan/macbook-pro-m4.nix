@@ -7,6 +7,9 @@
     ./global
 
     ./features/cli
+    ./features/fonts
+    ./features/vim
+    ./features/emacs
   ];
 
   programs.git.signing.key = "B9C345A15CF94A2E1BFCBEB71E59FE6862711F56";
