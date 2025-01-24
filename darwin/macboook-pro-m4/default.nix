@@ -4,7 +4,11 @@
   imports = [
     ../common/global
 
+    ../common/users/tristan
+
     ../../nixos/common/optional/fish.nix
+
+    ../common/optional/macos.nix
   ];
 
   # Enable alternative shell support in nix-darwin.
@@ -21,4 +25,13 @@
 
   # The platform the configuration will be used on.
   nixpkgs.hostPlatform = "aarch64-darwin";
+
+  networking.hostName = "macbook-pro-m4";
+
+  security.pam.enableSudoTouchIdAuth = true;
+
+  programs.gnupg.agent = {
+    enable = true;
+    enableSSHSupport = true;
+  };
 }

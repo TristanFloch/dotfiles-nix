@@ -3,6 +3,7 @@
   imports = [
     ./global
 
+    ./features/linux
     ./features/cli
     ./features/desktop/gnome
     ./features/emacs
