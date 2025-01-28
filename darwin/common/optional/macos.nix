@@ -21,6 +21,20 @@
       minimize-to-application = true;
       mru-spaces = false;
       orientation = "bottom";
+      persistent-apps =
+        let
+          hmConfig = config.home-manager.users.tristan;
+        in
+        [
+          (lib.mkIf hmConfig.programs.emacs.enable "${hmConfig.programs.emacs.package}/Applications/Emacs.app")
+          "/Applications/Safari.app"
+          (lib.mkIf hmConfig.programs.ghostty.enable "/Applications/Ghostty.app")
+          "/System/Applications/Messages.app"
+          "/Applications/WhatsApp.app"
+          "/System/Applications/Mail.app"
+          "/Applications/Spotify.app"
+          "/System/Applications/System Settings.app"
+        ];
       scroll-to-open = true;
       show-process-indicators = true;
       show-recents = false;
@@ -99,9 +113,10 @@
       ActuationStrength = 1; # haptic feedback on force click
       Clicking = true; # tap to click
       Dragging = true;
+      TrackpadRightClick = true;
       TrackpadThreeFingerDrag = false;
       TrackpadThreeFingerTapGesture = 2;
-      TrackpadRightClick = false;
+      SecondClickThreshold = 0;
     };
 
     WindowManager = {

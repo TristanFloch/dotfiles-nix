@@ -21,7 +21,7 @@
     stateVersion = "24.11";
 
     packages = with pkgs; [
-      spotify
+      # spotify
       discord
     ];
   };
