@@ -1,9 +1,15 @@
 { config, lib, pkgs, ... }:
 
 let
-  myEmacsWithPkgs = (pkgs.emacsPackagesFor pkgs.emacs29).emacsWithPackages (
-    epkgs: with epkgs; [ vterm treesit-grammars.with-all-grammars ]
-  );
+  myEmacsWithPkgs =
+    (pkgs.emacsPackagesFor (if pkgs.stdenv.isDarwin then pkgs.emacs-macport else pkgs.emacs))
+    .emacsWithPackages
+      (
+        epkgs: with epkgs; [
+          vterm
+          treesit-grammars.with-all-grammars
+        ]
+      );
 
   # myTex = (pkgs.texlive.combine {
   #   inherit (pkgs.texlive)
@@ -77,7 +83,8 @@ rec {
         terminal = false;
       };
       emacs = "${programs.emacs.package}/bin/emacs";
-    in lib.mkIf pkgs.stdenv.isLinux {
+    in
+    lib.mkIf pkgs.stdenv.isLinux {
       doom-emacs = {
         name = "Doom Emacs";
         exec = "${emacs} --init-directory ${doomEmacsDir}";
