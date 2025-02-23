@@ -47,6 +47,7 @@ rec {
     xclip
     fd
     nodejs
+    dockerfile-language-server-nodejs
     # python311Packages.python-lsp-server
     # python3Full
     # poetry
