@@ -17,8 +17,6 @@
       url = "github:nix-community/home-manager/release-24.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    mac-app-util.url = "github:hraban/mac-app-util";
   };
 
   outputs = { self, nixpkgs, nix-darwin, home-manager, systems, ... }@inputs:
