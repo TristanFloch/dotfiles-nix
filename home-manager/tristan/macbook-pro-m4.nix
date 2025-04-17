@@ -2,8 +2,6 @@
 
 {
   imports = [
-    inputs.mac-app-util.homeManagerModules.default
-
     ./global
 
     ./features/cli
@@ -19,10 +17,5 @@
     username = "tristan";
     homeDirectory = "/Users/${config.home.username}";
     stateVersion = "24.11";
-
-    packages = with pkgs; [
-      # spotify
-      discord
-    ];
   };
 }

@@ -7,6 +7,8 @@
     interactiveShellInit = ''
       set fish_greeting
       fish_add_path ~/.config/emacs-doom/bin/
+    '' + lib.optionalString pkgs.stdenv.isDarwin ''
+      fish_add_path /opt/homebrew/bin/
     '';
 
     shellAbbrs = { } // import ./gitAbbrs.nix;

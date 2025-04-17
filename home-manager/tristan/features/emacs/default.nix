@@ -1,15 +1,12 @@
 { config, lib, pkgs, ... }:
 
 let
-  myEmacsWithPkgs =
-    (pkgs.emacsPackagesFor (if pkgs.stdenv.isDarwin then pkgs.emacs-macport else pkgs.emacs))
-    .emacsWithPackages
-      (
-        epkgs: with epkgs; [
-          vterm
-          treesit-grammars.with-all-grammars
-        ]
-      );
+  myEmacsWithPkgs = (pkgs.emacsPackagesFor pkgs.emacs).emacsWithPackages (
+    epkgs: with epkgs; [
+      vterm
+      treesit-grammars.with-all-grammars
+    ]
+  );
 
   # myTex = (pkgs.texlive.combine {
   #   inherit (pkgs.texlive)
@@ -22,7 +19,7 @@ let
 in
 rec {
   programs.emacs = {
-    enable = true;
+    enable = pkgs.stdenv.isLinux; # install using homebrew otherwise
     package = myEmacsWithPkgs;
   };
 
@@ -30,6 +27,7 @@ rec {
 
   home.packages = with pkgs; [
     (lib.mkIf stdenv.isDarwin coreutils-prefixed) # gls to expand dired folders
+    libgccjit
     pinentry-emacs
     emacs-all-the-icons-fonts
     (aspellWithDicts (

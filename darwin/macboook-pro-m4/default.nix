@@ -9,6 +9,8 @@
     ../../nixos/common/optional/fish.nix
 
     ../common/optional/macos.nix
+    ../common/optional/dock.nix
+    ../common/optional/homebrew.nix
   ];
 
   # Enable alternative shell support in nix-darwin.
@@ -33,5 +35,17 @@
   programs.gnupg.agent = {
     enable = true;
     enableSSHSupport = true;
+  };
+
+  homebrew = {
+    brews = [];
+    casks = [
+      "spotify"
+      "brave-browser"
+      "discord"
+      "whatsapp"
+      "messenger"
+      "chatgpt"
+    ];
   };
 }
