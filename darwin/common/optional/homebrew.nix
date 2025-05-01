@@ -11,12 +11,29 @@
       global = {
         autoUpdate = true; # brew will update itself when running brew commands
       };
-      brews = [ ];
+      brews = [
+        "yabai"
+        "skhd"
+
+        {
+          name = "emacs-mac";
+          args = [
+            "with-dbus"
+            "with-imagemagick"
+            "with-librsvg"
+            "with-mac-metal"
+            "with-native-comp"
+          ];
+          # TODO: run `cp -a $(brew --prefix)/opt/emacs-mac/Emacs.app /Applications`
+        }
+      ];
       casks = [
-        "emacs-mac"
         "raycast"
         (lib.mkIf hmConfig.programs.ghostty.enable "ghostty")
       ];
-      taps = [ "railwaycat/emacsmacport" ];
+      taps = [
+        "railwaycat/emacsmacport"
+        "koekeishiya/formulae"
+      ];
     };
 }
