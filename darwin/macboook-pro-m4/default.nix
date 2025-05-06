@@ -38,7 +38,10 @@
   };
 
   homebrew = {
-    brews = [];
+    brews = [
+      "yabai"
+      "skhd"
+    ];
     casks = [
       "spotify"
       "brave-browser"

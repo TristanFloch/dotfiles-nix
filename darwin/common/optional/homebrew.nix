@@ -12,9 +12,6 @@
         autoUpdate = true; # brew will update itself when running brew commands
       };
       brews = [
-        "yabai"
-        "skhd"
-
         {
           name = "emacs-mac";
           args = [
@@ -24,7 +21,7 @@
             "with-mac-metal"
             "with-native-comp"
           ];
-          # TODO: run `cp -a $(brew --prefix)/opt/emacs-mac/Emacs.app /Applications`
+          # XXX: run `cp -a $(brew --prefix)/opt/emacs-mac/Emacs.app /Applications`
         }
       ];
       casks = [
