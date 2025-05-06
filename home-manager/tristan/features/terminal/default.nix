@@ -23,6 +23,7 @@ in
       background-blur = true;
       shell-integration = "fish";
       shell-integration-features = true;
+      macos-option-as-alt = true;
     };
   };
 }
