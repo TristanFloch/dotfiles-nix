@@ -2,15 +2,6 @@
 
 let
   themes = {
-    dracula = {
-      name = "dracula";
-      src = pkgs.fetchFromGitHub {
-        owner = "dracula";
-        repo = "fish";
-        rev = "27db361b55bb49dbfd7a679ebec9140be8c2d593";
-        sha256 = "07kz44ln75n4r04wyks1838nhmhr7jqmsc1rh7am7glq9ja9inmx";
-      };
-    };
     catppuccin = {
       name = "catppuccin";
       src = pkgs.fetchFromGitHub {
