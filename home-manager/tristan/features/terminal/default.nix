@@ -11,14 +11,18 @@ in
     enable = true;
     package = ghostty-mock;
     enableFishIntegration = true;
-    enableBashIntegration = true;
-    enableZshIntegration = true;
+    # enableBashIntegration = true;
+    # enableZshIntegration = true;
     installBatSyntax = false;
     # installVimSyntax = true;
     settings = {
       theme = "dark:DoomOne,light:AtomOneLight";
       font-size = 16;
       font-family = "SauceCodePro Nerd Font";
+      background-opacity = 0.95;
+      background-blur = true;
+      shell-integration = "fish";
+      shell-integration-features = true;
     };
   };
 }
