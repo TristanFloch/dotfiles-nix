@@ -3,9 +3,20 @@
 {
   programs.fish = {
     enable = true;
+    package = pkgs.unstable.fish;
 
     interactiveShellInit = ''
       set fish_greeting
+
+      fish_user_key_bindings
+
+      set fish_cursor_default block
+      set fish_cursor_insert line
+      set fish_cursor_replace_one underscore
+      set fish_cursor_replace underscore
+      set fish_cursor_external line
+      set fish_cursor_visual block
+
       fish_add_path ~/.config/emacs-doom/bin/
     '' + lib.optionalString pkgs.stdenv.isDarwin ''
       fish_add_path /opt/homebrew/bin/
