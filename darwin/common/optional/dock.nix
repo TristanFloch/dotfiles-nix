@@ -10,21 +10,21 @@
     minimize-to-application = true;
     mru-spaces = false;
     orientation = "bottom";
-    persistent-apps =
-      let
-        hmConfig = config.home-manager.users.tristan;
-      in
-      [
-        "/Applications/Emacs.app"
-        "/Applications/Safari.app"
-        (lib.mkIf hmConfig.programs.ghostty.enable "/Applications/Ghostty.app")
-        "/System/Applications/Calendar.app"
-        "/System/Applications/Messages.app"
-        "/Applications/WhatsApp.app"
-        "/System/Applications/Mail.app"
-        "/Applications/Spotify.app"
-        "/System/Applications/System Settings.app"
-      ];
+    # persistent-apps =
+    #   let
+    #     hmConfig = config.home-manager.users.tristan;
+    #   in
+    #   [
+    #     "/Applications/Emacs.app"
+    #     "/Applications/Safari.app"
+    #     (lib.mkIf hmConfig.programs.ghostty.enable "/Applications/Ghostty.app")
+    #     "/System/Applications/Calendar.app"
+    #     "/System/Applications/Messages.app"
+    #     "/Applications/WhatsApp.app"
+    #     "/System/Applications/Mail.app"
+    #     "/Applications/Spotify.app"
+    #     "/System/Applications/System Settings.app"
+    #   ];
     scroll-to-open = true;
     show-process-indicators = true;
     show-recents = false;
