@@ -5,6 +5,7 @@
     ./global
 
     ./features/cli
+    ./features/desktop/yabai
     ./features/fonts
     ./features/vim
     ./features/emacs

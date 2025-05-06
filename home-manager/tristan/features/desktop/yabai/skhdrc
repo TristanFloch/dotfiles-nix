@@ -1,0 +1,55 @@
+# left option is remapped to `ctrl + alt + cmd`
+
+# .blacklist [
+# ]
+
+ctrl + alt + cmd - return : open -na /Applications/Ghostty.app
+
+ctrl + alt + cmd - h : yabai -m window --focus west
+ctrl + alt + cmd - j : yabai -m window --focus south
+ctrl + alt + cmd - k : yabai -m window --focus north
+ctrl + alt + cmd - l : yabai -m window --focus east
+
+# ctrl + alt + cmd + lalt - h: yabai -m display --focus prev
+# ctrl + alt + cmd + lalt - j: yabai -m display --focus prev
+# ctrl + alt + cmd + lalt - k: yabai -m display --focus next
+# ctrl + alt + cmd + lalt - l: yabai -m display --focus next
+
+ctrl + alt + cmd + shift - m : yabai -m window --toggle float --grid 4:4:1:1:2:2
+
+# cmd + ctrl - y : yabai -m space --mirror y-axis
+# cmd + ctrl - x : yabai -m space --mirror x-axis
+
+ctrl + alt + cmd + shift - r : yabai -m space --rotate 270
+ctrl + alt + cmd + shift - 0x18 : yabai -m space --balance # key '='
+
+ctrl + alt + cmd + shift - h : yabai -m window --swap west
+ctrl + alt + cmd + shift - j : yabai -m window --swap south
+ctrl + alt + cmd + shift - k : yabai -m window --swap north
+ctrl + alt + cmd + shift - l : yabai -m window --swap east
+
+ctrl + alt + cmd - 1 : yabai -m space --focus 1
+ctrl + alt + cmd - 2 : yabai -m space --focus 2
+ctrl + alt + cmd - 3 : yabai -m space --focus 3
+ctrl + alt + cmd - 4 : yabai -m space --focus 4
+ctrl + alt + cmd - 5 : yabai -m space --focus 5
+ctrl + alt + cmd - 6 : yabai -m space --focus 6
+ctrl + alt + cmd - 7 : yabai -m space --focus 7
+ctrl + alt + cmd - 8 : yabai -m space --focus 8
+ctrl + alt + cmd - 9 : yabai -m space --focus 9
+
+ctrl + alt + cmd + shift - 1 : yabai -m window --space 1 --focus
+ctrl + alt + cmd + shift - 2 : yabai -m window --space 2 --focus
+ctrl + alt + cmd + shift - 3 : yabai -m window --space 3 --focus
+ctrl + alt + cmd + shift - 4 : yabai -m window --space 4 --focus
+ctrl + alt + cmd + shift - 5 : yabai -m window --space 5 --focus
+ctrl + alt + cmd + shift - 6 : yabai -m window --space 6 --focus
+ctrl + alt + cmd + shift - 7 : yabai -m window --space 7 --focus
+ctrl + alt + cmd + shift - 8 : yabai -m window --space 8 --focus
+ctrl + alt + cmd + shift - 9 : yabai -m window --space 9 --focus
+
+ctrl + alt + cmd + shift - y : yabai --restart-service
+
+# Local Variables:
+# compile-command: "skhd --restart-service"
+# End:
