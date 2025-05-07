@@ -16,7 +16,7 @@ in
     installBatSyntax = false;
     # installVimSyntax = true;
     settings = {
-      theme = "dark:DoomOne,light:AtomOneLight";
+      theme = "dark:DoomOne,light:ayu_light";
       font-size = 16;
       font-family = "SauceCodePro Nerd Font";
       background-opacity = 0.95;
@@ -24,6 +24,7 @@ in
       shell-integration = "fish";
       shell-integration-features = true;
       macos-option-as-alt = true;
+      auto-update = "check";
     };
   };
 }
