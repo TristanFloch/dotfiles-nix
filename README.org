@@ -21,6 +21,8 @@ curl \
   | sh -s -- install
    #+end_src
 
+/Select no when prompted to install Determinate Nix./
+
 ** Switch to a configuration
 
 #+begin_src shell
