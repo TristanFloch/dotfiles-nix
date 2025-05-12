@@ -6,8 +6,9 @@ let
 in {
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.tristan = {
+    name = lib.mkDefault "tristan";
     description = "Tristan Floch";
-    home = "/Users/tristan";
+    home = lib.mkDefault "/Users/tristan";
     packages = [ pkgs.home-manager ];
   };
 

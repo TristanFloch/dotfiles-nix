@@ -68,6 +68,11 @@
           modules = [ ./darwin/macbook-pro-m4 ];
           specialArgs = { inherit self inputs outputs; };
         };
+
+        PAR-M4P-TFloch = lib.darwinSystem {
+          modules = [ ./darwin/PAR-M4P-TFloch ];
+          specialArgs = { inherit self inputs outputs; };
+        };
       };
 
       # Standalone home-manager configurations entrypoint
@@ -89,6 +94,12 @@
           pkgs = pkgsFor.aarch64-darwin;
           extraSpecialArgs = { inherit inputs outputs; };
           modules = [ ./home-manager/tristan/macbook-pro-m4.nix ];
+        };
+
+        "tristan.floch@PAR-M4P-TFloch" = lib.homeManagerConfiguration {
+          pkgs = pkgsFor.aarch64-darwin;
+          extraSpecialArgs = { inherit inputs outputs; };
+          modules = [ ./home-manager/tristan/PAR-M4P-TFloch.nix ];
         };
       };
     };
