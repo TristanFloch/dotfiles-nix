@@ -4,8 +4,6 @@
   imports = [
     ../common/global
 
-    ../common/users/tristan
-
     ../../nixos/common/optional/fish.nix
 
     ../common/optional/macos.nix
@@ -46,8 +44,13 @@
     ];
   };
 
-  users.users.tristan = {
+  users.users."tristan.floch" = {
     name = "tristan.floch";
+    description = "Tristan Floch";
     home = "/Users/tristan.floch";
+    packages = [ pkgs.home-manager ];
   };
+
+  home-manager.users."tristan.floch" =
+    import ../../home-manager/tristan/${config.networking.hostName}.nix;
 }

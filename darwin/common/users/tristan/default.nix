@@ -12,6 +12,6 @@ in {
     packages = [ pkgs.home-manager ];
   };
 
-  home-manager.users.tristan =
+  home-manager.users."${config.users.users.tristan.name}" =
     import ../../../../home-manager/tristan/${config.networking.hostName}.nix;
 }
