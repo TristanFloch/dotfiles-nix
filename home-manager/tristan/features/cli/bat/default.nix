@@ -2,14 +2,28 @@
 {
   programs.bat = {
     enable = true;
-    extraPackages = with pkgs.bat-extras; [ batdiff batman batgrep batwatch prettybat ];
-    # config = { theme = "Dracula"; };
-    # themes = { dracula = builtins.readFile (pkgs.fetchFromGitHub {
-    #     owner = "dracula";
-    #     repo = "sublime"; # Bat uses sublime syntax for its themes
-    #     rev = "26c57ec282abcaa76e57e055f38432bd827ac34e";
-    #     sha256 = "019hfl4zbn4vm4154hh3bwk6hm7bdxbr1hdww83nabxwjn99ndhv";
-    #   } + "/Dracula.tmTheme");
-    # };
+    package = pkgs.unstable.bat;
+    extraPackages = with pkgs.bat-extras; [
+      batdiff
+      batman
+      batgrep
+      batwatch
+      prettybat
+    ];
+    config = {
+      ignored-suffix = [
+        ".backup"
+        ".back"
+        ".default"
+        ".dev"
+      ];
+      italic-text = "always";
+      map-syntax = [
+        ".ino:C++"
+      ];
+      # FIXME https://github.com/sharkdp/bat/issues/3269
+      # theme-light = "OneHalfLight";
+      # theme-dark = "OneHalfDark";
+    };
   };
 }
