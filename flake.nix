@@ -65,7 +65,7 @@
       # Available through 'darwin-rebuild --flake .#configName'
       darwinConfigurations = {
         macbook-pro-m4 = lib.darwinSystem {
-          modules = [ ./darwin/macboook-pro-m4 ];
+          modules = [ ./darwin/macbook-pro-m4 ];
           specialArgs = { inherit self inputs outputs; };
         };
       };
