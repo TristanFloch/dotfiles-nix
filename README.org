@@ -24,7 +24,7 @@ curl \
 ** Switch to a configuration
 
 #+begin_src shell
-nix run nix-darwin -- --flake github:TristanFloch/dotfiles-nix#macbook-pro-m4
+nix run nix-darwin -- switch --flake github:TristanFloch/dotfiles-nix#macbook-pro-m4
 #+end_src
 
 Changing `macbook-pro-m4` with the actual hostname.
