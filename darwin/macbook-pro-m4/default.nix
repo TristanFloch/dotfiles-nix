@@ -35,17 +35,7 @@
   };
 
   homebrew = {
-    brews = [
-      "yabai"
-      "skhd"
-    ];
-    casks = [
-      "spotify"
-      "brave-browser"
-      "discord"
-      "whatsapp"
-      "messenger"
-      "chatgpt"
-    ];
+    brews = [ ];
+    casks = [ ];
   };
 }
