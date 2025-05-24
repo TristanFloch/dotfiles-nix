@@ -15,17 +15,13 @@
     username = "tristan.floch";
     homeDirectory = "/Users/${config.home.username}";
     stateVersion = "24.11";
+
+    sessionPath = [
+      "/opt/homebrew/opt/llvm@19/bin"
+      "/opt/homebrew/opt/lld@19/bin"
+      "/Users/tristan.floch/Code/bin"
+    ];
   };
-
-  programs.fish.shellInit = ''
-    export VAULT_ADDR=https://vault.algolia.net
-
-    export CC=/opt/homebrew/opt/llvm@19/bin/clang
-    export CXX=/opt/homebrew/opt/llvm@19/bin/clang++
-
-    fish_add_path /opt/homebrew/opt/llvm@19/bin
-    fish_add_path /opt/homebrew/opt/lld@19/bin
-  '';
 
   programs.git = {
     signing.key = "26FFD2B1B8E8DBC23273163B823513B4C3E5E849";
