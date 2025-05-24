@@ -49,8 +49,26 @@
     description = "Tristan Floch";
     home = "/Users/tristan.floch";
     packages = [ pkgs.home-manager ];
+    shell = pkgs.fish;
   };
 
   home-manager.users."tristan.floch" =
     import ../../home-manager/tristan/${config.networking.hostName}.nix;
+
+  environment = {
+    variables = {
+      VAULT_ADDR = "https://vault.algolia.net";
+
+      CC = "/opt/homebrew/opt/llvm@19/bin/clang";
+      CXX = "/opt/homebrew/opt/llvm@19/bin/clang++";
+
+      GOPATH = "/Users/tristan.floch/Code/go";
+    };
+
+    systemPath = [
+      "/opt/homebrew/opt/llvm@19/bin"
+      "/opt/homebrew/opt/lld@19/bin"
+      "/Users/tristan.floch/Code/go/bin"
+    ];
+  };
 }
