@@ -11,9 +11,6 @@
     ../common/optional/homebrew.nix
   ];
 
-  # Enable alternative shell support in nix-darwin.
-  # programs.fish.enable = true;
-
   system = {
     # Set Git commit hash for darwin-version.
     configurationRevision = self.rev or self.dirtyRev or null;
