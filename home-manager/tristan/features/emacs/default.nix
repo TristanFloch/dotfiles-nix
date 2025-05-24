@@ -27,7 +27,6 @@ rec {
 
   home.packages = with pkgs; [
     (lib.mkIf stdenv.isDarwin coreutils-prefixed) # gls to expand dired folders
-    libgccjit
     pinentry-emacs
     emacs-all-the-icons-fonts
     (aspellWithDicts (
