@@ -15,17 +15,6 @@ let
       cp $out/MaterialDesignIconsDesktop.ttf $out/share/fonts/truetype/
     '';
   };
-
-  myNerdFonts = (
-    pkgs.nerdfonts.override {
-      fonts = [
-        "Ubuntu"
-        "SourceCodePro"
-        "VictorMono"
-        "NerdFontsSymbolsOnly"
-      ];
-    }
-  );
 in
 {
   fonts.fontconfig.enable = true;
@@ -44,10 +33,12 @@ in
     </fontconfig>
   '';
 
-  home.packages =
-    [
-      myNerdFonts
-      materialDesignIconDesktop
-      pkgs.noto-fonts-emoji
-    ];
+  home.packages = with pkgs; [
+    noto-fonts-color-emoji
+    nerd-fonts.ubuntu
+    nerd-fonts.ubuntu-sans
+    nerd-fonts.victor-mono
+    nerd-fonts.sauce-code-pro
+    nerd-fonts.adwaita-mono
+  ] ++ [ materialDesignIconDesktop ];
 }
