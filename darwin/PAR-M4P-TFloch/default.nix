@@ -18,6 +18,8 @@
     # Used for backwards compatibility, please read the changelog before changing.
     # $ darwin-rebuild changelog
     stateVersion = 5;
+
+    primaryUser = "tristan.floch";
   };
 
   # The platform the configuration will be used on.
@@ -25,7 +27,7 @@
 
   networking.hostName = "PAR-M4P-TFloch"; # set by my company
 
-  security.pam.enableSudoTouchIdAuth = true;
+  security.pam.services.sudo_local.touchIdAuth = true;
 
   programs.gnupg.agent = {
     enable = true;

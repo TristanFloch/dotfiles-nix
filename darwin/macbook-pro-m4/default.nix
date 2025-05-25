@@ -20,6 +20,8 @@
     # Used for backwards compatibility, please read the changelog before changing.
     # $ darwin-rebuild changelog
     stateVersion = 5;
+
+    primaryUser = "tristan";
   };
 
   # The platform the configuration will be used on.
@@ -27,7 +29,7 @@
 
   networking.hostName = "macbook-pro-m4";
 
-  security.pam.enableSudoTouchIdAuth = true;
+  security.pam.services.sudo_local.touchIdAuth = true;
 
   programs.gnupg.agent = {
     enable = true;
