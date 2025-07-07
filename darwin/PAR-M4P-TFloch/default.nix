@@ -62,6 +62,8 @@
       CXX = "/opt/homebrew/opt/llvm@19/bin/clang++";
 
       GOPATH = "/Users/tristan.floch/Code/go";
+
+      AUSER = "tfloch";
     };
 
     systemPath = [
