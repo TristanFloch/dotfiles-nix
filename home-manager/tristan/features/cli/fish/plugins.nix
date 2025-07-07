@@ -39,12 +39,12 @@ in # builtins.attrValues themes # .${config.modules.theme.name}
   #   };
   # }
   {
-    name = "fish-bax";
+    name = "replay";
     src = pkgs.fetchFromGitHub {
-      owner = "hunter-richardson";
-      repo = "fish-bax";
-      rev = "b559b8b18d228f0f98c01aed4b8da6f7c706bbad";
-      sha256 = "0261ml5wwawksgr8mx70hq8cyq9lqv44p69523vng07kaf6nrxr4";
+      owner = "jorgebucaran";
+      repo = "replay.fish";
+      rev = "d2ecacd3fe7126e822ce8918389f3ad93b14c86c";
+      sha256 = "1n2xji4w5k1iyjsvnwb272wx0qh5jfklihqfz0h1a1bd3zp3sd2g";
     };
   }
 ]
