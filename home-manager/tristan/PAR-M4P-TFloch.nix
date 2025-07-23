@@ -37,6 +37,8 @@
     ];
   };
 
+  programs.k9s.enable = true;
+
   xdg.configFile."ccache/ccache.conf".text = ''
     # Set maximum cache size to 50 GB:
     max_size = 50G
