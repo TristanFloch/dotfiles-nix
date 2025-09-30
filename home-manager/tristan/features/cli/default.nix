@@ -25,4 +25,8 @@
     neofetch
     sshs
   ];
+
+  home.sessionVariables = {
+    EDITOR = "vim";
+  };
 }
