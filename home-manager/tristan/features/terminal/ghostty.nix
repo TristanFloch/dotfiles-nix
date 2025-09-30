@@ -21,7 +21,7 @@ in
     installBatSyntax = false;
     # installVimSyntax = true;
     settings = {
-      theme = "dark:DoomOne,light:AyuLight";
+      theme = "dark:Doom One,light:Ayu Light";
       font-size = 16;
       font-family = "SauceCodePro Nerd Font";
       background-opacity = 0.95;
