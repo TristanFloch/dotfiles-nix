@@ -17,8 +17,7 @@
     stateVersion = "24.11";
 
     sessionPath = [
-      "/opt/homebrew/opt/llvm@19/bin"
-      "/opt/homebrew/opt/lld@19/bin"
+      "/opt/homebrew/opt/llvm@20/bin"
       "/Users/tristan.floch/Code/bin"
     ];
   };
