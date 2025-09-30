@@ -58,8 +58,8 @@
     variables = {
       VAULT_ADDR = "https://vault.algolia.net";
 
-      CC = "/opt/homebrew/opt/llvm@19/bin/clang";
-      CXX = "/opt/homebrew/opt/llvm@19/bin/clang++";
+      CC = "/opt/homebrew/opt/llvm@20/bin/clang";
+      CXX = "/opt/homebrew/opt/llvm@20/bin/clang++";
 
       GOPATH = "/Users/tristan.floch/Code/go";
 
@@ -67,8 +67,8 @@
     };
 
     systemPath = [
-      "/opt/homebrew/opt/llvm@19/bin"
-      "/opt/homebrew/opt/lld@19/bin"
+      "/opt/homebrew/opt/lld@20/bin"
+      "/opt/homebrew/opt/llvm@20/bin"
       "/Users/tristan.floch/Code/go/bin"
     ];
   };
