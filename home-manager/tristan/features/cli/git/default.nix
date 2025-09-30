@@ -8,6 +8,15 @@
     signing = {
       signByDefault = !builtins.isNull config.programs.git.signing.key;
     };
-    ignores = [ "*~" "*.swp" "~" ".direnv/" ".cache/" ];
+    ignores = [
+      "*~"
+      "*.swp"
+      "~"
+      ".direnv/"
+      ".cache/"
+    ];
+    extraConfig = {
+      github.user = "TristanFloch";
+    };
   };
 }
