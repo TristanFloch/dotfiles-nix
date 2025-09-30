@@ -35,7 +35,7 @@
   };
 
   homebrew = {
-    brews = [];
+    brews = [ ];
     casks = [
       "spotify"
       "whatsapp"
