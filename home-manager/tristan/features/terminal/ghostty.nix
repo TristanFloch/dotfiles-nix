@@ -22,8 +22,8 @@ in
     # installVimSyntax = true;
     settings = {
       theme = "dark:Doom One,light:Ayu Light";
-      font-size = 16;
-      font-family = "SauceCodePro Nerd Font";
+      font-size = 20;
+      font-family = "InconsolataGo Nerd Font Mono";
       background-opacity = 0.95;
       background-blur = true;
       shell-integration = "fish";
