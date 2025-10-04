@@ -40,5 +40,6 @@ in
     nerd-fonts.victor-mono
     nerd-fonts.sauce-code-pro
     nerd-fonts.adwaita-mono
+    nerd-fonts.inconsolata-go
   ] ++ [ materialDesignIconDesktop ];
 }
