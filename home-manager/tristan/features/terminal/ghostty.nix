@@ -22,8 +22,8 @@ in
     # installVimSyntax = true;
     settings = {
       theme = "dark:Doom One,light:Ayu Light";
-      font-size = 20;
-      font-family = "InconsolataGo Nerd Font Mono";
+      font-family = "Iosevka Nerd Font Mono";
+      font-size = 17;
       background-opacity = 0.95;
       background-blur = true;
       shell-integration = "fish";
@@ -31,7 +31,7 @@ in
       macos-option-as-alt = true;
       auto-update = "check";
       keybind = [
-        "shift+enter=text:\\x1b\\r"
+        "shift+enter=text:\\x1b\\r" # for Claude Code
       ];
     };
   };

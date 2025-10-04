@@ -41,5 +41,6 @@ in
     nerd-fonts.sauce-code-pro
     nerd-fonts.adwaita-mono
     nerd-fonts.inconsolata-go
+    nerd-fonts.iosevka
   ] ++ [ materialDesignIconDesktop ];
 }
