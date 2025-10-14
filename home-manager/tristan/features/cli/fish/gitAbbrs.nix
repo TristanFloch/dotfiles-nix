@@ -14,6 +14,7 @@
   gc = "git commit";
   gcf = "git commit --fixup";
   gcs = "git commit --squash";
+  gd = "git diff";
   gf = "git fetch";
   gg = "git status";
   gl = "git log --oneline --graph";
