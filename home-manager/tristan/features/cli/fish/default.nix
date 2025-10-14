@@ -19,11 +19,15 @@
 
       fish_add_path ~/.config/emacs-doom/bin/
       fish_add_path ~/.local/bin/
-    '' + lib.optionalString pkgs.stdenv.isDarwin ''
+    ''
+    + lib.optionalString pkgs.stdenv.isDarwin ''
       fish_add_path /opt/homebrew/bin/
     '';
 
-    shellAbbrs = { } // import ./gitAbbrs.nix;
+    shellAbbrs = {
+      k = "kubectl";
+    }
+    // import ./gitAbbrs.nix;
 
     shellAliases = {
       # nix-shell = "nix-shell --run fish";
