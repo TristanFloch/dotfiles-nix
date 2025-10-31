@@ -23,7 +23,7 @@
   };
 
   programs.git = {
-    signing.key = "26FFD2B1B8E8DBC23273163B823513B4C3E5E849";
+    signing.key = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGooRy/CxVJB0qRSgSw5DsGgxtWYvTm5/Ua4rKZvtcXQ";
     userEmail = "tristan.floch@algolia.com";
     lfs.enable = true;
     extraConfig = {
