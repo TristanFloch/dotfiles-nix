@@ -1,4 +1,9 @@
-{ lib, config, pkgs, ... }:
+{
+  lib,
+  config,
+  pkgs,
+  ...
+}:
 {
   imports = [
     ./atuin
@@ -7,6 +12,7 @@
     ./fish
     ./git
     ./htop
+    ./pyenv
     ./starship
   ];
 
