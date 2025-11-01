@@ -1,8 +1,16 @@
-{ config, lib, pkgs, self, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  self,
+  ...
+}:
 
 {
   imports = [
     ../common/global
+
+    ../common/users/tristan
 
     ../../nixos/common/optional/fish.nix
 
@@ -43,16 +51,10 @@
     ];
   };
 
-  users.users."tristan.floch" = {
+  users.users.tristan = {
     name = "tristan.floch";
-    description = "Tristan Floch";
     home = "/Users/tristan.floch";
-    packages = [ pkgs.home-manager ];
-    shell = pkgs.fish;
   };
-
-  home-manager.users."tristan.floch" =
-    import ../../home-manager/tristan/${config.networking.hostName}.nix;
 
   environment = {
     variables = {

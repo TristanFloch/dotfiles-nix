@@ -1,9 +1,14 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 let
-  ifTheyExist = groups:
-    builtins.filter (group: builtins.hasAttr group config.users.groups) groups;
-in {
+  ifTheyExist = groups: builtins.filter (group: builtins.hasAttr group config.users.groups) groups;
+in
+{
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.tristan = {
     name = lib.mkDefault "tristan";
@@ -12,6 +17,5 @@ in {
     packages = [ pkgs.home-manager ];
   };
 
-  home-manager.users."${config.users.users.tristan.name}" =
-    import ../../../../home-manager/tristan/${config.networking.hostName}.nix;
+  home-manager.users.tristan = import ../../../../home-manager/tristan/${config.networking.hostName}.nix;
 }

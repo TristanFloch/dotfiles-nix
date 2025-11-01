@@ -23,17 +23,16 @@
   };
 
   programs.git = {
-    signing.key = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGooRy/CxVJB0qRSgSw5DsGgxtWYvTm5/Ua4rKZvtcXQ";
     userEmail = "tristan.floch@algolia.com";
+    signing.key = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGooRy/CxVJB0qRSgSw5DsGgxtWYvTm5/Ua4rKZvtcXQ";
     lfs.enable = true;
     extraConfig = {
       url."git@github.com:".insteadOf = "https://github.com/";
+      gpg = {
+        format = "ssh";
+        ssh.program = "/Applications/1Password.app/Contents/MacOS/op-ssh-sign"; # use ssh-agent from 1password
+      };
     };
-    includes = [
-      {
-        path = "~/.config/git/secrets";
-      }
-    ];
   };
 
   programs.k9s.enable = true;
