@@ -16,6 +16,8 @@
     #       "with-librsvg"
     #       "with-mac-metal"
     #       "with-native-comp"
+    #        # https://github.com/railwaycat/homebrew-emacsmacport/blob/master/icons/
+    #       "with-modern-icon"
     #     ];
     #     # XXX: run `cp -a $(brew --prefix)/opt/emacs-mac/Emacs.app /Applications`
     #   }
