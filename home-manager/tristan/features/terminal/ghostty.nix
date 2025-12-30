@@ -5,16 +5,10 @@
   ...
 }:
 
-let
-  # https://github.com/nix-community/home-manager/issues/6295
-  ghostty-mock = pkgs.writeShellScriptBin "gostty-mock" ''
-    true
-  '';
-in
 {
   programs.ghostty = {
     enable = true;
-    package = ghostty-mock;
+    package = lib.mkIf pkgs.stdenv.isDarwin null;
     enableFishIntegration = true;
     # enableBashIntegration = true;
     # enableZshIntegration = true;
