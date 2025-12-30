@@ -1,10 +1,17 @@
-{ inputs, outputs, lib, ... }:
+{
+  inputs,
+  outputs,
+  lib,
+  pkgs,
+  ...
+}:
 
 let
   flakeInputs = lib.filterAttrs (_: lib.isType "flake") inputs;
 in
 {
   nix = {
+    package = pkgs.lixPackageSets.stable.lix;
     settings = {
       experimental-features = [
         "nix-command"
