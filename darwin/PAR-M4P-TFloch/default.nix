@@ -44,11 +44,7 @@
 
   homebrew = {
     brews = [ ];
-    casks = [
-      "spotify"
-      "whatsapp"
-      "messenger"
-    ];
+    casks = [ ];
   };
 
   users.users.tristan = {
