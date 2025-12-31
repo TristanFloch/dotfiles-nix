@@ -35,4 +35,9 @@
   home.sessionVariables = {
     EDITOR = "vim";
   };
+
+  programs.nix-your-shell = {
+    enable = true;
+    enableFishIntegration = true;
+  };
 }
