@@ -22,6 +22,9 @@ set list
 set listchars=tab:»\ ,trail:·
 set ttymouse=sgr
 
+let &t_SI = "\e[6 q" " bar cursor in insert mode
+let &t_EI = "\e[2 q" " block cursor in normal mode
+
 autocmd FileType ada setlocal shiftwidth=3
 
 " let g:lightline = { 'colorscheme': 'dracula' }

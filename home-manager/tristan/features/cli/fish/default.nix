@@ -13,13 +13,13 @@
     interactiveShellInit = ''
       set fish_greeting
 
-      fish_user_key_bindings
+      fish_hybrid_key_bindings
 
       set fish_cursor_default block
       set fish_cursor_insert line
       set fish_cursor_replace_one underscore
       set fish_cursor_replace underscore
-      set fish_cursor_external line
+      set fish_cursor_external block
       set fish_cursor_visual block
 
       fish_add_path ~/.config/emacs-doom/bin/
@@ -64,12 +64,6 @@
         #   body = builtins.readFile ./functions/monitor.fish;
         #   description = "connects/disconnects pluged/unpluged monitors";
         # };
-        fish_user_key_bindings = {
-          body = ''
-            fish_default_key_bindings -M insert
-            fish_vi_key_bindings --no-erase insert
-          '';
-        };
       }
       // lib.optionalAttrs batmanEnabled {
         man = "${pkgs.bat-extras.batman}/bin/batman $argv";
