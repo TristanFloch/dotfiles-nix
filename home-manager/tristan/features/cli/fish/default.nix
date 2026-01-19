@@ -60,6 +60,7 @@
           body = builtins.readFile ./functions/ex.fish;
           description = "extracts any archive format";
         };
+        claude = "ENABLE_IDE_INTEGRATION=t command claude $argv";
         # monitor = {
         #   body = builtins.readFile ./functions/monitor.fish;
         #   description = "connects/disconnects pluged/unpluged monitors";
