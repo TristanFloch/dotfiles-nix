@@ -5,14 +5,15 @@
     enableBashIntegration = false;
     settings = {
       add_newline = true;
-      line_break.disabled = true;
+      line_break.disabled = false;
+      # add a space prefix to each symbol for padding
       character = {
-        success_symbol = "👉"; # 🚀
-        error_symbol = "💥";
-        vicmd_symbol = "🖌️";
-        vimcmd_replace_symbol = "🔧";
-        vimcmd_replace_one_symbol = "🔧";
-        vimcmd_visual_symbol = "🥽";
+        success_symbol = " 👉"; # 🚀
+        error_symbol = " 💥";
+        vicmd_symbol = " 🖌️";
+        vimcmd_replace_symbol = " 🔧";
+        vimcmd_replace_one_symbol = " 🔧";
+        vimcmd_visual_symbol = " 🥽";
       };
       directory.home_symbol = " ⛺";
       gcloud.disabled = true;
