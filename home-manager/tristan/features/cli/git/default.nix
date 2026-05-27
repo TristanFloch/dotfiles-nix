@@ -16,6 +16,11 @@
       ".cache/"
     ];
     extraConfig = {
+      pull = {
+        rebase = true;
+        updateRefs = true;
+      };
+      push.autoSetupRemote = true;
       github.user = "TristanFloch";
     };
   };
