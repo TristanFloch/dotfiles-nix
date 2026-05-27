@@ -55,18 +55,11 @@
   environment = {
     variables = {
       VAULT_ADDR = "https://vault.algolia.net";
-
-      CC = "/opt/homebrew/opt/llvm@20/bin/clang";
-      CXX = "/opt/homebrew/opt/llvm@20/bin/clang++";
-
       GOPATH = "/Users/tristan.floch/Code/go";
-
       AUSER = "tfloch";
     };
 
     systemPath = [
-      "/opt/homebrew/opt/lld@20/bin"
-      "/opt/homebrew/opt/llvm@20/bin"
       "/Users/tristan.floch/Code/go/bin"
     ];
   };
