@@ -52,7 +52,7 @@
       {
         ls = "${pkgs.eza}/bin/eza $argv";
         lls = "${pkgs.coreutils}/bin/ls -f $argv"; # fast ls
-        cat = "${pkgs.bat}/bin/bat $argv";
+        cat = "${pkgs.bat}/bin/bat --plain $argv";
         ccat = "${pkgs.coreutils}/bin/cat $argv";
         tree = "${pkgs.eza}/bin/eza --tree $argv";
         ttree = "${pkgs.tree}/bin/tree $argv";
