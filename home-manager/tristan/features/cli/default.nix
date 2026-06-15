@@ -28,7 +28,7 @@
     unixtools.ping
     unzip
     cmatrix
-    neofetch
+    fastfetch
     sshs
   ];
 

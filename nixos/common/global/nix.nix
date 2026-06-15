@@ -16,7 +16,6 @@ in
       experimental-features = [
         "nix-command"
         "flakes"
-        "ca-derivations"
       ];
       auto-optimise-store = lib.mkDefault true;
       warn-dirty = false;

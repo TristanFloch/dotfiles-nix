@@ -39,12 +39,12 @@ rec {
     ))
     shellcheck
     shfmt
-    nixfmt-rfc-style
+    nixfmt
     rtags
     xclip
     fd
     nodejs
-    dockerfile-language-server-nodejs
+    dockerfile-language-server
     # python311Packages.python-lsp-server
     # python3Full
     # poetry

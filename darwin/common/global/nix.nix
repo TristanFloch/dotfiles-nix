@@ -16,7 +16,6 @@ in
       experimental-features = [
         "nix-command"
         "flakes"
-        "ca-derivations"
       ];
       warn-dirty = false;
       substituters = [ "https://nix-community.cachix.org/" ];

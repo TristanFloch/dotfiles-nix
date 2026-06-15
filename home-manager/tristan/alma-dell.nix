@@ -21,12 +21,12 @@
   };
 
   programs.git = {
-    userEmail = "tristan.floch@digeiz.com";
-    signing.key = "AF3C4AB42C2B9F60FEB065CB093E9E23AA565662";
-    extraConfig = {
+    settings = {
+      user.email = "tristan.floch@digeiz.com";
       tag.forceSignAnnotated = true;
       core.symlinks = true;
     };
+    signing.key = "AF3C4AB42C2B9F60FEB065CB093E9E23AA565662";
   };
 
   # https://nixos.wiki/wiki/Home_Manager#Usage_on_non-NixOS_Linux
