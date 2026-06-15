@@ -3,8 +3,16 @@
 {
   programs.git = {
     enable = true;
-    userName = "Tristan Floch";
-    userEmail = lib.mkDefault "tristan.floch@gmail.com";
+    settings.user = {
+      name = "Tristan Floch";
+      email = lib.mkDefault "tristan.floch@gmail.com";
+      pull = {
+        rebase = true;
+        updateRefs = true;
+      };
+      push.autoSetupRemote = true;
+      github.user = "TristanFloch";
+    };
     signing = {
       signByDefault = !builtins.isNull config.programs.git.signing.key;
     };
@@ -15,13 +23,5 @@
       ".direnv/"
       ".cache/"
     ];
-    extraConfig = {
-      pull = {
-        rebase = true;
-        updateRefs = true;
-      };
-      push.autoSetupRemote = true;
-      github.user = "TristanFloch";
-    };
   };
 }
