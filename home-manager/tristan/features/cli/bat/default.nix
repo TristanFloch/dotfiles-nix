@@ -14,16 +14,18 @@
       ignored-suffix = [
         ".backup"
         ".back"
+        ".bak"
         ".default"
         ".dev"
+        ".example"
       ];
       italic-text = "always";
       map-syntax = [
         ".ino:C++"
       ];
-      # FIXME https://github.com/sharkdp/bat/issues/3269
-      # theme-light = "OneHalfLight";
-      # theme-dark = "OneHalfDark";
+      theme = "auto:system";
+      theme-dark = "OneHalfDark";
+      theme-light = "OneHalfLight";
     };
   };
 }
