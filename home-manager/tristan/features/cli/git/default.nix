@@ -3,9 +3,11 @@
 {
   programs.git = {
     enable = true;
-    settings.user = {
-      name = "Tristan Floch";
-      email = lib.mkDefault "tristan.floch@gmail.com";
+    settings = {
+      user = {
+        name = "Tristan Floch";
+        email = lib.mkDefault "tristan.floch@gmail.com";
+      };
       pull = {
         rebase = true;
         updateRefs = true;
