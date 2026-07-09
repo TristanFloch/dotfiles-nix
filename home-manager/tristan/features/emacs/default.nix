@@ -45,6 +45,8 @@ rec {
     fd
     nodejs
     dockerfile-language-server
+    svelte-language-server
+    tailwindcss-language-server
     # python311Packages.python-lsp-server
     # python3Full
     # poetry
