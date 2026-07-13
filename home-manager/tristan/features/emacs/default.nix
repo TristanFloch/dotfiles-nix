@@ -25,6 +25,10 @@ rec {
 
   services.emacs.client.enable = false;
 
+  home.sessionPath = [
+    "${doomEmacsDir}/bin"
+  ];
+
   home.packages = with pkgs; [
     (lib.mkIf stdenv.isDarwin coreutils-prefixed) # gls to expand dired folders
     pinentry-emacs

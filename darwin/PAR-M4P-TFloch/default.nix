@@ -49,18 +49,11 @@
 
   users.users.tristan = {
     name = "tristan.floch";
-    home = "/Users/tristan.floch";
+    home = "/Users/${config.users.users.tristan.name}";
   };
 
   environment = {
-    variables = {
-      VAULT_ADDR = "https://vault.algolia.net";
-      GOPATH = "/Users/tristan.floch/Code/go";
-      AUSER = "tfloch";
-    };
-
-    systemPath = [
-      "/Users/tristan.floch/Code/go/bin"
-    ];
+    variables = { };
+    systemPath = [ ];
   };
 }
