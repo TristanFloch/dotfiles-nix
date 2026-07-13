@@ -16,8 +16,15 @@
     homeDirectory = "/Users/${config.home.username}";
     stateVersion = "24.11";
 
+    sessionVariables = {
+      VAULT_ADDR = "https://vault.algolia.net";
+      AUSER = "tfloch";
+      GOPATH = "${config.home.homeDirectory}/Code/go";
+    };
+
     sessionPath = [
-      "/Users/tristan.floch/Code/bin"
+      "${config.home.sessionVariables.GOPATH}/bin"
+      "${config.home.homeDirectory}/.local/bin"
     ];
   };
 

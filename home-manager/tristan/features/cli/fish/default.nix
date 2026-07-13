@@ -21,12 +21,6 @@
       set fish_cursor_replace underscore
       set fish_cursor_external block
       set fish_cursor_visual block
-
-      fish_add_path ~/.config/emacs-doom/bin/
-      fish_add_path ~/.local/bin/
-    ''
-    + lib.optionalString pkgs.stdenv.isDarwin ''
-      fish_add_path /opt/homebrew/bin/
     '';
 
     shellAbbrs = {
