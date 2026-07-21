@@ -5,6 +5,7 @@
     inputs.home-manager.darwinModules.home-manager
 
     ./nix.nix
+    ./sops.nix
   ];
 
   home-manager = {

@@ -30,3 +30,51 @@ nix run nix-darwin -- switch --flake github:TristanFloch/dotfiles-nix#macbook-pr
 #+end_src
 
 Changing `macbook-pro-m4` with the actual hostname.
+
+* Secrets
+
+Secrets are managed with [[https://github.com/Mic92/sops-nix][sops-nix]] (darwin system module, imported in =darwin/common/global/sops.nix=). Encrypted values live in =./secrets.yaml=; recipients are declared in =./.sops.yaml=.
+
+Two kinds of keys:
+- *Editing key* (human): an age key at =~/.config/sops/age/keys.txt=, backed up in 1Password. It is the only key that needs backing up.
+- *Host keys* (machines): each host decrypts with its own =/etc/ssh/ssh_host_ed25519_key= at activation. Nothing to provision or back up; a reinstalled host just gets re-enrolled.
+
+** Editing a secret
+
+#+begin_src shell
+sops secrets.yaml
+#+end_src
+
+=sops=, =age= and =ssh-to-age= are available in the dev shell (=nix develop=), and =SOPS_AGE_KEY_FILE= is set by home-manager. After editing, rebuild to deploy.
+
+** Using a secret in the config
+
+Declare it, then reference its decrypted path (=/run/secrets/<name>=):
+
+#+begin_src nix
+sops.secrets.github-token = { };
+# plain file: config.sops.secrets.github-token.path
+#+end_src
+
+To embed a secret inside a config line, use a template (see =darwin/common/global/nix.nix= for the nix access-tokens example):
+
+#+begin_src nix
+sops.templates."nix-access-tokens".content =
+  "access-tokens = github.com=${config.sops.placeholder.github-token}";
+#+end_src
+
+** Enrolling a new host
+
+On the new machine:
+
+#+begin_src shell
+ssh-to-age < /etc/ssh/ssh_host_ed25519_key.pub
+#+end_src
+
+Add the printed =age1...= recipient to =.sops.yaml=, then re-encrypt and commit:
+
+#+begin_src shell
+sops updatekeys secrets.yaml
+#+end_src
+
+Until a host is enrolled, do not rebuild it from a branch that declares secrets: activation will fail to decrypt.

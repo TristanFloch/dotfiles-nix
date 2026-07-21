@@ -76,10 +76,6 @@
       }
 
       multifolder 2> /dev/null
-
-      export DZ_USERNAME=VAULT_USERNAME
-      export DZ_PASSWORD=VAULT_PASSWORD
-      export DZ_VAULT_SECRET_ID=980ef93d-335a-2ed3-9583-2ae2b456d76c
     '';
   };
 

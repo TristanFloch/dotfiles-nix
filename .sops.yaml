@@ -1,0 +1,18 @@
+# Recipients:
+# - tristan: personal editing key (~/.config/sops/age/keys.txt, backed up in 1Password)
+# - hosts: derived from each machine's SSH host key:
+#     ssh-to-age < /etc/ssh/ssh_host_ed25519_key.pub
+keys:
+  - &tristan age1nt8uqkg0pz2hnhpjtu96lzl6u66zud4akym65zenj8xstpw5zpzqyd7rpt
+  - &PAR-M4P-TFloch age1etfmwysslty9hmjqw46vknlcmg76wc9puyly94uueenm8qwah3tsat7r2f
+  # TODO: run ssh-to-age on macbook-pro-m4, add its key here, then
+  # `sops updatekeys secrets.yaml` and uncomment it below.
+  # - &macbook-pro-m4 age1...
+
+creation_rules:
+  - path_regex: ^secrets\.ya?ml$
+    key_groups:
+      - age:
+          - *tristan
+          - *PAR-M4P-TFloch
+          # - *macbook-pro-m4
