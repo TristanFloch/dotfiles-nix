@@ -76,10 +76,6 @@
       }
 
       multifolder 2> /dev/null
-
-      export DZ_USERNAME=VAULT_USERNAME
-      export DZ_PASSWORD=VAULT_PASSWORD
-      export DZ_VAULT_SECRET_ID=REDACTED
     '';
   };
 

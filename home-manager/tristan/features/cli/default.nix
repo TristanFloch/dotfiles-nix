@@ -34,6 +34,8 @@
 
   home.sessionVariables = {
     EDITOR = "vim";
+    # sops on macOS defaults to ~/Library/Application Support/sops; keep the key XDG-style
+    SOPS_AGE_KEY_FILE = "${config.xdg.configHome}/sops/age/keys.txt";
   };
 
   programs.nix-your-shell = {

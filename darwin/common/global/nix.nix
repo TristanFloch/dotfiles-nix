@@ -3,9 +3,9 @@
   outputs,
   lib,
   pkgs,
+  config,
   ...
 }:
-
 let
   flakeInputs = lib.filterAttrs (_: lib.isType "flake") inputs;
 in
@@ -34,6 +34,16 @@ in
     # Add each flake input as a registry and nix_path
     registry = lib.mapAttrs (_: flake: { inherit flake; }) flakeInputs;
     nixPath = lib.mapAttrsToList (n: _: "${n}=flake:${n}") flakeInputs;
+
+    # GitHub token for API rate limits and private flake inputs,
+    # decrypted by sops-nix at activation ('!' = don't fail if absent)
+    extraOptions = "!include ${config.sops.templates."nix-access-tokens".path}";
+  };
+
+  sops = {
+    secrets.github-token = { };
+    templates."nix-access-tokens".content =
+      "access-tokens = github.com=${config.sops.placeholder.github-token}";
   };
 
   nixpkgs = {
