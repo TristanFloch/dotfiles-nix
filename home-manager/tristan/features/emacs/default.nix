@@ -1,4 +1,9 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 let
   myEmacsWithPkgs = (pkgs.emacsPackagesFor pkgs.emacs).emacsWithPackages (
@@ -94,7 +99,8 @@ rec {
         name = "Doom Emacs";
         exec = "${emacs} --init-directory ${doomEmacsDir}";
         icon = ./doom.png;
-      } // commonOptions;
+      }
+      // commonOptions;
 
       # nano-emacs = {
       #   name = "NANO Emacs";
@@ -112,6 +118,7 @@ rec {
         name = "Emacs (Minimal)";
         exec = "${emacs} --init-directory ${config.xdg.configHome}/emacs-minimal";
         icon = "emacs";
-      } // commonOptions;
+      }
+      // commonOptions;
     };
 }
