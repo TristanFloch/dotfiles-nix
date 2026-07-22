@@ -56,69 +56,15 @@ rec {
     dockerfile-language-server
     svelte-language-server
     tailwindcss-language-server
-    # python311Packages.python-lsp-server
-    # python3Full
-    # poetry
     # myTex
   ];
 
   # home.file.".icons/doom.png".source = ./doom.png;
 
-  xdg.desktopEntries =
-    let
-      commonOptions = {
-        genericName = "Text Editor";
-        comment = "Edit text";
-        mimeType = [
-          "text/english"
-          "text/plain"
-          "text/x-makefile"
-          "text/x-c++hdr"
-          "text/x-c++src"
-          "text/x-chdr"
-          "text/x-csrc"
-          "text/x-java"
-          "text/x-moc"
-          "text/x-pascal"
-          "text/x-tcl"
-          "text/x-tex"
-          "application/x-shellscript"
-          "text/x-c"
-          "text/x-c++"
-        ];
-        categories = [
-          "Development"
-          "TextEditor"
-        ];
-        terminal = false;
-      };
-      emacs = "${programs.emacs.package}/bin/emacs";
-    in
-    lib.mkIf pkgs.stdenv.isLinux {
-      doom-emacs = {
-        name = "Doom Emacs";
-        exec = "${emacs} --init-directory ${doomEmacsDir}";
-        icon = ./doom.png;
-      }
-      // commonOptions;
-
-      # nano-emacs = {
-      #   name = "NANO Emacs";
-      #   exec = "${emacs} --init-directory ${homeDir}/.emacs.d.nano";
-      #   icon = "emacs"; # TODO
-      # } // commonOptions;
-
-      # gnu-emacs = {
-      #   name = "GNU Emacs";
-      #   exec = "${emacs} --init-directory ${homeDir}/.emacs.d.gnu";
-      #   icon = "emacs";
-      # } // commonOptions;
-
-      emacs-minimal = {
-        name = "Emacs (Minimal)";
-        exec = "${emacs} --init-directory ${config.xdg.configHome}/emacs-minimal";
-        icon = "emacs";
-      }
-      // commonOptions;
-    };
+  xdg.desktopEntries = lib.mkIf pkgs.stdenv.isLinux (
+    import ./xdg-desktop-entries.nix {
+      inherit config;
+      inherit doomEmacsDir;
+    }
+  );
 }
