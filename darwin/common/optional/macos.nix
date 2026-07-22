@@ -1,4 +1,9 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 {
   system.defaults = {
@@ -8,7 +13,7 @@
       Bluetooth = false;
       Display = false;
       FocusModes = false;
-      NowPlaying = true;
+      NowPlaying = false;
       Sound = false;
     };
 
@@ -87,7 +92,7 @@
     };
 
     WindowManager = {
-      EnableTiledWindowMargins = true;
+      EnableTiledWindowMargins = false;
       EnableTilingByEdgeDrag = true;
       EnableTilingOptionAccelerator = true;
       EnableTopTilingByEdgeDrag = true;
