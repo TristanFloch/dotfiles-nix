@@ -2,15 +2,27 @@
   config,
   lib,
   pkgs,
+  inputs,
   ...
 }:
 
 {
+  imports = [ inputs.nix-homebrew.darwinModules.nix-homebrew ];
+
+  # Install and manage the Homebrew installation itself
+  nix-homebrew = {
+    enable = true;
+    user = config.system.primaryUser;
+    # Adopt a Homebrew installation that predates nix-homebrew
+    autoMigrate = true;
+  };
+
   homebrew = {
     enable = true;
     caskArgs.no_quarantine = true;
     global = {
-      autoUpdate = true; # brew will update itself when running brew commands
+      # Refresh formula/cask metadata and taps when running brew commands (not brew itself, managed by nix-homebrew)
+      autoUpdate = true;
     };
     # brews = [
     #   {
