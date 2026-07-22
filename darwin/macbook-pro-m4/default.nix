@@ -1,4 +1,10 @@
-{ config, lib, pkgs, self, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  self,
+  ...
+}:
 
 {
   imports = [
@@ -38,6 +44,22 @@
 
   homebrew = {
     brews = [ ];
-    casks = [ ];
+    casks = [
+      "1password"
+      "1password-cli"
+      "alt-tab"
+      "ghostty"
+      "tuna"
+    ];
+  };
+
+  users.users.tristan = {
+    name = config.system.primaryUser;
+    home = "/Users/${config.users.users.tristan.name}";
+  };
+
+  environment = {
+    variables = { };
+    systemPath = [ ];
   };
 }
