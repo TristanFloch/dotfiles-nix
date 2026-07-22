@@ -5,7 +5,6 @@
   self,
   ...
 }:
-
 {
   imports = [
     ../common/global
@@ -44,11 +43,17 @@
 
   homebrew = {
     brews = [ ];
-    casks = [ ];
+    casks = [
+      "1password"
+      "1password-cli"
+      "alt-tab"
+      "ghostty"
+      "tuna"
+    ];
   };
 
   users.users.tristan = {
-    name = "tristan.floch";
+    name = config.system.primaryUser;
     home = "/Users/${config.users.users.tristan.name}";
   };
 

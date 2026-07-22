@@ -5,7 +5,6 @@
   inputs,
   ...
 }:
-
 {
   imports = [ inputs.nix-homebrew.darwinModules.nix-homebrew ];
 
@@ -24,6 +23,9 @@
       # Refresh formula/cask metadata and taps when running brew commands (not brew itself, managed by nix-homebrew)
       autoUpdate = true;
     };
+    enableBashIntegration = true;
+    enableZshIntegration = true;
+    enableFishIntegration = config.programs.fish.enable;
     # brews = [
     #   {
     #     name = "emacs-mac";
@@ -39,17 +41,9 @@
     #     # XXX: run `cp -a $(brew --prefix)/opt/emacs-mac/Emacs.app /Applications`
     #   }
     # ];
-    # casks = [
-    #   "raycast"
-    #   "ghostty"
-    # ];
     # taps = [
     #   "railwaycat/emacsmacport"
     #   "koekeishiya/formulae"
     # ];
   };
-
-  environment.systemPath = [
-    "/opt/homebrew/bin"
-  ];
 }
