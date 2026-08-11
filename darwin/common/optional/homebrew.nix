@@ -9,6 +9,7 @@
   imports = [ inputs.nix-homebrew.darwinModules.nix-homebrew ];
 
   # Install and manage the Homebrew installation itself
+  # Updating homebrew: `nix flake update nix-homebrew` and rebuild config
   nix-homebrew = {
     enable = true;
     user = config.system.primaryUser;
