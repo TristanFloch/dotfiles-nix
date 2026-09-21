@@ -31,6 +31,7 @@
     sessionPath = [
       "${config.home.sessionVariables.GOPATH}/bin"
       "${config.home.homeDirectory}/.local/bin"
+      "${config.home.homeDirectory}/.swiftly/bin"
     ];
   };
 
