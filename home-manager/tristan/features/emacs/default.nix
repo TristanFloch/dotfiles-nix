@@ -53,6 +53,7 @@ rec {
     xclip
     fd
     nodejs
+    claude-agent-acp
     dockerfile-language-server
     svelte-language-server
     tailwindcss-language-server
