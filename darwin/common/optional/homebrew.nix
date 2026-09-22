@@ -29,17 +29,17 @@
     enableFishIntegration = config.programs.fish.enable;
     # brews = [
     #   {
-    #     name = "emacs-mac";
+    #     name = "railwaycat/emacsmacport/emacs-mac@30exp";
     #     args = [
     #       "with-dbus"
     #       "with-imagemagick"
     #       "with-librsvg"
     #       "with-mac-metal"
-    #       "with-native-comp"
+    #       "with-unlimited-select"
     #        # https://github.com/railwaycat/homebrew-emacsmacport/blob/master/icons/
-    #       "with-modern-icon"
+    #       "with-emacs-big-sur-icon"
     #     ];
-    #     # XXX: run `cp -a $(brew --prefix)/opt/emacs-mac/Emacs.app /Applications`
+    #     # XXX: run `cp -a /opt/homebrew/opt/emacs-mac@30exp/Emacs.app /Applications`
     #   }
     # ];
     # taps = [
