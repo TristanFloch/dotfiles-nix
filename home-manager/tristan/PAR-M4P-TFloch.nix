@@ -60,4 +60,9 @@
     # Include the current working directory in the hash
     hash_dir = true
   '';
+
+  programs.direnv.config.whitelist.prefix = [
+    "${config.home.homeDirectory}/.claude/worktrees"
+    "${config.home.homeDirectory}/.codex/worktrees"
+  ];
 }
