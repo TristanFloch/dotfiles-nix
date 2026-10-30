@@ -8,4 +8,9 @@
       export PATH="$REX_BIN_DIR:$PATH"
     fi
   '';
+
+  # Same as Ghostty's macos-option-as-alt (Settings → Terminal → Option key)
+  system.defaults.CustomUserPreferences."com.superlogical.rex" = {
+    "Workspace.terminalOptionKeyBehavior" = "leftActsAsAlt";
+  };
 }
