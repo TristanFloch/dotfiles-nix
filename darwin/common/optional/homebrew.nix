@@ -19,7 +19,6 @@
 
   homebrew = {
     enable = true;
-    caskArgs.no_quarantine = true;
     global = {
       # Refresh formula/cask metadata and taps when running brew commands (not brew itself, managed by nix-homebrew)
       autoUpdate = true;

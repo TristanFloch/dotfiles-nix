@@ -17,6 +17,7 @@
     ../common/optional/macos.nix
     ../common/optional/dock.nix
     ../common/optional/homebrew.nix
+    ../common/optional/rex.nix
   ];
 
   system = {
@@ -47,9 +48,10 @@
     casks = [
       "1password"
       "1password-cli"
-      "alt-tab"
+      # "alt-tab"
       "ghostty"
-      "tuna"
+      # "tuna"
+      "raycast"
     ];
   };
 
