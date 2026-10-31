@@ -3,6 +3,6 @@
 {
   imports = [
     ./ghostty.nix
-    ./rex.nix
+    ./rex
   ];
 }
