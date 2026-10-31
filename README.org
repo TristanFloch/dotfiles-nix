@@ -86,4 +86,10 @@ Add the printed =age1...= recipient to =.sops.yaml=, then re-encrypt and commit:
 sops updatekeys secrets.yaml
 #+end_src
 
+Note: ensure an already known age key is accessible.
+E.g.:
+#+begin_src shell
+SOPS_AGE_KEY="$(op read "op://Private/Age key - nixpkgs/Private Key")" sops updatekeys secrets.yaml
+#+end_src
+
 Until a host is enrolled, do not rebuild it from a branch that declares secrets: activation will fail to decrypt.
