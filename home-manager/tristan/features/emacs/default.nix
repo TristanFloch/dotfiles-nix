@@ -57,6 +57,7 @@ rec {
     dockerfile-language-server
     svelte-language-server
     tailwindcss-language-server
+    lua-language-server
     # myTex
   ];
 
