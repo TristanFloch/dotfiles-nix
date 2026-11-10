@@ -6,6 +6,8 @@
 }:
 
 let
+  # Location of $REX_BIN_DIR, which is set by Rex on macOS.
+  rexBinDir = "${config.home.homeDirectory}/Library/Application Support/com.superlogical.rex/RexServer/Versions/Current/Rex Server.app/Contents/MacOS";
   rexLuaTypes = pkgs.writers.writePython3Bin "rex-lua-types" { } (
     builtins.readFile ./rex-lua-types.py
   );
@@ -19,13 +21,11 @@ in
   # Only a running app can list them; run `rex-lua-types` after a Rex update.
   home = {
     packages = [ rexLuaTypes ];
+    # The activation script sets its own PATH, which sessionPath doesn't reach.
     activation.rexLuaTypes = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
-      run ${lib.getExe rexLuaTypes}
+      run env PATH=${lib.escapeShellArg rexBinDir}:"$PATH" ${lib.getExe rexLuaTypes}
     '';
-    sessionPath = [
-      # Location of $REX_BIN_DIR, which is set by Rex on macOS.
-      "${config.home.homeDirectory}/Library/Application Support/com.superlogical.rex/RexServer/Versions/Current/Rex Server.app/Contents/MacOS"
-    ];
+    sessionPath = [ rexBinDir ];
   };
 
   # Alternative of the sessionPath above, the shell hook as suggested in https://www.superlogical.com/rex/docs/automate/cli#path:
