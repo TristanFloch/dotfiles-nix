@@ -1,4 +1,9 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 # TODO make a module out of this
 # https://github.com/Misterio77/nix-config/blob/main/modules/home-manager/fonts.nix
@@ -33,14 +38,19 @@ in
     </fontconfig>
   '';
 
-  home.packages = with pkgs; [
-    noto-fonts-color-emoji
-    nerd-fonts.ubuntu
-    nerd-fonts.ubuntu-sans
-    nerd-fonts.victor-mono
-    nerd-fonts.sauce-code-pro
-    nerd-fonts.adwaita-mono
-    nerd-fonts.inconsolata-go
-    nerd-fonts.iosevka
-  ] ++ [ materialDesignIconDesktop ];
+  home.packages =
+    with pkgs;
+    [
+      noto-fonts-color-emoji
+      nerd-fonts.ubuntu
+      nerd-fonts.ubuntu-sans
+      nerd-fonts.victor-mono
+      nerd-fonts.sauce-code-pro
+      nerd-fonts.adwaita-mono
+      nerd-fonts.inconsolata-go
+      # From unstable: Nerd Fonts >= 3.5.0 has glyphs doom-modeline uses
+      # (e.g. nf-cod-worktree, U+EC7E) that the 3.4.0 build in stable lacks.
+      unstable.nerd-fonts.iosevka
+    ]
+    ++ [ materialDesignIconDesktop ];
 }
